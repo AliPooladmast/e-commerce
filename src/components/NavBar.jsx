@@ -4,7 +4,11 @@ import style from "./NavBar.module.scss";
 const NavBar = () => {
   return (
     <div className={style.Container}>
-      <div className={style.Wrapper}>NavBar</div>
+      <div className={style.Wrapper}>
+        <div className={style.Left}>left</div>
+        <div className={style.Center}>center</div>
+        <div className={style.Right}>right</div>
+      </div>
     </div>
   );
 };

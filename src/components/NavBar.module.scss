@@ -2,5 +2,16 @@
   height: 60px;
   .Wrapper {
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    .Left {
+      flex: 1;
+    }
+    .Center {
+      flex: 1;
+    }
+    .Right {
+      flex: 1;
+    }
   }
 }
