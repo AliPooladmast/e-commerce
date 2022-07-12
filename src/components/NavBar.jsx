@@ -20,7 +20,11 @@ const NavBar = () => {
         <div className={style.Right}>
           <div>REGISTER</div>
           <div>SIGN IN</div>
-          <div>BADGE</div>
+          <div>
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </div>
         </div>
       </div>
     </div>
