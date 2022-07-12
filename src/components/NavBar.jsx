@@ -11,7 +11,7 @@ const NavBar = () => {
           <div className={style.Language}>EN</div>
           <div className={style.SearchContainer}>
             <input className={style.Input}></input>
-            <Search />
+            <Search className={style.Search} />
           </div>
         </div>
         <div className={style.Center}>
