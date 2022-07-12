@@ -2,4 +2,14 @@
   width: 100%;
   height: 100vh;
   display: flex;
+
+  .Arrow {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 247, 247);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
