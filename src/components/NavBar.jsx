@@ -9,7 +9,7 @@ const NavBar = () => {
         <div className={style.Left}>
           <div className={style.Language}>EN</div>
           <div className={style.SearchContainer}>
-            input
+            <input className={style.Input}></input>
             <Search />
           </div>
         </div>
