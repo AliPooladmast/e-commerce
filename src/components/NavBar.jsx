@@ -13,7 +13,9 @@ const NavBar = () => {
             <Search />
           </div>
         </div>
-        <div className={style.Center}>center</div>
+        <div className={style.Center}>
+          <h1 className={style.Logo}>APQ.</h1>
+        </div>
         <div className={style.Right}>right</div>
       </div>
     </div>

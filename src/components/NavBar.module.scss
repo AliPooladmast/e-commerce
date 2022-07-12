@@ -32,6 +32,11 @@
 
     .Center {
       flex: 1;
+      text-align: center;
+
+      .Logo {
+        font-weight: bold;
+      }
     }
 
     .Right {
