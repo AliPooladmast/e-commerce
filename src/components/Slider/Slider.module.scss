@@ -1,0 +1,29 @@
+.Container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+.Arrow {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255, 247, 247);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  opacity: 0.5;
+
+  &.Left {
+    left: 10px;
+  }
+  &.Right {
+    right: 10px;
+  }
+}
