@@ -5,10 +5,10 @@ import style from "./Slider.module.scss";
 const Slider = () => {
   return (
     <div className={style.Container}>
-      <div className={style.Arrow}>
+      <div className={`${style.Arrow} ${style.Left}`}>
         <ArrowLeftOutlined />
       </div>
-      <div className={style.Arrow}>
+      <div className={`${style.Arrow} ${style.Right}`}>
         <ArrowRightOutlined />
       </div>
     </div>
