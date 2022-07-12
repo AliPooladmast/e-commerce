@@ -41,6 +41,11 @@
 
     .Right {
       flex: 1;
+
+      & div {
+        font-size: 14px;
+        cursor: pointer;
+      }
     }
   }
 }
