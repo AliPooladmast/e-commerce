@@ -39,10 +39,16 @@
 
     .ImgContainer {
       height: 100%;
+      flex: 1;
 
       .Image {
         height: 80%;
       }
+    }
+
+    .InfoContainer {
+      height: 100%;
+      flex: 1;
     }
   }
 }
