@@ -27,3 +27,15 @@
     right: 10px;
   }
 }
+
+.Wrapper {
+  height: 100%;
+
+  .ImgContainer {
+    height: 100%;
+
+    .Image {
+      height: 80%;
+    }
+  }
+}
