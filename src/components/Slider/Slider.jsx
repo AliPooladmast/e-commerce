@@ -15,6 +15,7 @@ const Slider = () => {
           <div className={style.ImgContainer}>
             <img src={fashionSet} alt="a fashion set" />
           </div>
+          <div className={style.InfoContainer}></div>
         </div>
       </div>
 
