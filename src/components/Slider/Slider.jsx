@@ -11,7 +11,7 @@ const Slider = () => {
       </div>
 
       <div className={style.Wrapper}>
-        <div className={style.Slide}>
+        <div className={style["Slide--First"]}>
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
@@ -24,7 +24,7 @@ const Slider = () => {
           </div>
         </div>
 
-        <div className={style.Slide}>
+        <div className={style["Slide--Second"]}>
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
@@ -37,7 +37,7 @@ const Slider = () => {
           </div>
         </div>
 
-        <div className={style.Slide}>
+        <div className={style["Slide--Third"]}>
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
