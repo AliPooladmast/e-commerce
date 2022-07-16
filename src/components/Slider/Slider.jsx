@@ -15,7 +15,11 @@ const Slider = () => {
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
-          <div className={style.InfoContainer}></div>
+          <div className={style.InfoContainer}>
+            <h1>This Month Sale</h1>
+            <p>NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%</p>
+            <button>SHOP NOW</button>
+          </div>
         </div>
       </div>
 
