@@ -19,36 +19,36 @@
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+}
 
-  &.Left {
-    left: 10px;
-  }
-  &.Right {
-    right: 10px;
-  }
+.Left {
+  left: 10px;
+}
+.Right {
+  right: 10px;
 }
 
 .Wrapper {
   height: 100%;
+}
 
-  .Slide {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
+.Slide {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
 
-    .ImgContainer {
-      height: 100%;
-      flex: 1;
+.ImgContainer {
+  height: 100%;
+  flex: 1;
+}
 
-      .Image {
-        height: 80%;
-      }
-    }
+.Image {
+  height: 80%;
+}
 
-    .InfoContainer {
-      height: 100%;
-      flex: 1;
-    }
-  }
+.InfoContainer {
+  height: 100%;
+  flex: 1;
 }
