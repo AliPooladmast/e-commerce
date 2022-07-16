@@ -6,7 +6,7 @@ import { sliderItems } from "../../data";
 const Slider = () => {
   return (
     <div className={style.Container}>
-      <div className={`${style.Arrow} ${style.Left}`}>
+      <div className={style["Arrow--Left"]}>
         <ArrowLeftOutlined />
       </div>
 
@@ -25,7 +25,7 @@ const Slider = () => {
         ))}
       </div>
 
-      <div className={`${style.Arrow} ${style.Right}`}>
+      <div className={style["Arrow--Right"]}>
         <ArrowRightOutlined />
       </div>
     </div>

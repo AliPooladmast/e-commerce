@@ -21,13 +21,16 @@
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
-}
 
-.Left {
-  left: 10px;
-}
-.Right {
-  right: 10px;
+  &--Left {
+    @extend .Arrow;
+    left: 10px;
+  }
+
+  &--Right {
+    @extend .Arrow;
+    right: 10px;
+  }
 }
 
 .Wrapper {
