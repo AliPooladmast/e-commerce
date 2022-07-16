@@ -11,12 +11,38 @@ const Slider = () => {
       </div>
 
       <div className={style.Wrapper}>
-        <div className={style.Slide}>
+        <div className={style["Slide--First"]}>
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
           <div className={style.InfoContainer}>
-            <h1 className={style.Title}>This Month Sale</h1>
+            <h1 className={style.Title}>THIS MONTH SALE</h1>
+            <p className={style.Desc}>
+              NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+            </p>
+            <button className={style.Button}>SHOP NOW</button>
+          </div>
+        </div>
+
+        <div className={style["Slide--Second"]}>
+          <div className={style.ImgContainer}>
+            <img className={style.Image} src={fashionSet} alt="a fashion set" />
+          </div>
+          <div className={style.InfoContainer}>
+            <h1 className={style.Title}>WHOLE YEAR SALE</h1>
+            <p className={style.Desc}>
+              NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+            </p>
+            <button className={style.Button}>SHOP NOW</button>
+          </div>
+        </div>
+
+        <div className={style["Slide--Third"]}>
+          <div className={style.ImgContainer}>
+            <img className={style.Image} src={fashionSet} alt="a fashion set" />
+          </div>
+          <div className={style.InfoContainer}>
+            <h1 className={style.Title}>POPULAR SALE</h1>
             <p className={style.Desc}>
               NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
             </p>

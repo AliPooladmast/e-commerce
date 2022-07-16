@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 
 .Arrow {
@@ -19,6 +20,7 @@
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 }
 
 .Left {
@@ -30,6 +32,7 @@
 
 .Wrapper {
   height: 100%;
+  display: flex;
 }
 
 .Slide {
@@ -37,6 +40,21 @@
   width: 100vw;
   display: flex;
   align-items: center;
+
+  &--First {
+    @extend .Slide;
+    background: #f5fafd;
+  }
+
+  &--Second {
+    @extend .Slide;
+    background: #fcf1ed;
+  }
+
+  &--Third {
+    @extend .Slide;
+    background: #fbf0f4;
+  }
 }
 
 .ImgContainer {
