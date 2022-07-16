@@ -11,8 +11,10 @@ const Slider = () => {
       </div>
 
       <div className={style.Wrapper}>
-        <div className={style.ImgContainer}>
-          <img className={style.Image} src={fashionSet} alt="a fashion set" />
+        <div className={style.Slide}>
+          <div className={style.ImgContainer}>
+            <img src={fashionSet} alt="a fashion set" />
+          </div>
         </div>
       </div>
 

@@ -31,11 +31,18 @@
 .Wrapper {
   height: 100%;
 
-  .ImgContainer {
-    height: 100%;
+  .Slide {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
 
-    .Image {
-      height: 80%;
+    .ImgContainer {
+      height: 100%;
+
+      .Image {
+        height: 80%;
+      }
     }
   }
 }
