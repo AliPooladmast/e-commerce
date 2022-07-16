@@ -19,11 +19,53 @@
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+}
 
-  &.Left {
-    left: 10px;
-  }
-  &.Right {
-    right: 10px;
-  }
+.Left {
+  left: 10px;
+}
+.Right {
+  right: 10px;
+}
+
+.Wrapper {
+  height: 100%;
+}
+
+.Slide {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+
+.ImgContainer {
+  height: 100%;
+  flex: 1;
+}
+
+.Image {
+  height: 70%;
+}
+
+.InfoContainer {
+  flex: 1;
+}
+
+.Title {
+  font-size: 70px;
+}
+
+.Desc {
+  margin: 50px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.Button {
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
 }

@@ -1,59 +1,59 @@
 .Container {
   height: 60px;
+}
 
-  .Wrapper {
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.Wrapper {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .Left {
-      flex: 1;
-      display: flex;
-      align-items: center;
+.Left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
 
-      .Language {
-        font-size: 14px;
-        cursor: pointer;
-      }
+.Language {
+  font-size: 14px;
+  cursor: pointer;
+}
 
-      .SearchContainer {
-        border: 1px solid lightgray;
-        display: flex;
-        align-items: center;
-        margin-left: 25px;
-        padding: 5px;
+.SearchContainer {
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+}
 
-        .Input {
-          border: none;
-        }
+.Input {
+  border: none;
+}
 
-        .Search {
-          color: grey;
-          font-size: 16px;
-        }
-      }
-    }
+.Search {
+  color: grey;
+  font-size: 16px;
+}
 
-    .Center {
-      flex: 1;
-      text-align: center;
+.Center {
+  flex: 1;
+  text-align: center;
+}
 
-      .Logo {
-        font-weight: bold;
-      }
-    }
+.Logo {
+  font-weight: bold;
+}
 
-    .Right {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
+.Right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 
-      & div {
-        font-size: 14px;
-        cursor: pointer;
-        margin-left: 25px;
-      }
-    }
+  div {
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 25px;
   }
 }
