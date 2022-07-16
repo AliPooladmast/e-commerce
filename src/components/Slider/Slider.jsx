@@ -16,9 +16,11 @@ const Slider = () => {
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
           <div className={style.InfoContainer}>
-            <h1>This Month Sale</h1>
-            <p>NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%</p>
-            <button>SHOP NOW</button>
+            <h1 className={style.Title}>This Month Sale</h1>
+            <p className={style.Desc}>
+              NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+            </p>
+            <button className={style.Button}>SHOP NOW</button>
           </div>
         </div>
       </div>
