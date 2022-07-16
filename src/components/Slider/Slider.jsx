@@ -13,7 +13,7 @@ const Slider = () => {
       <div className={style.Wrapper}>
         <div className={style.Slide}>
           <div className={style.ImgContainer}>
-            <img src={fashionSet} alt="a fashion set" />
+            <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
           <div className={style.InfoContainer}></div>
         </div>
