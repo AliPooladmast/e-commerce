@@ -40,21 +40,6 @@
   width: 100vw;
   display: flex;
   align-items: center;
-
-  &--First {
-    @extend .Slide;
-    background: #f5fafd;
-  }
-
-  &--Second {
-    @extend .Slide;
-    background: #fcf1ed;
-  }
-
-  &--Third {
-    @extend .Slide;
-    background: #fbf0f4;
-  }
 }
 
 .ImgContainer {
