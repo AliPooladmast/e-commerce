@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React from "react";
 import style from "./Slider.module.scss";
-import fashionSet from "../../assests/images/fashion-set.png";
+import { sliderItems } from "../../data";
 
 const Slider = () => {
   return (
@@ -11,20 +11,20 @@ const Slider = () => {
       </div>
 
       <div className={style.Wrapper}>
-        <div className={style["Slide--First"]}>
-          <div className={style.ImgContainer}>
-            <img className={style.Image} src={fashionSet} alt="a fashion set" />
+        {sliderItems.map((item) => (
+          <div className={style["Slide--First"]}>
+            <div className={style.ImgContainer}>
+              <img className={style.Image} src={item.img} alt="a fashion set" />
+            </div>
+            <div className={style.InfoContainer}>
+              <h1 className={style.Title}>{item.title}</h1>
+              <p className={style.Desc}>{item.desc}</p>
+              <button className={style.Button}>SHOP NOW</button>
+            </div>
           </div>
-          <div className={style.InfoContainer}>
-            <h1 className={style.Title}>THIS MONTH SALE</h1>
-            <p className={style.Desc}>
-              NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
-            </p>
-            <button className={style.Button}>SHOP NOW</button>
-          </div>
-        </div>
+        ))}
 
-        <div className={style["Slide--Second"]}>
+        {/* <div className={style["Slide--Second"]}>
           <div className={style.ImgContainer}>
             <img className={style.Image} src={fashionSet} alt="a fashion set" />
           </div>
@@ -48,7 +48,7 @@ const Slider = () => {
             </p>
             <button className={style.Button}>SHOP NOW</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className={`${style.Arrow} ${style.Right}`}>
