@@ -21,13 +21,16 @@
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
-}
 
-.Left {
-  left: 10px;
-}
-.Right {
-  right: 10px;
+  &--Left {
+    @extend .Arrow;
+    left: 10px;
+  }
+
+  &--Right {
+    @extend .Arrow;
+    right: 10px;
+  }
 }
 
 .Wrapper {
@@ -40,21 +43,6 @@
   width: 100vw;
   display: flex;
   align-items: center;
-
-  &--First {
-    @extend .Slide;
-    background: #f5fafd;
-  }
-
-  &--Second {
-    @extend .Slide;
-    background: #fcf1ed;
-  }
-
-  &--Third {
-    @extend .Slide;
-    background: #fbf0f4;
-  }
 }
 
 .ImgContainer {
