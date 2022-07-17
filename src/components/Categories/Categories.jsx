@@ -7,7 +7,7 @@ function Categories() {
   return (
     <div className={style.Container}>
       {categories.map((item) => (
-        <CategoryItem />
+        <CategoryItem item={item} />
       ))}
     </div>
   );
