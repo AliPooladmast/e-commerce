@@ -39,7 +39,7 @@ export const sliderItems = [
   },
 ];
 
-const categories = [
+export const categories = [
   {
     id: 1,
     img: casualDress,
