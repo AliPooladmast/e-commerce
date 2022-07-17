@@ -1,11 +1,37 @@
 .Container {
   flex: 1;
   margin: 3px;
-  height: 70vh;
+  height: 70v;
+  position: relative;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+.Info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  button {
+    border: none;
+    padding: 10px;
+    background: white;
+    color: grey;
+    cursor: pointer;
+    font-weight: 600;
   }
 }
