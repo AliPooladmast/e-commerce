@@ -1,11 +1,12 @@
 import React from "react";
 import { popularProducts } from "../../data";
+import ProductItem from "../ProductItem/ProductItem";
 
 const Products = () => {
   return (
     <div>
       {popularProducts.map((item) => (
-        <item />
+        <ProductItem item={item} key={item.id} />
       ))}
     </div>
   );
