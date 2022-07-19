@@ -10,7 +10,7 @@ const ProductItem = ({ item }) => {
   return (
     <div className={style.Container}>
       <div className={style.Circle}>
-        <img src="" alt="" />
+        <img src={item.img} alt="" />
         <div className={style.Info}>
           <div>
             <ShoppingCartOutlined />
