@@ -1,7 +1,7 @@
 import {
   ShoppingCartOutlined,
-  SearchOutlinedIcon,
-  FavoriteBorderOutlinedIcon,
+  SearchOutlined,
+  FavoriteBorderOutlined,
 } from "@material-ui/icons";
 import React from "react";
 import style from "./ProductItem.module.scss";
@@ -14,6 +14,12 @@ const ProductItem = ({ item }) => {
         <div className={style.Info}>
           <div>
             <ShoppingCartOutlined />
+          </div>
+          <div>
+            <SearchOutlined />
+          </div>
+          <div>
+            <FavoriteBorderOutlined />
           </div>
         </div>
       </div>
