@@ -9,18 +9,17 @@ import style from "./ProductItem.module.scss";
 const ProductItem = ({ item }) => {
   return (
     <div className={style.Container}>
-      <div className={style.Circle}>
-        <img src={item.img} alt="" />
-        <div className={style.Info}>
-          <div>
-            <ShoppingCartOutlined />
-          </div>
-          <div>
-            <SearchOutlined />
-          </div>
-          <div>
-            <FavoriteBorderOutlined />
-          </div>
+      <div className={style.Circle} />
+      <img src={item.img} alt="" />
+      <div className={style.Info}>
+        <div>
+          <ShoppingCartOutlined />
+        </div>
+        <div>
+          <SearchOutlined />
+        </div>
+        <div>
+          <FavoriteBorderOutlined />
         </div>
       </div>
     </div>
