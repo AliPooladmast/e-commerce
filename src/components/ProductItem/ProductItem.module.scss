@@ -1,0 +1,13 @@
+.Container {
+  flex: 1;
+  margin: 5px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 70%;
+    object-fit: cover;
+  }
+}
