@@ -36,4 +36,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  div {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
 }
