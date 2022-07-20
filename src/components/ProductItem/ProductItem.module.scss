@@ -17,8 +17,8 @@
   align-items: center;
 
   img {
-    height: 250px;
-    width: 250px;
+    height: 280px;
+    width: 280px;
     object-fit: cover;
     border-radius: 50%;
     z-index: 2;
@@ -31,7 +31,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: grey;
+  background: rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
   justify-content: center;
