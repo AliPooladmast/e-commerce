@@ -9,8 +9,9 @@ import style from "./ProductItem.module.scss";
 const ProductItem = ({ item }) => {
   return (
     <div className={style.Container}>
-      <div className={style.Circle} />
-      <img src={item.img} alt="" />
+      <div className={style.ImgContainer}>
+        <img src={item.img} alt="" />
+      </div>
       <div className={style.Info}>
         <div>
           <ShoppingCartOutlined />
