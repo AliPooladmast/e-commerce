@@ -5,7 +5,24 @@ import style from "./Footer.module.scss";
 function Footer() {
   return (
     <div className={style.Container}>
-      <div className={style.Left}></div>
+      <div className={style.Left}>
+        <div className={style.Logo}></div>
+        <div className={style.Desc}></div>
+        <div className={style.SocialContainer}>
+          <div className={style.SocialIcon}>
+            <Facebook />
+          </div>
+          <div className={style.SocialIcon}>
+            <Instagram />
+          </div>
+          <div className={style.SocialIcon}>
+            <Twitter />
+          </div>
+          <div className={style.SocialIcon}>
+            <WhatsApp />
+          </div>
+        </div>
+      </div>
       <div className={style.Center}></div>
       <div className={style.Right}></div>
     </div>
