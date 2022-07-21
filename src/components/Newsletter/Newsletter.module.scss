@@ -17,3 +17,12 @@
   margin-bottom: 20px;
   font-weight: 300;
 }
+
+.InputContainer {
+  width: 50%;
+  height: 40px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+}

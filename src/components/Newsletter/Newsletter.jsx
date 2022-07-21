@@ -5,7 +5,7 @@ import { Send } from "@material-ui/icons";
 const Newsletter = () => {
   return (
     <div className={style.Container}>
-      <h1>Newsletter</h1>
+      <h1>Weekly Magazine</h1>
       <div className={style.Desc}>
         Subscribe Here to Recieve Our Latest Hot Products
       </div>
