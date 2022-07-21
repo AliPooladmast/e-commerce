@@ -28,7 +28,20 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className={style.Center}></div>
+      <div className={style.Center}>
+        <h1>Usefull Links</h1>
+        <ul>
+          <li>Home</li>
+          <li>Cart</li>
+          <li>Men Fashion</li>
+          <li>Women Fashion</li>
+          <li>Accessories</li>
+          <li>My Account</li>
+          <li>Order Tracking</li>
+          <li>Wishlist</li>
+          <li>Terms</li>
+        </ul>
+      </div>
       <div className={style.Right}></div>
     </div>
   );
