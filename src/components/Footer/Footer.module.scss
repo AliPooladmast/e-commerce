@@ -24,3 +24,34 @@
 .SocialContainer {
   display: flex;
 }
+
+.SocialIcon {
+  height: 40px;
+  width: 40px;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+
+  &--facebook {
+    @extend .SocialIcon;
+    background-color: #3b5999;
+  }
+
+  &--instagram {
+    @extend .SocialIcon;
+    background-color: #e4405f;
+  }
+
+  &--twitter {
+    @extend .SocialIcon;
+    background-color: #55acee;
+  }
+
+  &--whatsapp {
+    @extend .SocialIcon;
+    background-color: #25d366;
+  }
+}

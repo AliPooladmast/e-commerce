@@ -14,16 +14,16 @@ function Footer() {
           nulla saepe doloribus?
         </p>
         <div className={style.SocialContainer}>
-          <div className={style.SocialIcon}>
+          <div className={style["SocialIcon--facebook"]}>
             <Facebook />
           </div>
-          <div className={style.SocialIcon}>
+          <div className={style["SocialIcon--instagram"]}>
             <Instagram />
           </div>
-          <div className={style.SocialIcon}>
+          <div className={style["SocialIcon--twitter"]}>
             <Twitter />
           </div>
-          <div className={style.SocialIcon}>
+          <div className={style["SocialIcon--whatsapp"]}>
             <WhatsApp />
           </div>
         </div>
