@@ -6,8 +6,8 @@ function Footer() {
   return (
     <div className={style.Container}>
       <div className={style.Left}>
-        <h1 className={style.Logo}>APQ.</h1>
-        <p className={style.Desc}>
+        <h1>APQ.</h1>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nemo
           cum, quo architecto officiis fugit ab cumque eveniet reprehenderit,
           minima voluptatem! Necessitatibus officiis vel omnis quo voluptatem
