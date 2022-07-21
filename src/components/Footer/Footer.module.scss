@@ -4,9 +4,9 @@
 
 .Left {
   flex: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
 
   p {
     margin: 20px 0;
@@ -15,10 +15,12 @@
 
 .Center {
   flex: 1;
+  padding: 20px;
 }
 
 .Right {
   flex: 1;
+  padding: 20px;
 }
 
 .SocialContainer {
