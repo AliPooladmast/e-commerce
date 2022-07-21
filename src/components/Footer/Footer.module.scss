@@ -13,16 +13,6 @@
   }
 }
 
-.Center {
-  flex: 1;
-  padding: 20px;
-}
-
-.Right {
-  flex: 1;
-  padding: 20px;
-}
-
 .SocialContainer {
   display: flex;
 }
@@ -59,6 +49,9 @@
 }
 
 .Center {
+  flex: 1;
+  padding: 20px;
+
   h1 {
     font-size: 20px;
     margin-bottom: 30px;
@@ -75,5 +68,26 @@
   li {
     width: 50%;
     margin-bottom: 10px;
+  }
+}
+
+.Right {
+  flex: 1;
+  padding: 20px;
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 70%;
+    object-fit: cover;
   }
 }

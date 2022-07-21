@@ -1,6 +1,15 @@
-import { Facebook, Instagram, Twitter, WhatsApp } from "@material-ui/icons";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  WhatsApp,
+  Room,
+  Phone,
+  MailOutline,
+} from "@material-ui/icons";
 import React from "react";
 import style from "./Footer.module.scss";
+import paymentMethods from "../../assests/images/payment-methods.jpg";
 
 function Footer() {
   return (
@@ -42,7 +51,22 @@ function Footer() {
           <li>Terms</li>
         </ul>
       </div>
-      <div className={style.Right}></div>
+      <div className={style.Right}>
+        <h1>Contact</h1>
+        <div>
+          <Room style={{ marginRight: "10px" }} />
+          3949 Deer Haven Drive, Greenville, SC
+        </div>
+        <div>
+          <Phone style={{ marginRight: "10px" }} />
+          803-389-4982
+        </div>
+        <div>
+          <MailOutline style={{ marginRight: "10px" }} />
+          bexoli2205@anlubi.com
+        </div>
+        <img src={paymentMethods} alt="payment methods" />
+      </div>
     </div>
   );
 }
