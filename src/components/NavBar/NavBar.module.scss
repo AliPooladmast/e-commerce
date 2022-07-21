@@ -30,6 +30,10 @@
 
 .Input {
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .Search {
