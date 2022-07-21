@@ -54,15 +54,15 @@ function Footer() {
       <div className={style.Right}>
         <h1>Contact</h1>
         <div>
-          <Room />
+          <Room style={{ marginRight: "10px" }} />
           3949 Deer Haven Drive, Greenville, SC
         </div>
         <div>
-          <Phone />
+          <Phone style={{ marginRight: "10px" }} />
           803-389-4982
         </div>
         <div>
-          <MailOutline />
+          <MailOutline style={{ marginRight: "10px" }} />
           bexoli2205@anlubi.com
         </div>
         <img src={paymentMethods} alt="payment methods" />
