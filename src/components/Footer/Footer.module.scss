@@ -4,9 +4,9 @@
 
 .Left {
   flex: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
 
   p {
     margin: 20px 0;
@@ -15,10 +15,12 @@
 
 .Center {
   flex: 1;
+  padding: 20px;
 }
 
 .Right {
   flex: 1;
+  padding: 20px;
 }
 
 .SocialContainer {
@@ -53,5 +55,25 @@
   &--whatsapp {
     @extend .SocialIcon;
     background-color: #25d366;
+  }
+}
+
+.Center {
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    width: 50%;
+    margin-bottom: 10px;
   }
 }
