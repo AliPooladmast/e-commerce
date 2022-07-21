@@ -6,8 +6,8 @@ function Footer() {
   return (
     <div className={style.Container}>
       <div className={style.Left}>
-        <div className={style.Logo}></div>
-        <div className={style.Desc}></div>
+        <h1 className={style.Logo}></h1>
+        <p className={style.Desc}></p>
         <div className={style.SocialContainer}>
           <div className={style.SocialIcon}>
             <Facebook />
