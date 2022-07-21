@@ -85,4 +85,9 @@
     display: flex;
     align-items: center;
   }
+
+  img {
+    width: 70%;
+    object-fit: cover;
+  }
 }
