@@ -30,6 +30,11 @@
     border: none;
     flex: 8;
     padding-left: 20px;
+
+    &:focus {
+      outline: none;
+      border: 1px solid lightgrey;
+    }
   }
 
   button {
