@@ -1,3 +1,6 @@
+import Products from "../../components/Products/Products";
+import Newsletter from "../../components/Newsletter/Newsletter";
+import Footer from "../../components/Footer/Footer";
 import Announcement from "../../components/Announcement/Announcement";
 import NavBar from "../../components/NavBar/NavBar";
 import React from "react";
@@ -13,6 +16,9 @@ function ProductList() {
         <div>Filter1</div>
         <div>Filter2</div>
       </div>
+      <Products />
+      <Newsletter />
+      <Footer />
     </div>
   );
 }
