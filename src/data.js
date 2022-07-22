@@ -34,7 +34,7 @@ export const sliderItems = [
   {
     id: 3,
     img: menCoat,
-    title: "GIFT FOT FANS",
+    title: "GIFT FOR FANS",
     desc: "NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%",
     bg: "#f5fafd",
   },
