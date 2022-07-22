@@ -9,7 +9,7 @@ function ProductList() {
       <Announcement />
       <NavBar />
       <h1>Dresses</h1>
-      <div className={style.FilterContaier}>
+      <div className={style.FilterContainer}>
         <div className={style.Filter1}>Filter1</div>
         <div className={style.Filter2}>Filter2</div>
       </div>
