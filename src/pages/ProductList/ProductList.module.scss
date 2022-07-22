@@ -1,4 +1,14 @@
+.Container {
+  h1 {
+    margin: 20px;
+  }
+}
+
 .FilterContainer {
   display: flex;
   justify-content: space-between;
+
+  div {
+    margin: 20px;
+  }
 }

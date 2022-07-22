@@ -10,8 +10,8 @@ function ProductList() {
       <NavBar />
       <h1>Dresses</h1>
       <div className={style.FilterContainer}>
-        <div className={style.Filter1}>Filter1</div>
-        <div className={style.Filter2}>Filter2</div>
+        <div>Filter1</div>
+        <div>Filter2</div>
       </div>
     </div>
   );
