@@ -15,7 +15,7 @@ function ProductList() {
       <div className={style.FilterContainer}>
         <div>
           <span>Filter Products</span>
-          <select name="filter-product" id="filter-product-select">
+          <select name="filter-colors" id="colors-select">
             <option value="color" disabled>
               Color
             </option>
@@ -25,6 +25,16 @@ function ProductList() {
             <option value="yellow">Yellow</option>
             <option value="blue">Blue</option>
             <option value="green">Green</option>
+          </select>
+          <select name="filter-size" id="size-select">
+            <option value="size" disabled>
+              Size
+            </option>
+            <option value="xs">XS</option>
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
           </select>
         </div>
         <div>
