@@ -13,8 +13,12 @@ function ProductList() {
       <NavBar />
       <h1>Dresses</h1>
       <div className={style.FilterContainer}>
-        <div>Filter1</div>
-        <div>Filter2</div>
+        <div>
+          <span>Filter Products</span>
+        </div>
+        <div>
+          <span>Sort Product</span>
+        </div>
       </div>
       <Products />
       <Newsletter />
