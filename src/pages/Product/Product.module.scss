@@ -18,4 +18,18 @@
 
 .InfoContainer {
   flex: 1;
+  padding: 0 50px;
+
+  h1 {
+    font-weight: 200;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  span {
+    font-weight: 100;
+    font-size: 40px;
+  }
 }
