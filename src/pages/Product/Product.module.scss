@@ -5,3 +5,17 @@
   padding: 20px;
   display: flex;
 }
+
+.ImageContainer {
+  flex: 1;
+
+  img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+  }
+}
+
+.InfoContainer {
+  flex: 1;
+}
