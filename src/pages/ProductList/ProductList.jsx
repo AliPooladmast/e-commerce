@@ -39,6 +39,13 @@ function ProductList() {
         </div>
         <div>
           <span>Sort Product</span>
+          <select name="sort-product" id="sort-select">
+            <option value="newest" selected>
+              Newest
+            </option>
+            <option value="price-asc">Price (Highest to Lowest)</option>
+            <option value="price-desc">Price (Lowest to Highest)</option>
+          </select>
         </div>
       </div>
       <Products />
