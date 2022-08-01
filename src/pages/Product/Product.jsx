@@ -46,10 +46,10 @@ const Product = () => {
           <div className={style.AddContainer}>
             <div className={style.AmountContainer}>
               <Add />
-              <span></span>
+              <span>1</span>
               <Remove />
             </div>
-            <button></button>
+            <button>Add To Cart</button>
           </div>
         </div>
       </div>
