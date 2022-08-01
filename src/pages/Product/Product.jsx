@@ -24,6 +24,24 @@ const Product = () => {
             laboriosam fugiat aspernatur!
           </p>
           <span>$ 20</span>
+          <div className={style.FilterContainer}>
+            <div className={style.Filter}>
+              <span>Color</span>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div className={style.Filter}>
+              <span>Size</span>
+              <select name="" id="">
+                <option value="">XS</option>
+                <option value="">S</option>
+                <option value="">M</option>
+                <option value="">L</option>
+                <option value="">XL</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <Newsletter />
