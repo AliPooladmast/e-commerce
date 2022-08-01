@@ -5,6 +5,7 @@ import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import manInCoat from "../../assests/images/coats.jpg";
+import { Add, Remove } from "@material-ui/icons";
 
 const Product = () => {
   return (
@@ -41,6 +42,14 @@ const Product = () => {
                 <option value="">XL</option>
               </select>
             </div>
+          </div>
+          <div className={style.AddContainer}>
+            <div className={style.AmountContainer}>
+              <Add />
+              <span>1</span>
+              <Remove />
+            </div>
+            <button>Add To Cart</button>
           </div>
         </div>
       </div>
