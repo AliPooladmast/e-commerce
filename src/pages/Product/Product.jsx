@@ -27,9 +27,9 @@ const Product = () => {
           <div className={style.FilterContainer}>
             <div className={style.Filter}>
               <span>Color</span>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div style={{ backgroundColor: "black" }}></div>
+              <div style={{ backgroundColor: "darkBlue" }}></div>
+              <div style={{ backgroundColor: "grey" }}></div>
             </div>
             <div className={style.Filter}>
               <span>Size</span>
