@@ -38,6 +38,7 @@
   width: 50%;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .Filter {
@@ -64,10 +65,23 @@
 }
 
 .AddContainer {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 50%;
+
+  button {
+    background-color: white;
+    padding: 15px;
+    border: 2px solid teal;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f8f4f4;
+    }
+  }
 }
 
 .AmountContainer {
