@@ -28,8 +28,14 @@
     margin: 20px 0;
   }
 
-  span {
+  > span {
     font-weight: 100;
     font-size: 40px;
   }
+}
+
+.FilterContainer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
