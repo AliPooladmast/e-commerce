@@ -39,3 +39,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Filter {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 20px;
+    font-weight: 200;
+  }
+}
