@@ -11,12 +11,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px;
 }
 
 .Button {
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
+  background-color: transparent;
+
+  &--filled {
+    @extend .Button;
+    border: none;
+    background-color: black;
+    color: white;
+  }
 }
 
 .TopTexts {

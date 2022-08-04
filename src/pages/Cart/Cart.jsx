@@ -12,8 +12,12 @@ const Cart = () => {
       <div className={style.Wrapper}>
         <h1>YOUR BAG</h1>
         <div className={style.Top}>
-          <button>CONTINUE SHOPPING</button>
-          <button>CHECK OUT NOW</button>
+          <button className={style.Button}>CONTINUE SHOPPING</button>
+          <div className={style.TopTexts}>
+            <span>Shopping Bag(2)</span>
+            <span>Your Wishlist (0)</span>
+          </div>
+          <button className={style["Button--filled"]}>CHECK OUT NOW</button>
         </div>
         <div className={style.bottom}></div>
       </div>
