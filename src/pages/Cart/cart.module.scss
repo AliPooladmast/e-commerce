@@ -1,0 +1,50 @@
+.Wrapper {
+  padding: 20px;
+
+  h1 {
+    font-weight: 300;
+    text-align: center;
+  }
+}
+
+.Top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.Button {
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+
+  &--filled {
+    @extend .Button;
+    border: none;
+    background-color: black;
+    color: white;
+  }
+}
+
+.TopTexts {
+  span {
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+}
+
+.Bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Info {
+  flex: 3;
+}
+
+.Summary {
+  flex: 1;
+}
