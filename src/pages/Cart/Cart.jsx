@@ -19,7 +19,10 @@ const Cart = () => {
           </div>
           <button className={style["Button--filled"]}>CHECK OUT NOW</button>
         </div>
-        <div className={style.bottom}></div>
+        <div className={style.Bottom}>
+          <div className={style.Info}>Info</div>
+          <div className={style.Summary}>Summary</div>
+        </div>
       </div>
       <Footer />
     </div>

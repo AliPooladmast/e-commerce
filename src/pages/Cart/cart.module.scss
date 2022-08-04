@@ -35,3 +35,16 @@
     margin: 0 10px;
   }
 }
+
+.Bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Info {
+  flex: 3;
+}
+
+.Summary {
+  flex: 1;
+}
