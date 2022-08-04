@@ -11,10 +11,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
-  button {
-    padding: 10px;
-    font-weight: 600;
+.Button {
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.TopTexts {
+  span {
+    text-decoration: underline;
     cursor: pointer;
+    margin: 0 10px;
   }
 }
