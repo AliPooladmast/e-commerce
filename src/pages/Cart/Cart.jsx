@@ -32,7 +32,10 @@ const Cart = () => {
                   <span>
                     <b>ID:</b> 92523510252
                   </span>
-                  <div className={style.ProductColor}></div>
+                  <div
+                    className={style.ProductColor}
+                    style={{ backgroundColor: "red" }}
+                  ></div>
                   <span>
                     <b>Size:</b> 47.3
                   </span>
