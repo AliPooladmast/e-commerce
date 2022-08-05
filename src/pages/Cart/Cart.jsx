@@ -20,7 +20,26 @@ const Cart = () => {
           <button className={style["Button--filled"]}>CHECK OUT NOW</button>
         </div>
         <div className={style.Bottom}>
-          <div className={style.Info}>Info</div>
+          <div className={style.Info}>
+            <div className={style.Product}>
+              <div className={style.ProductDetail}>
+                <img src="" alt="" />
+                <div className={style.Detail}>
+                  <span>
+                    <b>Product:</b> JESSIE THUNDER SHOES
+                  </span>
+                  <span>
+                    <b>ID:</b> 92523510252
+                  </span>
+                  <div className={style.ProductColor}></div>
+                  <span>
+                    <b>Size:</b> 47.3
+                  </span>
+                </div>
+              </div>
+              <div className={style.PriceDetail}>Price</div>
+            </div>
+          </div>
           <div className={style.Summary}>Summary</div>
         </div>
       </div>
