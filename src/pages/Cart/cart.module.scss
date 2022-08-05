@@ -67,3 +67,9 @@
 .PriceDetail {
   flex: 1;
 }
+
+.Detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
