@@ -3,6 +3,7 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
+import shoePic from "../../assests/images/shoe.jpg";
 
 const Cart = () => {
   return (
@@ -23,7 +24,7 @@ const Cart = () => {
           <div className={style.Info}>
             <div className={style.Product}>
               <div className={style.ProductDetail}>
-                <img src="" alt="" />
+                <img src={shoePic} alt="" />
                 <div className={style.Detail}>
                   <span>
                     <b>Product:</b> JESSIE THUNDER SHOES
