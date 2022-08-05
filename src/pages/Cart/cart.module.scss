@@ -23,7 +23,6 @@
   &--filled {
     @extend .Button;
     border: none;
-    background-color: black;
     color: white;
   }
 }
@@ -47,4 +46,36 @@
 
 .Summary {
   flex: 1;
+}
+
+.Product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ProductDetail {
+  flex: 2;
+  display: flex;
+
+  img {
+    width: 200px;
+    object-fit: cover;
+  }
+}
+
+.PriceDetail {
+  flex: 1;
+}
+
+.Detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+.ProductColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
