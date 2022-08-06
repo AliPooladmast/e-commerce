@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
 import shoePic from "../../assests/images/shoe.jpg";
+import { Add, Remove } from "@material-ui/icons";
 
 const Cart = () => {
   return (
@@ -41,7 +42,14 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
-              <div className={style.PriceDetail}>Price</div>
+              <div className={style.PriceDetail}>
+                <div className={style.ProductAmount}>
+                  <Add />
+                  <div>2</div>
+                  <Remove />
+                </div>
+                <div className={style.ProductPrice}>$ 30</div>
+              </div>
             </div>
           </div>
           <div className={style.Summary}>Summary</div>
