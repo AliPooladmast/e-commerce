@@ -42,6 +42,12 @@
 
 .Info {
   flex: 3;
+
+  hr {
+    border: none;
+    background-color: #eee;
+    height: 1px;
+  }
 }
 
 .Summary {
@@ -51,6 +57,7 @@
 .Product {
   display: flex;
   justify-content: space-between;
+  margin: 10px 0;
 }
 
 .ProductDetail {
