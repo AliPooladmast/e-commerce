@@ -45,7 +45,7 @@ const Cart = () => {
               <div className={style.PriceDetail}>
                 <div className={style.ProductAmount}>
                   <Add />
-                  <div>2</div>
+                  <span>2</span>
                   <Remove />
                 </div>
                 <div className={style.ProductPrice}>$ 30</div>
