@@ -3,7 +3,9 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
-import shoePic from "../../assests/images/shoe.jpg";
+import shoePic from "../../assests/images/boot-shoe.jpg";
+import tShirt from "../../assests/images/t-shirt.jpg";
+import { Add, Remove } from "@material-ui/icons";
 
 const Cart = () => {
   return (
@@ -41,7 +43,45 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
-              <div className={style.PriceDetail}>Price</div>
+              <div className={style.PriceDetail}>
+                <div className={style.ProductAmount}>
+                  <Add />
+                  <span>2</span>
+                  <Remove />
+                </div>
+                <div className={style.ProductPrice}>$ 30</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <div className={style.Product}>
+              <div className={style.ProductDetail}>
+                <img src={tShirt} alt="" />
+                <div className={style.Detail}>
+                  <span>
+                    <b>Product:</b> HAKURA T-SHRIT
+                  </span>
+                  <span>
+                    <b>ID:</b> 23213543197
+                  </span>
+                  <div
+                    className={style.ProductColor}
+                    style={{ backgroundColor: "teal" }}
+                  ></div>
+                  <span>
+                    <b>Size:</b> M
+                  </span>
+                </div>
+              </div>
+              <div className={style.PriceDetail}>
+                <div className={style.ProductAmount}>
+                  <Add />
+                  <span>3</span>
+                  <Remove />
+                </div>
+                <div className={style.ProductPrice}>$ 20</div>
+              </div>
             </div>
           </div>
           <div className={style.Summary}>Summary</div>
