@@ -23,6 +23,7 @@
   &--filled {
     @extend .Button;
     border: none;
+    background-color: black;
     color: white;
   }
 }
@@ -52,6 +53,22 @@
 
 .Summary {
   flex: 1;
+  border: 0.5px solid lightgrey;
+  border-radius: 10px;
+  padding: 20px;
+  height: 50vh;
+
+  h1 {
+    font-weight: 200;
+  }
+
+  button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+  }
 }
 
 .Product {
@@ -105,4 +122,16 @@
 .ProductPrice {
   font-size: 30px;
   font-weight: 300;
+}
+
+.SummaryItem {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+
+  &--total {
+    @extend .SummaryItem;
+    font-weight: 500;
+    font-size: 24px;
+  }
 }
