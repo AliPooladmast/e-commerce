@@ -57,6 +57,10 @@
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
+
+  h1 {
+    font-weight: 200;
+  }
 }
 
 .Product {
@@ -110,4 +114,10 @@
 .ProductPrice {
   font-size: 30px;
   font-weight: 300;
+}
+
+.SummaryItem {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
 }
