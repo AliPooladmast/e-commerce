@@ -1,5 +1,9 @@
 .Container {
   height: 60px;
+
+  @media only screen and (max-width: 380px) {
+    height: 50px;
+  }
 }
 
 .Wrapper {
@@ -7,6 +11,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 380px) {
+    padding: 10px 0;
+  }
 }
 
 .Left {
@@ -18,6 +26,10 @@
 .Language {
   font-size: 14px;
   cursor: pointer;
+
+  @media only screen and (max-width: 380px) {
+    display: none;
+  }
 }
 
 .SearchContainer {
@@ -26,6 +38,10 @@
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+
+  @media only screen and (max-width: 380px) {
+    margin-left: 10px;
+  }
 }
 
 .Input {
@@ -33,6 +49,10 @@
 
   &:focus {
     outline: none;
+  }
+
+  @media only screen and (max-width: 380px) {
+    width: 50px;
   }
 }
 
@@ -48,6 +68,10 @@
 
 .Logo {
   font-weight: bold;
+
+  @media only screen and (max-width: 380px) {
+    font-size: 24px;
+  }
 }
 
 .Right {
@@ -59,5 +83,15 @@
     font-size: 14px;
     cursor: pointer;
     margin-left: 25px;
+
+    @media only screen and (max-width: 380px) {
+      font-size: 12px;
+      margin-left: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 380px) {
+    justify-content: center;
+    flex: 2;
   }
 }

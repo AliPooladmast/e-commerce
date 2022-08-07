@@ -10,7 +10,7 @@ const NavBar = () => {
         <div className={style.Left}>
           <div className={style.Language}>EN</div>
           <div className={style.SearchContainer}>
-            <input className={style.Input}></input>
+            <input className={style.Input} placeholder="Search"></input>
             <Search className={style.Search} />
           </div>
         </div>
