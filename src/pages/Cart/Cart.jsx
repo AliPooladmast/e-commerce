@@ -98,7 +98,7 @@ const Cart = () => {
               <span className={style.SummatyItemText}>Shipping Discount</span>
               <span className={style.SummatyItemPrice}>$ -5.9</span>
             </div>
-            <div className={style.SummaryItem}>
+            <div className={style["SummaryItem--total"]}>
               <span className={style.SummatyItemText}>Total</span>
               <span className={style.SummatyItemPrice}>$ 80</span>
             </div>

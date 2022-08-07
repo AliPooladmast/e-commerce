@@ -120,4 +120,10 @@
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
+
+  &--total {
+    @extend .SummaryItem;
+    font-weight: 500;
+    font-size: 24px;
+  }
 }
