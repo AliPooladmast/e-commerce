@@ -23,6 +23,7 @@
   &--filled {
     @extend .Button;
     border: none;
+    background-color: black;
     color: white;
   }
 }
