@@ -17,7 +17,7 @@
   margin-bottom: 20px;
   font-weight: 300;
 
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 600px) {
     text-align: center;
   }
 }
@@ -30,7 +30,7 @@
   justify-content: space-between;
   border: 1px solid lightgrey;
 
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 600px) {
     width: 80%;
   }
 
