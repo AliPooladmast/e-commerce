@@ -13,9 +13,13 @@
 }
 
 .Wrapper {
-  width: 25%;
+  width: 40%;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
+
+  @media only screen and (max-width: 600px) {
+    width: 75%;
+  }
 
   h1 {
     font-size: 24px;

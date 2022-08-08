@@ -7,7 +7,7 @@
   flex-direction: column;
 
   h1 {
-    font-size: 70px;
+    font-size: 40px;
     margin-bottom: 20px;
   }
 }
@@ -16,6 +16,10 @@
   font-size: 24px;
   margin-bottom: 20px;
   font-weight: 300;
+
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+  }
 }
 
 .InputContainer {
@@ -25,6 +29,10 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid lightgrey;
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 
   input {
     border: none;
