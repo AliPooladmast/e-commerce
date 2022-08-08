@@ -1,6 +1,10 @@
 .Wrapper {
   padding: 20px;
 
+  @media only screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
   h1 {
     font-weight: 300;
     text-align: center;
@@ -34,11 +38,19 @@
     cursor: pointer;
     margin: 0 10px;
   }
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .Bottom {
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 .Info {
@@ -75,6 +87,10 @@
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 .ProductDetail {
@@ -113,15 +129,27 @@
   align-items: center;
   margin-bottom: 20px;
 
+  @media only screen and (max-width: 600px) {
+    margin: 20px;
+  }
+
   span {
     font-size: 24px;
     margin: 5px;
+
+    @media only screen and (max-width: 600px) {
+      margin: 5px 15px;
+    }
   }
 }
 
 .ProductPrice {
   font-size: 30px;
   font-weight: 300;
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 20px;
+  }
 }
 
 .SummaryItem {
