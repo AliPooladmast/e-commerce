@@ -1,6 +1,6 @@
 .Container {
   width: 100%;
-  height: 75vh;
+  height: 45vw;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -62,22 +62,23 @@
 
 .InfoContainer {
   flex: 1;
+  margin: 0 20px;
 }
 
 .Title {
-  font-size: 50px;
+  font-size: 4vw;
 }
 
 .Desc {
   margin: 50px 0;
-  font-size: 20px;
+  font-size: 1.5vw;
   font-weight: 500;
   letter-spacing: 3px;
 }
 
 .Button {
   padding: 10px;
-  font-size: 20px;
+  font-size: 1.5vw;
   background-color: transparent;
   cursor: pointer;
 }
