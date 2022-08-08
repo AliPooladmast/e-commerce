@@ -5,6 +5,10 @@
   position: relative;
   overflow: hidden;
   margin-top: 10px;
+
+  @media only screen and (max-width: 380px) {
+    display: none;
+  }
 }
 
 .Arrow {
