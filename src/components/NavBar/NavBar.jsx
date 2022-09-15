@@ -21,7 +21,7 @@ const NavBar = () => {
           <div>REGISTER</div>
           <div>SIGN IN</div>
           <div>
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={4} color="primary" overlap="rectangular">
               <ShoppingCartOutlined />
             </Badge>
           </div>
