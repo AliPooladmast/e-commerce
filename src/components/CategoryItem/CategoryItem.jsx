@@ -2,7 +2,6 @@ import React from "react";
 import style from "./CategoryItem.module.scss";
 
 const CategoryItem = ({ item }) => {
-  console.log(item);
   return (
     <div className={style.Container}>
       <img src={item.img} alt={item.title} />
