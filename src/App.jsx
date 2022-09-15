@@ -17,6 +17,11 @@ const App = () => {
           <Route path=":category" element={<ProductList />} />
         </Route>
       </Routes>
+      <Routes>
+        <Route path="/product" element={<Product />}>
+          <Route path=":id" element={<Product />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };
