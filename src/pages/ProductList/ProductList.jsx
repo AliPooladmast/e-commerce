@@ -5,8 +5,11 @@ import Announcement from "../../components/Announcement/Announcement";
 import NavBar from "../../components/NavBar/NavBar";
 import React from "react";
 import style from "./ProductList.module.scss";
+import { useLocation } from "react-router-dom";
 
 function ProductList() {
+  // const location = useLocation();
+  // console.log(location);
   return (
     <div className={style.Container}>
       <Announcement />
@@ -39,10 +42,8 @@ function ProductList() {
         </div>
         <div>
           <span>Sort Product</span>
-          <select name="sort-product" id="sort-select">
-            <option value="newest" selected>
-              Newest
-            </option>
+          <select name="sort-product" id="sort-select" defaultValue="newset">
+            <option value="newest">Newest</option>
             <option value="price-asc">Price (Highest to Lowest)</option>
             <option value="price-desc">Price (Lowest to Highest)</option>
           </select>
