@@ -8,8 +8,9 @@ import style from "./ProductList.module.scss";
 import { useLocation } from "react-router-dom";
 
 function ProductList() {
-  // const location = useLocation();
-  // console.log(location);
+  const location = useLocation();
+  const category = location.pathname.split("/")[2];
+  console.log(category);
   return (
     <div className={style.Container}>
       <Announcement />
