@@ -67,7 +67,7 @@ function ProductList() {
           </select>
         </div>
       </div>
-      <Products />
+      <Products category={category} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </div>
