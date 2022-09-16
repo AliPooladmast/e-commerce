@@ -3,10 +3,24 @@ import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import Announcement from "../../components/Announcement/Announcement";
 import NavBar from "../../components/NavBar/NavBar";
-import React from "react";
+import React, { useState } from "react";
 import style from "./ProductList.module.scss";
+import { useLocation } from "react-router-dom";
 
 function ProductList() {
+  const location = useLocation();
+  const category = location.pathname.split("/")[2];
+
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilters = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className={style.Container}>
       <Announcement />
@@ -15,7 +29,7 @@ function ProductList() {
       <div className={style.FilterContainer}>
         <div>
           <span>Filter Products</span>
-          <select name="filter-colors" id="colors-select">
+          <select name="colors" id="colors-select" onChange={handleFilters}>
             <option value="color" disabled>
               Color
             </option>
@@ -26,7 +40,7 @@ function ProductList() {
             <option value="blue">Blue</option>
             <option value="green">Green</option>
           </select>
-          <select name="filter-size" id="size-select">
+          <select name="size" id="size-select" onChange={handleFilters}>
             <option value="size" disabled>
               Size
             </option>
@@ -39,16 +53,21 @@ function ProductList() {
         </div>
         <div>
           <span>Sort Product</span>
-          <select name="sort-product" id="sort-select">
-            <option value="newest" selected>
-              Newest
-            </option>
-            <option value="price-asc">Price (Highest to Lowest)</option>
-            <option value="price-desc">Price (Lowest to Highest)</option>
+          <select
+            name="sort"
+            id="sort-select"
+            defaultValue="newset"
+            onChange={(e) => {
+              setSort(e.target.value);
+            }}
+          >
+            <option value="newest">Newest</option>
+            <option value="asc">Price (Highest to Lowest)</option>
+            <option value="desc">Price (Lowest to Highest)</option>
           </select>
         </div>
       </div>
-      <Products />
+      <Products category={category} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </div>
