@@ -5,6 +5,8 @@ import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
 const Products = ({ category, filters, sort }) => {
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -13,7 +15,7 @@ const Products = ({ category, filters, sort }) => {
             ? `http://localhost:5000/api/products?${category}`
             : "http://localhost:5000/api/products"
         );
-        console.log(res);
+        setProducts(res.data);
       } catch (err) {}
     };
     getProducts();
