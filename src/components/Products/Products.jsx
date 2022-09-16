@@ -8,7 +8,11 @@ const Products = ({ category, filters, sort }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/products");
+        const res = await axios.get(
+          category
+            ? `http://localhost:5000/api/products?${category}`
+            : "http://localhost:5000/api/products"
+        );
         console.log(res);
       } catch (err) {}
     };
