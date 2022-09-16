@@ -21,7 +21,18 @@ const Products = ({ category, filters, sort }) => {
       }
     };
     getProducts();
-  }, []);
+  }, [category]);
+
+  // console.log(products);
+  // console.log(filters);
+
+  useEffect(() => {
+    const filteredOnes = products.filter((item) =>
+      Object.entries(filters).every(([key, value]) => item[key].includes(value))
+    );
+
+    console.log(filteredOnes);
+  }, [filters, products]);
 
   return (
     <div className={style.Container}>
