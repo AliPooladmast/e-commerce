@@ -12,6 +12,7 @@ function ProductList() {
   const category = location.pathname.split("/")[2];
 
   const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
 
   const handleFilters = (e) => {
     setFilters({
@@ -52,10 +53,17 @@ function ProductList() {
         </div>
         <div>
           <span>Sort Product</span>
-          <select name="sort-product" id="sort-select" defaultValue="newset">
+          <select
+            name="sort"
+            id="sort-select"
+            defaultValue="newset"
+            onChange={(e) => {
+              setSort(e.target.value);
+            }}
+          >
             <option value="newest">Newest</option>
-            <option value="price-asc">Price (Highest to Lowest)</option>
-            <option value="price-desc">Price (Lowest to Highest)</option>
+            <option value="asc">Price (Highest to Lowest)</option>
+            <option value="desc">Price (Lowest to Highest)</option>
           </select>
         </div>
       </div>
