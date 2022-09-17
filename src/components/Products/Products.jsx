@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
@@ -10,7 +10,7 @@ const Products = ({ category, filters, sort }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(
+        const res = await publicRequest(
           category
             ? `http://localhost:5000/api/products?${category}`
             : "http://localhost:5000/api/products"
