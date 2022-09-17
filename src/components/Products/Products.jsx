@@ -52,9 +52,11 @@ const Products = ({ category, filters, sort }) => {
 
   return (
     <div className={style.Container}>
-      {filteredProducts.map((item) => (
-        <ProductItem item={item} key={item._id} />
-      ))}
+      {category
+        ? filteredProducts.map((item) => (
+            <ProductItem item={item} key={item._id} />
+          ))
+        : products.map((item) => <ProductItem item={item} key={item._id} />)}
     </div>
   );
 };
