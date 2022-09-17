@@ -23,8 +23,6 @@ const Products = ({ category, filters, sort }) => {
     getProducts();
   }, [category]);
 
-  // console.log(products);
-  // console.log(filters);
 
   useEffect(() => {
     const filteredOnes = products.filter((item) =>
