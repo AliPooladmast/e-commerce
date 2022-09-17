@@ -25,7 +25,7 @@ function ProductList() {
     <div className={style.Container}>
       <Announcement />
       <NavBar />
-      <h1>Dresses</h1>
+      <h1>{category}</h1>
       <div className={style.FilterContainer}>
         <div>
           <span>Filter Products</span>
