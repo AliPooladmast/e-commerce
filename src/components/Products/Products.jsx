@@ -6,6 +6,7 @@ import style from "./Products.module.scss";
 
 const Products = ({ category, filters, sort }) => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,14 +24,16 @@ const Products = ({ category, filters, sort }) => {
     getProducts();
   }, [category]);
 
-
   useEffect(() => {
-    const filteredOnes = products.filter((item) =>
-      Object.entries(filters).every(([key, value]) => item[key].includes(value))
-    );
-
-    console.log(filteredOnes);
-  }, [filters, products]);
+    category &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).every(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+  }, [filters, products, category]);
 
   return (
     <div className={style.Container}>
