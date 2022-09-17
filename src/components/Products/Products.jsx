@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { popularProducts } from "../../data";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
