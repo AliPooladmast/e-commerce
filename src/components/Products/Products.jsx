@@ -38,7 +38,7 @@ const Products = ({ category, filters, sort }) => {
   return (
     <div className={style.Container}>
       {filteredProducts.map((item) => (
-        <ProductItem item={item} key={item.id} />
+        <ProductItem item={item} key={item._id} />
       ))}
     </div>
   );
