@@ -30,7 +30,7 @@ const Product = () => {
     if (type === "inc") {
       setQuantity(quantity + 1);
     } else if (type === "dec") {
-      setQuantity(quantity - 1);
+      quantity > 1 && setQuantity(quantity - 1);
     }
   };
 
@@ -66,9 +66,15 @@ const Product = () => {
           </div>
           <div className={style.AddContainer}>
             <div className={style.AmountContainer}>
-              <Remove onClick={() => handleQuantity("dec")} />
+              <Remove
+                className={style.ChangeValue}
+                onClick={() => handleQuantity("dec")}
+              />
               <span>{quantity}</span>
-              <Add onClick={() => handleQuantity("inc")} />
+              <Add
+                className={style.ChangeValue}
+                onClick={() => handleQuantity("inc")}
+              />
             </div>
             <button>Add To Cart</button>
           </div>
