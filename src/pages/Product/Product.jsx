@@ -35,14 +35,9 @@ const Product = () => {
           <img src={product.img} alt="product" />
         </div>
         <div className={style.InfoContainer}>
-          <h1>Fur Coat</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-            explicabo iusto recusandae omnis, aut incidunt amet a expedita nobis
-            quo? Saepe sapiente ut doloremque asperiores, corrupti nulla
-            laboriosam fugiat aspernatur!
-          </p>
-          <span>$ 20</span>
+          <h1>{product.title}</h1>
+          <p>{product.desc}</p>
+          <span>{product.price}</span>
           <div className={style.FilterContainer}>
             <div className={style.Filter}>
               <span>Color</span>
