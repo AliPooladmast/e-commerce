@@ -32,7 +32,7 @@ const Product = () => {
       <Announcement />
       <div className={style.Wrapper}>
         <div className={style.ImageContainer}>
-          <img src={manInCoat} alt="a man in coat" />
+          <img src={product.img} alt="product" />
         </div>
         <div className={style.InfoContainer}>
           <h1>Fur Coat</h1>
