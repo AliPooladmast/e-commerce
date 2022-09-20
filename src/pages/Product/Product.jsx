@@ -4,7 +4,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
-import manInCoat from "../../assests/images/coats.jpg";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
@@ -41,9 +40,9 @@ const Product = () => {
           <div className={style.FilterContainer}>
             <div className={style.Filter}>
               <span>Color</span>
-              <div style={{ backgroundColor: "black" }}></div>
-              <div style={{ backgroundColor: "darkBlue" }}></div>
-              <div style={{ backgroundColor: "grey" }}></div>
+              {product.color?.map((color) => (
+                <div style={{ backgroundColor: color }} key={color}></div>
+              ))}
             </div>
             <div className={style.Filter}>
               <span>Size</span>
