@@ -13,6 +13,10 @@ const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  console.log(color, size);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -50,12 +54,16 @@ const Product = () => {
             <div className={style.Filter}>
               <span>Color</span>
               {product.color?.map((color) => (
-                <div style={{ backgroundColor: color }} key={color}></div>
+                <div
+                  style={{ backgroundColor: color }}
+                  key={color}
+                  onClick={() => setColor(color)}
+                ></div>
               ))}
             </div>
             <div className={style.Filter}>
               <span>Size</span>
-              <select name="" id="">
+              <select name="" id="" onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((size) => (
                   <option value={size} key={size}>
                     {size}
