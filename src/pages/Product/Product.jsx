@@ -47,11 +47,11 @@ const Product = () => {
             <div className={style.Filter}>
               <span>Size</span>
               <select name="" id="">
-                <option value="">XS</option>
-                <option value="">S</option>
-                <option value="">M</option>
-                <option value="">L</option>
-                <option value="">XL</option>
+                {product.size?.map((size) => (
+                  <option value={size} key={size}>
+                    {size}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
