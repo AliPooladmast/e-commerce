@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Product.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
-import manInCoat from "../../assests/images/coats.jpg";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
+import { publicRequest } from "../../requestMethods";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id);
+  const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  console.log(color, size);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "inc") {
+      setQuantity(quantity + 1);
+    } else if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    }
+  };
 
   return (
     <div className={style.Container}>
@@ -19,40 +44,45 @@ const Product = () => {
       <Announcement />
       <div className={style.Wrapper}>
         <div className={style.ImageContainer}>
-          <img src={manInCoat} alt="a man in coat" />
+          <img src={product.img} alt="product" />
         </div>
         <div className={style.InfoContainer}>
-          <h1>Fur Coat</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-            explicabo iusto recusandae omnis, aut incidunt amet a expedita nobis
-            quo? Saepe sapiente ut doloremque asperiores, corrupti nulla
-            laboriosam fugiat aspernatur!
-          </p>
-          <span>$ 20</span>
+          <h1>{product.title}</h1>
+          <p>{product.desc}</p>
+          <span>{product.price}</span>
           <div className={style.FilterContainer}>
             <div className={style.Filter}>
               <span>Color</span>
-              <div style={{ backgroundColor: "black" }}></div>
-              <div style={{ backgroundColor: "darkBlue" }}></div>
-              <div style={{ backgroundColor: "grey" }}></div>
+              {product.color?.map((color) => (
+                <div
+                  style={{ backgroundColor: color }}
+                  key={color}
+                  onClick={() => setColor(color)}
+                ></div>
+              ))}
             </div>
             <div className={style.Filter}>
               <span>Size</span>
-              <select name="" id="">
-                <option value="">XS</option>
-                <option value="">S</option>
-                <option value="">M</option>
-                <option value="">L</option>
-                <option value="">XL</option>
+              <select name="" id="" onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((size) => (
+                  <option value={size} key={size}>
+                    {size}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div className={style.AddContainer}>
             <div className={style.AmountContainer}>
-              <Add />
-              <span>1</span>
-              <Remove />
+              <Remove
+                className={style.ChangeValue}
+                onClick={() => handleQuantity("dec")}
+              />
+              <span>{quantity}</span>
+              <Add
+                className={style.ChangeValue}
+                onClick={() => handleQuantity("inc")}
+              />
             </div>
             <button>Add To Cart</button>
           </div>
