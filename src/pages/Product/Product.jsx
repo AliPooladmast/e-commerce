@@ -6,8 +6,13 @@ import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import manInCoat from "../../assests/images/coats.jpg";
 import { Add, Remove } from "@material-ui/icons";
+import { useLocation } from "react-router-dom";
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  console.log(id);
+
   return (
     <div className={style.Container}>
       <NavBar />

@@ -4,6 +4,7 @@ import {
   FavoriteBorderOutlined,
 } from "@material-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "./ProductItem.module.scss";
 
 const ProductItem = ({ item }) => {
@@ -17,7 +18,9 @@ const ProductItem = ({ item }) => {
           <ShoppingCartOutlined />
         </div>
         <div>
-          <SearchOutlined />
+          <Link to={`/product/${item._id}`}>
+            <SearchOutlined />
+          </Link>
         </div>
         <div>
           <FavoriteBorderOutlined />
