@@ -12,6 +12,7 @@ const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -24,6 +25,14 @@ const Product = () => {
     };
     getProduct();
   }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "inc") {
+      setQuantity(quantity + 1);
+    } else if (type === "dec") {
+      setQuantity(quantity - 1);
+    }
+  };
 
   return (
     <div className={style.Container}>
@@ -57,9 +66,9 @@ const Product = () => {
           </div>
           <div className={style.AddContainer}>
             <div className={style.AmountContainer}>
-              <Add />
-              <span>1</span>
-              <Remove />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <span>{quantity}</span>
+              <Add onClick={() => handleQuantity("inc")} />
             </div>
             <button>Add To Cart</button>
           </div>
