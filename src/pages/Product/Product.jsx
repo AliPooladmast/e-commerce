@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Product.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import Announcement from "../../components/Announcement/Announcement";
@@ -12,12 +12,13 @@ import { publicRequest } from "../../requestMethods";
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
-        console.log(res);
+        setProduct(res.data);
       } catch (err) {
         console.log(err);
       }
