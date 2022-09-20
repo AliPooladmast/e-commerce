@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Product.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import Announcement from "../../components/Announcement/Announcement";
@@ -7,11 +7,23 @@ import Footer from "../../components/Footer/Footer";
 import manInCoat from "../../assests/images/coats.jpg";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
+import { publicRequest } from "../../requestMethods";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [id]);
 
   return (
     <div className={style.Container}>
