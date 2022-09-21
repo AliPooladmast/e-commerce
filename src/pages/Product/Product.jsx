@@ -7,14 +7,19 @@ import Footer from "../../components/Footer/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
+import { addProduct } from "../../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
+  const dispatch = useDispatch();
 
   console.log(color, size);
 
@@ -36,6 +41,10 @@ const Product = () => {
     } else if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
     }
+  };
+
+  const handleAddClick = () => {
+    dispatch(addProduct({ product, quantity, price: product.price }));
   };
 
   return (
@@ -84,7 +93,7 @@ const Product = () => {
                 onClick={() => handleQuantity("inc")}
               />
             </div>
-            <button>Add To Cart</button>
+            <button onClick={handleAddClick}>Add To Cart</button>
           </div>
         </div>
       </div>
