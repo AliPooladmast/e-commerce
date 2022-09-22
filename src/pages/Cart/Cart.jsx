@@ -33,7 +33,7 @@ const Cart = () => {
       }
     };
     stripeToken && cart.total >= 1 && checkoutRequest();
-  }, [stripeToken, cart.total]);
+  }, [stripeToken, cart.total, navigate]);
 
   return (
     <div className={style.Container}>
