@@ -30,7 +30,7 @@ const Cart = () => {
       }
     };
     stripeToken && checkoutRequest();
-  }, [stripeToken]);
+  }, [stripeToken, cart.total]);
 
   return (
     <div className={style.Container}>
