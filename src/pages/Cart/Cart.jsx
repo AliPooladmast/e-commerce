@@ -64,7 +64,7 @@ const Cart = () => {
             <h1>ORDER SUMMARY</h1>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>SubTotal</span>
-              <span className={style.SummatyItemPrice}>$ 80</span>
+              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
             </div>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>Estimated Shipping</span>
@@ -76,7 +76,7 @@ const Cart = () => {
             </div>
             <div className={style["SummaryItem--total"]}>
               <span className={style.SummatyItemText}>Total</span>
-              <span className={style.SummatyItemPrice}>$ 80</span>
+              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
             </div>
             <button>CHECKOUT NOW</button>
           </div>
