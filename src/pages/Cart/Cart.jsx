@@ -7,6 +7,8 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
+const KEY = process.env.REACT_APP_STRIPE_KEY;
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   return (
@@ -85,6 +87,7 @@ const Cart = () => {
               shippingAddress
               description={`Your total is ${cart.total}`}
               amount={cart.total * 100}
+              stripeKey={KEY}
             >
               <button>CHECKOUT NOW</button>
             </StripeCheckout>
