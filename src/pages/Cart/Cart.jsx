@@ -32,27 +32,29 @@ const Cart = () => {
                   <img src={product.img} alt="" />
                   <div className={style.Detail}>
                     <span>
-                      <b>Product:</b> JESSIE THUNDER SHOES
+                      <b>Product:</b> {product.title}
                     </span>
                     <span>
-                      <b>ID:</b> 92523510252
+                      <b>ID:</b> {product._id}
                     </span>
                     <div
                       className={style.ProductColor}
-                      style={{ backgroundColor: "red" }}
+                      style={{ backgroundColor: { color: product.color } }}
                     ></div>
                     <span>
-                      <b>Size:</b> 47.3
+                      <b>Size:</b> {product.size}
                     </span>
                   </div>
                 </div>
                 <div className={style.PriceDetail}>
                   <div className={style.ProductAmount}>
                     <Add />
-                    <span>2</span>
+                    <span>{product.quantity}</span>
                     <Remove />
                   </div>
-                  <div className={style.ProductPrice}>$ 30</div>
+                  <div className={style.ProductPrice}>
+                    $ {product.price * product.quantity}
+                  </div>
                 </div>
               </div>
             ))}
