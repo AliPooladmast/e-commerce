@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import { userRequest } from "../../requestMethods";
+import { useNavigate } from "react-router-dom";
+
+const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const checkoutRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate("/success", { data: res.data });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    stripeToken && cart.total >= 1 && checkoutRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <div className={style.Container}>
       <NavBar />
@@ -78,7 +105,17 @@ const Cart = () => {
               <span className={style.SummatyItemText}>Total</span>
               <span className={style.SummatyItemPrice}>$ {cart.total}</span>
             </div>
-            <button>CHECKOUT NOW</button>
+            <StripeCheckout
+              name="APQ shop"
+              billingAddress
+              shippingAddress
+              description={`Your total is ${cart.total}`}
+              amount={cart.total * 100}
+              stripeKey={KEY}
+              token={onToken}
+            >
+              <button>CHECKOUT NOW</button>
+            </StripeCheckout>
           </div>
         </div>
       </div>

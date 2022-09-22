@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
+import Success from "./pages/Success/Success";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
@@ -33,6 +34,8 @@ const App = () => {
           path="/register"
           element={user ? <Navigate to="/" replace /> : <Register />}
         />
+
+        <Route path="/success" element={<Success />} />
       </Routes>
     </BrowserRouter>
   );
