@@ -7,11 +7,13 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
+import { useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
   const [stripeToken, setStripeToken] = useState(null);
 
   const onToken = (token) => {
@@ -25,6 +27,7 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
+        navigate("/success");
       } catch (err) {
         console.log(err);
       }
