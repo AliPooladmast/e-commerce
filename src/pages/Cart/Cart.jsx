@@ -3,8 +3,6 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
-import shoePic from "../../assests/images/boot-shoe.jpg";
-import tShirt from "../../assests/images/t-shirt.jpg";
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 
