@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -78,7 +79,15 @@ const Cart = () => {
               <span className={style.SummatyItemText}>Total</span>
               <span className={style.SummatyItemPrice}>$ {cart.total}</span>
             </div>
-            <button>CHECKOUT NOW</button>
+            <StripeCheckout
+              name="APQ shop"
+              billingAddress
+              shippingAddress
+              description={`Your total is ${cart.total}`}
+              amount={cart.total * 100}
+            >
+              <button>CHECKOUT NOW</button>
+            </StripeCheckout>
           </div>
         </div>
       </div>
