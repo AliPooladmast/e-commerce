@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
@@ -11,6 +11,12 @@ const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
   return (
     <div className={style.Container}>
       <NavBar />
@@ -88,6 +94,7 @@ const Cart = () => {
               description={`Your total is ${cart.total}`}
               amount={cart.total * 100}
               stripeKey={KEY}
+              token={onToken}
             >
               <button>CHECKOUT NOW</button>
             </StripeCheckout>
