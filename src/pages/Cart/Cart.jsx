@@ -27,38 +27,40 @@ const Cart = () => {
         <div className={style.Bottom}>
           <div className={style.Info}>
             {cart.products.map((product) => (
-              <div className={style.Product}>
-                <div className={style.ProductDetail}>
-                  <img src={product.img} alt="" />
-                  <div className={style.Detail}>
-                    <span>
-                      <b>Product:</b> {product.title}
-                    </span>
-                    <span>
-                      <b>ID:</b> {product._id}
-                    </span>
-                    <div
-                      className={style.ProductColor}
-                      style={{ backgroundColor: { color: product.color } }}
-                    ></div>
-                    <span>
-                      <b>Size:</b> {product.size}
-                    </span>
+              <div className={style.ProductContainer}>
+                <div className={style.Product}>
+                  <div className={style.ProductDetail}>
+                    <img src={product.img} alt="" />
+                    <div className={style.Detail}>
+                      <span>
+                        <b>Product:</b> {product.title}
+                      </span>
+                      <span>
+                        <b>ID:</b> {product._id}
+                      </span>
+                      <div
+                        className={style.ProductColor}
+                        style={{ backgroundColor: { color: product.color } }}
+                      ></div>
+                      <span>
+                        <b>Size:</b> {product.size}
+                      </span>
+                    </div>
+                  </div>
+                  <div className={style.PriceDetail}>
+                    <div className={style.ProductAmount}>
+                      <Add />
+                      <span>{product.quantity}</span>
+                      <Remove />
+                    </div>
+                    <div className={style.ProductPrice}>
+                      $ {product.price * product.quantity}
+                    </div>
                   </div>
                 </div>
-                <div className={style.PriceDetail}>
-                  <div className={style.ProductAmount}>
-                    <Add />
-                    <span>{product.quantity}</span>
-                    <Remove />
-                  </div>
-                  <div className={style.ProductPrice}>
-                    $ {product.price * product.quantity}
-                  </div>
-                </div>
+                <hr />
               </div>
             ))}
-            <hr />
           </div>
           <div className={style.Summary}>
             <h1>ORDER SUMMARY</h1>
