@@ -32,7 +32,7 @@ const Cart = () => {
         console.log(err);
       }
     };
-    stripeToken && checkoutRequest();
+    stripeToken && cart.total >= 1 && checkoutRequest();
   }, [stripeToken, cart.total]);
 
   return (
