@@ -1,7 +1,7 @@
 import { userRequest } from "../requestMethods";
 import { loginFailure, loginStart, loginSuccess } from "./userSlice";
 
-export const Login = async (dispatch, user) => {
+export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     const res = await userRequest.post("/auth/login", user);
