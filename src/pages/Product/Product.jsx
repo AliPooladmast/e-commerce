@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
-import { addProduct } from "../../redux/cartRedux";
+import { addProduct } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 const Product = () => {
