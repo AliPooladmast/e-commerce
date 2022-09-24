@@ -32,6 +32,7 @@ const Login = () => {
           <button onClick={handleClick} disabled={isFetching}>
             LOGIN
           </button>
+          {error && <div className={style.Error}>Somthing went wrong...</div>}
           <a href="">Forgot your password?</a>
           <a href="">Create an account</a>
         </form>
