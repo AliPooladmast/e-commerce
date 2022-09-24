@@ -6,9 +6,11 @@ import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
 import Success from "./pages/Success/Success";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const user = false;
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
 
   return (
     <BrowserRouter>
