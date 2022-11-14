@@ -22,28 +22,24 @@ export const sliderItems = [
     img: fashionSet,
     title: "SEASONAL SALE",
     desc: "NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%",
-    bg: "#f5fafd",
   },
   {
     id: 2,
     img: girlSunDress,
     title: "SPECTIAL COLLECTION",
     desc: "NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%",
-    bg: "#f5fafd",
   },
   {
     id: 3,
     img: menCoat,
     title: "GIFT FOR FANS",
     desc: "NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%",
-    bg: "#f5fafd",
   },
   {
     id: 4,
     img: girlSunGlasses,
     title: "FASHION PORDUCTS",
     desc: "NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%",
-    bg: "#f5fafd",
   },
 ];
 
