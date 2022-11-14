@@ -21,8 +21,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className={style.Right}>
-          <div>REGISTER</div>
-          <div>SIGN IN</div>
+          <Link to="/register" className={style.Link}>
+            <div>REGISTER</div>
+          </Link>
+          <Link to="login" className={style.Link}>
+            <div>SIGN IN</div>
+          </Link>
           <Link to="/cart">
             <div>
               <Badge
