@@ -1,6 +1,6 @@
 .Container {
   flex: 1;
-  margin: 5px;
+  margin: 10px;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -17,8 +17,8 @@
   align-items: center;
 
   img {
-    height: 280px;
-    width: 280px;
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     border-radius: 50%;
     z-index: 2;
