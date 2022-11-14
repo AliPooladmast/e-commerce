@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   margin-top: 40px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 
   @media only screen and (max-width: 600px) {
     display: none;
@@ -54,6 +54,7 @@
   width: 100vw;
   display: flex;
   align-items: center;
+  background-color: #fff;
 }
 
 .ImgContainer {
@@ -86,7 +87,7 @@
   font-size: 16px;
   background-color: transparent;
   cursor: pointer;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 
   &:hover {
     background-color: rgb(230, 230, 230);
