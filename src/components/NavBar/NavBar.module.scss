@@ -1,5 +1,9 @@
 .Container {
   height: 60px;
+  background-color: teal;
+  position: sticky;
+  top: 0;
+  z-index: 40;
 
   @media only screen and (max-width: 600px) {
     height: 50px;
@@ -26,6 +30,7 @@
 .Language {
   font-size: 14px;
   cursor: pointer;
+  color: #fff;
 
   @media only screen and (max-width: 600px) {
     display: none;
@@ -38,6 +43,7 @@
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  background-color: #fff;
 
   @media only screen and (max-width: 600px) {
     margin-left: 10px;
@@ -57,8 +63,9 @@
 }
 
 .Search {
-  color: grey;
+  color: teal;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .Center {
@@ -68,6 +75,10 @@
 
 .Logo {
   font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -78,6 +89,8 @@
   flex: 2;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  color: #fff;
 
   div {
     font-size: 14px;
@@ -94,4 +107,8 @@
   @media only screen and (max-width: 600px) {
     margin-right: 15px;
   }
+}
+
+.Badge {
+  color: #fff;
 }
