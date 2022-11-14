@@ -1,7 +1,9 @@
 .Container {
-  display: flex;
-  margin-top: 30px;
+  display: grid;
+  margin-top: 40px;
   padding: 0 20px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
 }
