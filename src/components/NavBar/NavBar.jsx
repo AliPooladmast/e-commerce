@@ -12,14 +12,11 @@ const NavBar = () => {
     <div className={style.Container}>
       <div className={style.Wrapper}>
         <div className={style.Left}>
-          <div className={style.Language}>EN</div>
+          <h1 className={style.Logo}>E-Shop Client</h1>
           <div className={style.SearchContainer}>
             <input className={style.Input} placeholder="Search"></input>
             <Search className={style.Search} />
           </div>
-        </div>
-        <div className={style.Center}>
-          <h1 className={style.Logo}>E-Shop Client</h1>
         </div>
         <div className={style.Right}>
           <div>REGISTER</div>

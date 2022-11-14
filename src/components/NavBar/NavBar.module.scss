@@ -22,26 +22,14 @@
 }
 
 .Left {
-  flex: 2;
   display: flex;
   align-items: center;
-}
-
-.Language {
-  font-size: 14px;
-  cursor: pointer;
-  color: #fff;
-
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
 }
 
 .SearchContainer {
   border: 1px solid lightgray;
   display: flex;
   align-items: center;
-  margin-left: 25px;
   padding: 5px;
   background-color: #fff;
 
@@ -68,17 +56,13 @@
   cursor: pointer;
 }
 
-.Center {
-  flex: 1;
-  text-align: center;
-}
-
 .Logo {
   font-weight: bold;
   font-size: 30px;
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
+  margin-right: 20px;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
