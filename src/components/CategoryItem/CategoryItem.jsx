@@ -5,12 +5,12 @@ import style from "./CategoryItem.module.scss";
 const CategoryItem = ({ item }) => {
   return (
     <div className={style.Container}>
-      <Link to={`products/${item.category}`}>
-        <img src={item.img} alt={item.title} />
-        <div className={style.Info}>
+      <img src={item.img} alt={item.title} />
+      <div className={style.Info}>
+        <Link to={`products/${item.category}`} className={style.Link}>
           <h1>{item.title}</h1>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };
