@@ -50,7 +50,6 @@ const Product = () => {
   return (
     <div className={style.Container}>
       <NavBar />
-      <Announcement />
       <div className={style.Wrapper}>
         <div className={style.ImageContainer}>
           <img src={product.img} alt="product" />

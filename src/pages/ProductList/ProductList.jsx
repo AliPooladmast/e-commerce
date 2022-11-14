@@ -23,7 +23,6 @@ function ProductList() {
 
   return (
     <div className={style.Container}>
-      <Announcement />
       <NavBar />
       <h1>{category}</h1>
       <div className={style.FilterContainer}>
