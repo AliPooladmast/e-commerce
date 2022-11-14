@@ -8,14 +8,14 @@ import Slider from "../../components/Slider/Slider";
 
 const Home = () => {
   return (
-    <>
+    <div style={{ backgroundColor: "#f7fafa" }}>
       <NavBar />
       <Slider />
       <Categories />
       <Products />
       <Newsletter />
       <Footer />
-    </>
+    </div>
   );
 };
 
