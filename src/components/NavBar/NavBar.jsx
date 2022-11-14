@@ -12,7 +12,9 @@ const NavBar = () => {
     <div className={style.Container}>
       <div className={style.Wrapper}>
         <div className={style.Left}>
-          <h1 className={style.Logo}>E-Shop Client</h1>
+          <Link to="/" className={style.Link}>
+            <h1 className={style.Logo}>E-Shop Client</h1>
+          </Link>
           <div className={style.SearchContainer}>
             <input className={style.Input} placeholder="Search"></input>
             <Search className={style.Search} />
