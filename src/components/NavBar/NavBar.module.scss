@@ -1,22 +1,18 @@
 .Container {
   height: 60px;
+  padding: 0 20px;
   background-color: teal;
+
   position: sticky;
   top: 0;
   z-index: 40;
 
-  @media only screen and (max-width: 600px) {
-    height: 50px;
-  }
-}
-
-.Wrapper {
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media only screen and (max-width: 600px) {
+    height: 50px;
     padding: 10px 0;
   }
 }
