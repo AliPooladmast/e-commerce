@@ -19,7 +19,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className={style.Center}>
-          <h1 className={style.Logo}>APQ.</h1>
+          <h1 className={style.Logo}>E-Shop Client</h1>
         </div>
         <div className={style.Right}>
           <div>REGISTER</div>
@@ -30,6 +30,7 @@ const NavBar = () => {
                 badgeContent={quantity}
                 color="primary"
                 overlap="rectangular"
+                className={style.Badge}
               >
                 <ShoppingCartOutlined />
               </Badge>
