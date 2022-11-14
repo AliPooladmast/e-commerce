@@ -64,6 +64,10 @@
   white-space: nowrap;
   margin-right: 20px;
 
+  &:hover {
+    color: lightgrey;
+  }
+
   @media only screen and (max-width: 600px) {
     font-size: 24px;
   }
@@ -74,13 +78,17 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: #fff;
 
   div {
     font-size: 14px;
     cursor: pointer;
     margin-left: 25px;
     white-space: nowrap;
+    color: #fff;
+
+    &:hover {
+      color: lightgrey;
+    }
 
     @media only screen and (max-width: 600px) {
       font-size: 12px;
@@ -95,6 +103,10 @@
 
 .Badge {
   color: #fff;
+
+  &:hover {
+    color: lightgrey;
+  }
 }
 
 .Link {
