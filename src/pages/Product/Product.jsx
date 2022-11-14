@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
-import { Add, Remove } from "@material-ui/icons";
+import { Add, Remove } from "@mui/icons-material";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import { addProduct } from "../../redux/cartSlice";

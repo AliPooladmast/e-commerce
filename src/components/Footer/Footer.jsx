@@ -6,7 +6,7 @@ import {
   Room,
   Phone,
   MailOutline,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React from "react";
 import style from "./Footer.module.scss";
 import paymentMethods from "../../assests/images/payment-methods.jpg";

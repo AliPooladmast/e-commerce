@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Newsletter.module.scss";
-import { Send } from "@material-ui/icons";
+import { Send } from "@mui/icons-material";
 
 const Newsletter = () => {
   return (
