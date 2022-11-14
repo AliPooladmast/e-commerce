@@ -1,7 +1,8 @@
 .Container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  margin-top: 40px;
+  padding: 0 10px;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
