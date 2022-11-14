@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Product.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
-import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import { Add, Remove } from "@mui/icons-material";

@@ -1,7 +1,6 @@
 import Products from "../../components/Products/Products";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
-import Announcement from "../../components/Announcement/Announcement";
 import NavBar from "../../components/NavBar/NavBar";
 import React, { useState } from "react";
 import style from "./ProductList.module.scss";
