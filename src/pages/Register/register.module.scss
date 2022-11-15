@@ -50,5 +50,17 @@
     background-color: teal;
     color: white;
     cursor: pointer;
+
+    &:hover {
+      background-color: rgb(0, 155, 155);
+    }
+    &:active {
+      background-color: rgb(0, 194, 194);
+    }
   }
+}
+
+.Error {
+  color: red;
+  margin-top: 10px;
 }
