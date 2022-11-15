@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/apiCalls";
 import style from "./login.module.scss";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { error, isFetching } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { error, isFetching, currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +15,12 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
+
+  useEffect(() => {
+    if (currentUser && !error) {
+      navigate("/");
+    }
+  }, [currentUser, error, navigate]);
 
   return (
     <div className={style.Container}>
