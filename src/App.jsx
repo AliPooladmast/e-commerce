@@ -5,40 +5,29 @@ import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
 import Success from "./pages/Success/Success";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
-  const user = useSelector((state) => state.user.currentUser);
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
 
-        <Route path="/products" element={<ProductList />}>
-          <Route path=":category" element={<ProductList />} />
-        </Route>
+      <Route path="/products" element={<ProductList />}>
+        <Route path=":category" element={<ProductList />} />
+      </Route>
 
-        <Route path="/product" element={<Product />}>
-          <Route path=":id" element={<Product />} />
-        </Route>
+      <Route path="/product" element={<Product />}>
+        <Route path=":id" element={<Product />} />
+      </Route>
 
-        <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<Cart />} />
 
-        <Route
-          path="/login"
-          element={user ? <Navigate to="/" replace /> : <Login />}
-        />
+      <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/register"
-          element={user ? <Navigate to="/" replace /> : <Register />}
-        />
+      <Route path="/register" element={<Register />} />
 
-        <Route path="/success" element={<Success />} />
-      </Routes>
-    </BrowserRouter>
+      <Route path="/success" element={<Success />} />
+    </Routes>
   );
 };
 
