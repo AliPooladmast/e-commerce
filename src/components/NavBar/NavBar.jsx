@@ -1,12 +1,21 @@
 import { Badge } from "@mui/material";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./NavBar.module.scss";
+import { userRequest } from "../../requestMethods";
+import { logout } from "../../redux/userSlice";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const quantity = useSelector((state) => state.cart.quantity);
+  const { currentUser } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    userRequest.defaults.headers.token = "";
+  };
 
   return (
     <div className={style.Container}>
@@ -20,12 +29,18 @@ const NavBar = () => {
         </div>
       </div>
       <div className={style.Right}>
-        <Link to="/register" className={style.Link}>
-          <div>REGISTER</div>
-        </Link>
-        <Link to="login" className={style.Link}>
-          <div>SIGN IN</div>
-        </Link>
+        {currentUser ? (
+          <div onClick={handleLogout}>Logout</div>
+        ) : (
+          <>
+            <Link to="/register" className={style.Link}>
+              <div>Register</div>
+            </Link>
+            <Link to="login" className={style.Link}>
+              <div>Sign In</div>
+            </Link>
+          </>
+        )}
         <Link to="/cart">
           <div>
             <Badge
