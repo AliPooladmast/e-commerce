@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
 import style from "./Slider.module.scss";
 import { sliderItems } from "../../data";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -23,11 +24,7 @@ const Slider = () => {
         style={{ transform: `translateX(${slideIndex * -100}vw)` }}
       >
         {sliderItems.map((item) => (
-          <div
-            className={style.Slide}
-            style={{ backgroundColor: item.bg }}
-            key={item.id}
-          >
+          <div className={style.Slide} key={item.id}>
             <div className={style.ImgContainer}>
               <img className={style.Image} src={item.img} alt="a fashion set" />
             </div>
@@ -35,7 +32,9 @@ const Slider = () => {
             <div className={style.InfoContainer}>
               <h1 className={style.Title}>{item.title}</h1>
               <p className={style.Desc}>{item.desc}</p>
-              <button className={style.Button}>SHOP NOW</button>
+              <Link to="products">
+                <button className={style.Button}>SHOP NOW</button>
+              </Link>
             </div>
           </div>
         ))}

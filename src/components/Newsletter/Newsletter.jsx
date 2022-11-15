@@ -1,20 +1,17 @@
 import React from "react";
 import style from "./Newsletter.module.scss";
-import { Send } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Newsletter = () => {
   return (
     <div className={style.Container}>
-      <h1>Weekly Magazine</h1>
+      <h1>Join Now!</h1>
       <div className={style.Desc}>
-        Subscribe Here to Recieve Our Latest Hot Products
+        by registering here you can start buying products today!
       </div>
-      <div className={style.InputContainer}>
-        <input type="text" placeholder="your e-mail" />
-        <button>
-          <Send />
-        </button>
-      </div>
+      <Link to="/register">
+        <button>Register</button>
+      </Link>
     </div>
   );
 };

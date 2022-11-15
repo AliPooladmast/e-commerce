@@ -10,45 +10,72 @@ import {
 import React from "react";
 import style from "./Footer.module.scss";
 import paymentMethods from "../../assests/images/payment-methods.jpg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <div className={style.Container}>
       <div className={style.Left}>
-        <h1>APQ.</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nemo
-          cum, quo architecto officiis fugit ab cumque eveniet reprehenderit,
-          minima voluptatem! Necessitatibus officiis vel omnis quo voluptatem
-          nulla saepe doloribus?
-        </p>
+        <div className={style.About}>
+          <h1>About Us</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nemo
+            cum, quo architecto officiis fugit ab cumque eveniet reprehenderit,
+            minima voluptatem!
+          </p>
+        </div>
         <div className={style.SocialContainer}>
-          <div className={style["SocialIcon--facebook"]}>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.facebook.com"
+            className={style["SocialIcon--facebook"]}
+          >
             <Facebook />
-          </div>
-          <div className={style["SocialIcon--instagram"]}>
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.instagram.com"
+            className={style["SocialIcon--instagram"]}
+          >
             <Instagram />
-          </div>
-          <div className={style["SocialIcon--twitter"]}>
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.twitter.com"
+            className={style["SocialIcon--twitter"]}
+          >
             <Twitter />
-          </div>
-          <div className={style["SocialIcon--whatsapp"]}>
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.whatsApp.com"
+            className={style["SocialIcon--whatsapp"]}
+          >
             <WhatsApp />
-          </div>
+          </a>
         </div>
       </div>
       <div className={style.Center}>
         <h1>Usefull Links</h1>
         <ul>
-          <li>Home</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/" className={style.Link}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" className={style.Link}>
+              Cart
+            </Link>
+          </li>
           <li>Men Fashion</li>
           <li>Women Fashion</li>
           <li>Accessories</li>
           <li>My Account</li>
-          <li>Order Tracking</li>
-          <li>Wishlist</li>
-          <li>Terms</li>
         </ul>
       </div>
       <div className={style.Right}>

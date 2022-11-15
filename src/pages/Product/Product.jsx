@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Product.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
-import Announcement from "../../components/Announcement/Announcement";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import { Add, Remove } from "@mui/icons-material";
@@ -20,8 +19,6 @@ const Product = () => {
   const [size, setSize] = useState("");
 
   const dispatch = useDispatch();
-
-  console.log(color, size);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -50,7 +47,6 @@ const Product = () => {
   return (
     <div className={style.Container}>
       <NavBar />
-      <Announcement />
       <div className={style.Wrapper}>
         <div className={style.ImageContainer}>
           <img src={product.img} alt="product" />

@@ -4,7 +4,8 @@
   display: flex;
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 40px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 
   @media only screen and (max-width: 600px) {
     display: none;
@@ -14,7 +15,7 @@
 .Arrow {
   width: 50px;
   height: 50px;
-  background-color: rgb(255, 247, 247);
+  background-color: rgb(230, 230, 230);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -26,6 +27,10 @@
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
+
+  &:hover {
+    background-color: rgb(220, 220, 220);
+  }
 
   &--Left {
     @extend .Arrow;
@@ -49,6 +54,7 @@
   width: 100vw;
   display: flex;
   align-items: center;
+  background-color: #fff;
 }
 
 .ImgContainer {
@@ -66,19 +72,24 @@
 }
 
 .Title {
-  font-size: 4vw;
+  font-size: 24px;
 }
 
 .Desc {
-  margin: 50px 0;
-  font-size: 1.5vw;
+  margin: 20px 0;
   font-weight: 500;
   letter-spacing: 3px;
+  max-width: 420px;
 }
 
 .Button {
   padding: 10px;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: transparent;
   cursor: pointer;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
 }

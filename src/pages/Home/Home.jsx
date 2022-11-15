@@ -1,5 +1,4 @@
 import React from "react";
-import Announcement from "../../components/Announcement/Announcement";
 import Categories from "../../components/Categories/Categories";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
@@ -9,15 +8,14 @@ import Slider from "../../components/Slider/Slider";
 
 const Home = () => {
   return (
-    <>
-      <Announcement />
+    <div style={{ backgroundColor: "#f7fafa" }}>
       <NavBar />
       <Slider />
       <Categories />
       <Products />
       <Newsletter />
       <Footer />
-    </>
+    </div>
   );
 };
 
