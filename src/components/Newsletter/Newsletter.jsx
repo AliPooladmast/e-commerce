@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Newsletter.module.scss";
+import { Link } from "react-router-dom";
 
 const Newsletter = () => {
   return (
@@ -8,7 +9,9 @@ const Newsletter = () => {
       <div className={style.Desc}>
         by registering here you can start buying products today!
       </div>
-      <button>Register</button>
+      <Link to="/register">
+        <button>Register</button>
+      </Link>
     </div>
   );
 };
