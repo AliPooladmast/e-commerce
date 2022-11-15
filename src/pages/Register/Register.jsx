@@ -29,8 +29,13 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const { error } = schema.validate(input);
-    setErrorMessage(error?.details?.[0]?.message);
-    setShowSnackbar(true);
+    if (error) {
+      setErrorMessage(error.details?.[0]?.message);
+      setShowSnackbar(true);
+    } else {
+      const { confirmPassword, ...others } = input;
+      register(dispatch, others);
+    }
   };
 
   const handleClose = (event, reason) => {
