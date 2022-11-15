@@ -1,7 +1,9 @@
+@use "src/styles";
+
 .Container {
   display: flex;
   background-color: teal;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: styles.$shadow;
   color: #fff;
 
   @media only screen and (max-width: 600px) {
