@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/apiCalls";
 import style from "./register.module.scss";
+const Joi = require("joi");
+
+const schema = Joi.object({
+  username: Joi.string().min(2).max(50).required(),
+  email: Joi.string()
+    .min(5)
+    .max(255)
+    .required()
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
+  password: Joi.string().min(5).max(1024).required(),
+  confirmPassword: Joi.ref("password"),
+});
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -14,13 +26,8 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (input && input.password === input.confirmPassword) {
-      const { confirmPassword, ...others } = input;
-      register(dispatch, others);
-      setError(null);
-    } else {
-      setError("Password and confirm do not match");
-    }
+    const { error } = schema.validate(input);
+    console.log(error);
   };
 
   return (
