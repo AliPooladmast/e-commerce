@@ -1,10 +1,12 @@
+@use "src/styles";
+
 .Container {
   flex: 1;
   margin: 0 20px;
   height: 60vh;
   position: relative;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: styles.$shadow;
 
   img {
     width: 100%;
@@ -35,7 +37,7 @@
     color: darkblue;
     font-size: 24px;
     border: 1px solid grey;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: styles.$shadow;
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.5);
