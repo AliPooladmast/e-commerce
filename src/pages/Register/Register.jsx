@@ -1,6 +1,7 @@
 import { Alert, Snackbar } from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { register } from "../../redux/apiCalls";
 import style from "./register.module.scss";
 const Joi = require("joi");
@@ -18,6 +19,8 @@ const schema = Joi.object({
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser, error } = useSelector((state) => state.user);
   const [errorMessage, setErrorMessage] = useState(null);
   const [input, setInput] = useState({});
   const [showSnackbar, setShowSnackbar] = useState(false);
@@ -44,6 +47,12 @@ const Register = () => {
     }
     setShowSnackbar(false);
   };
+
+  useEffect(() => {
+    if (currentUser && !error) {
+      navigate("/");
+    }
+  }, [currentUser, error, navigate]);
 
   return (
     <div className={style.Container}>
