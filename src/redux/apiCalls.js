@@ -1,12 +1,12 @@
 import { publicRequest } from "../requestMethods";
-import { loginFailure, loginStart, loginSuccess } from "./userSlice";
+import { loginSuccess, userFailure, userStart } from "./userSlice";
 
 export const login = async (dispatch, user) => {
-  dispatch(loginStart());
+  dispatch(userStart());
   try {
     const res = await publicRequest.post("/auth/login", user);
     dispatch(loginSuccess(res?.data));
   } catch (err) {
-    dispatch(loginFailure());
+    dispatch(userFailure());
   }
 };
