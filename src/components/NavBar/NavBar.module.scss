@@ -52,16 +52,12 @@
 }
 
 .Logo {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 30px;
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
   margin-right: 20px;
-
-  &:hover {
-    color: lightgrey;
-  }
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -75,7 +71,6 @@
   align-items: center;
 
   div {
-    font-size: 14px;
     cursor: pointer;
     margin-left: 25px;
     white-space: nowrap;
