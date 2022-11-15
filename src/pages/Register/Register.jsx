@@ -1,3 +1,4 @@
+import { Alert, Snackbar } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/apiCalls";
@@ -17,8 +18,9 @@ const schema = Joi.object({
 
 const Register = () => {
   const dispatch = useDispatch();
-  const [error, setError] = useState(null);
-  const [input, setInput] = useState();
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [input, setInput] = useState({});
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleInput = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -27,11 +29,29 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const { error } = schema.validate(input);
-    console.log(error);
+    setErrorMessage(error?.details?.[0]?.message);
+    setShowSnackbar(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setShowSnackbar(false);
   };
 
   return (
     <div className={style.Container}>
+      <Snackbar
+        open={showSnackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
       <div className={style.Wrapper}>
         <h1>CREATE AN ACCOUNT</h1>
         <form action="">
@@ -64,7 +84,6 @@ const Register = () => {
             data in accordance with the <b>PRIVACY POLICY</b>
           </span>
           <button onClick={handleRegister}>CREATE</button>
-          {error && <div className={style.Error}>{error}</div>}
         </form>
       </div>
     </div>
