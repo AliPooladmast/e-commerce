@@ -20,8 +20,6 @@ const Product = () => {
 
   const dispatch = useDispatch();
 
-  console.log(color, size);
-
   useEffect(() => {
     const getProduct = async () => {
       try {
