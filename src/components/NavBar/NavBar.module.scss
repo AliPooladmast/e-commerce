@@ -70,32 +70,30 @@
   justify-content: flex-end;
   align-items: center;
 
-  div {
-    cursor: pointer;
-    margin-left: 25px;
-    white-space: nowrap;
-    color: #fff;
-
-    &:hover {
-      color: lightgrey;
-    }
-
-    @media only screen and (max-width: 600px) {
-      font-size: 12px;
-      margin-left: 10px;
-    }
-  }
-
   @media only screen and (max-width: 600px) {
     margin-right: 15px;
   }
 }
 
-.Badge {
+.Item {
+  cursor: pointer;
+  margin-left: 25px;
+  white-space: nowrap;
   color: #fff;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 5px;
+  }
 
   &:hover {
     color: lightgrey;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    margin-left: 10px;
   }
 }
 
