@@ -52,7 +52,7 @@ const Register = () => {
     if (currentUser && !error) {
       navigate("/");
     }
-  }, [currentUser, error, navigate]);
+  }, [currentUser]); //eslint-disable-line
 
   return (
     <div className={style.Container}>
