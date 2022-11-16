@@ -56,10 +56,12 @@ const NavBar = () => {
               <Logout />
               <span>Logout</span>
             </div>
-            <div className={style.Item}>
-              <Person />
-              <span>{currentUser?.username}</span>
-            </div>
+            <Link to="/user" className={style.Link}>
+              <div className={style.Item}>
+                <Person />
+                <span>{currentUser?.username}</span>
+              </div>
+            </Link>
           </>
         ) : (
           <>
