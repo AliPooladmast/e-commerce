@@ -9,7 +9,7 @@ export const login = async (dispatch, user) => {
     dispatch(loginSuccess(res?.data));
     userRequest.defaults.headers.token = "Bearer " + res?.data?.token;
   } catch (err) {
-    dispatch(userFailure());
+    dispatch(userFailure(err?.response?.data));
   }
 };
 
@@ -20,6 +20,6 @@ export const register = async (dispatch, user) => {
     dispatch(loginSuccess(res?.data));
     userRequest.defaults.headers.token = "Bearer " + res?.data?.token;
   } catch (err) {
-    dispatch(userFailure());
+    dispatch(userFailure(err?.response?.data));
   }
 };
