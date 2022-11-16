@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/apiCalls";
 import style from "./login.module.scss";
+const Joi = require("joi");
+
+const schema = Joi.object({
+  username: Joi.string().min(2).max(50).required(),
+  password: Joi.string().min(5).max(1024).required(),
+  confirmPassword: Joi.ref("password"),
+});
 
 const Login = () => {
   const dispatch = useDispatch();
