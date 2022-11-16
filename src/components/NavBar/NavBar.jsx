@@ -1,5 +1,12 @@
 import { Badge } from "@mui/material";
-import { Search, ShoppingCartOutlined } from "@mui/icons-material";
+import {
+  HowToReg,
+  Login,
+  Logout,
+  Person,
+  Search,
+  ShoppingCartOutlined,
+} from "@mui/icons-material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -30,19 +37,34 @@ const NavBar = () => {
       </div>
       <div className={style.Right}>
         {currentUser ? (
-          <div onClick={handleLogout}>Logout</div>
+          <>
+            <div className={style.Item} onClick={handleLogout}>
+              <Logout />
+              <span>Logout</span>
+            </div>
+            <div className={style.Item}>
+              <Person />
+              <span>Profile</span>
+            </div>
+          </>
         ) : (
           <>
             <Link to="/register" className={style.Link}>
-              <div>Register</div>
+              <div className={style.Item}>
+                <HowToReg />
+                <span>Register</span>
+              </div>
             </Link>
-            <Link to="login" className={style.Link}>
-              <div>Sign In</div>
+            <Link to="/login" className={style.Link}>
+              <div className={style.Item}>
+                <Login />
+                <span>Sign In</span>
+              </div>
             </Link>
           </>
         )}
-        <Link to="/cart">
-          <div>
+        <Link to="/cart" className={style.Link}>
+          <div className={style.Item}>
             <Badge
               badgeContent={quantity}
               color="primary"
@@ -51,6 +73,7 @@ const NavBar = () => {
             >
               <ShoppingCartOutlined />
             </Badge>
+            <span>Cart</span>
           </div>
         </Link>
       </div>
