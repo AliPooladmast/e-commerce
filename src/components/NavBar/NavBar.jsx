@@ -1,4 +1,4 @@
-import { Badge } from "@mui/material";
+import { Avatar, Badge } from "@mui/material";
 import {
   HowToReg,
   Login,
@@ -36,6 +36,20 @@ const NavBar = () => {
         </div>
       </div>
       <div className={style.Right}>
+        <Link to="/cart" className={style.Link}>
+          <div className={style.Item}>
+            <Badge
+              badgeContent={quantity}
+              color="primary"
+              overlap="rectangular"
+              className={style.Badge}
+            >
+              <ShoppingCartOutlined />
+            </Badge>
+            <span>Cart</span>
+          </div>
+        </Link>
+
         {currentUser ? (
           <>
             <div className={style.Item} onClick={handleLogout}>
@@ -44,7 +58,7 @@ const NavBar = () => {
             </div>
             <div className={style.Item}>
               <Person />
-              <span>Profile</span>
+              <span>{currentUser?.username}</span>
             </div>
           </>
         ) : (
@@ -63,19 +77,22 @@ const NavBar = () => {
             </Link>
           </>
         )}
-        <Link to="/cart" className={style.Link}>
+
+        {currentUser && (
           <div className={style.Item}>
-            <Badge
-              badgeContent={quantity}
-              color="primary"
-              overlap="rectangular"
-              className={style.Badge}
+            <Avatar
+              sx={{ width: 40, height: 40 }}
+              src={currentUser.img}
+              alt={currentUser.username}
             >
-              <ShoppingCartOutlined />
-            </Badge>
-            <span>Cart</span>
+              {`${currentUser.username
+                .split(" ")[0][0]
+                .toUpperCase()}${currentUser.username
+                .split(" ")[1][0]
+                .toUpperCase()}`}
+            </Avatar>
           </div>
-        </Link>
+        )}
       </div>
     </div>
   );
