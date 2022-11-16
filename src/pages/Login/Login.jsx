@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../redux/apiCalls";
 import style from "./login.module.scss";
 const Joi = require("joi");
 
@@ -15,12 +14,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error, isFetching, currentUser } = useSelector((state) => state.user);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [input, setInput] = useState({});
+
+  const handleInput = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    console.log(input);
   };
 
   useEffect(() => {
@@ -37,12 +39,14 @@ const Login = () => {
           <input
             type="text"
             placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            onChange={handleInput}
           />
           <input
+            name="password"
             type="password"
             placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInput}
           />
           <button onClick={handleClick} disabled={isFetching}>
             LOGIN
