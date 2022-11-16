@@ -47,10 +47,13 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (currentUser && !serverError) {
+    if (serverError) {
+      setErrorMessage(serverError);
+      setShowSnackbar(true);
+    } else if (currentUser) {
       navigate("/");
     }
-  }, [currentUser]); //eslint-disable-line
+  }, [currentUser, serverError]); //eslint-disable-line
 
   return (
     <div className={style.Container}>

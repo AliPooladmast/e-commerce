@@ -20,7 +20,9 @@ const schema = Joi.object({
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error: serverError } = useSelector(
+    (state) => state.user
+  );
   const [errorMessage, setErrorMessage] = useState(null);
   const [input, setInput] = useState({});
   const [showSnackbar, setShowSnackbar] = useState(false);
@@ -31,9 +33,9 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const { error } = schema.validate(input);
-    if (error) {
-      setErrorMessage(error.details?.[0]?.message);
+    const { error: joiError } = schema.validate(input);
+    if (joiError) {
+      setErrorMessage(joiError.details?.[0]?.message);
       setShowSnackbar(true);
     } else {
       const { confirmPassword, ...others } = input;
@@ -49,10 +51,13 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (currentUser && !error) {
+    if (serverError) {
+      setErrorMessage(serverError);
+      setShowSnackbar(true);
+    } else if (currentUser) {
       navigate("/");
     }
-  }, [currentUser]); //eslint-disable-line
+  }, [currentUser, serverError]); //eslint-disable-line
 
   return (
     <div className={style.Container}>
