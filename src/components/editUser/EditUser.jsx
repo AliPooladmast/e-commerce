@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../redux/apiCalls";
 import {
   getStorage,
@@ -26,6 +26,7 @@ const schema = Joi.object({
 });
 
 const EditUser = ({ user }) => {
+  const { error: serverError } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState("");
@@ -95,6 +96,13 @@ const EditUser = ({ user }) => {
     }
     setShowSnackbar(false);
   };
+
+  useEffect(() => {
+    if (serverError) {
+      setErrorMessage(serverError);
+      setShowSnackbar(true);
+    }
+  }, [serverError]); //eslint-disable-line
 
   return (
     <div className={style.EditUser}>
