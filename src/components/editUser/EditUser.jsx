@@ -11,7 +11,7 @@ import app from "../../firebase";
 import { LinearProgressWithLabel } from "../linearProgress/LinearProgress";
 import { Publish } from "@mui/icons-material";
 import style from "./editUser.module.scss";
-import { Avatar } from "@mui/material";
+import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
 
 const storage = getStorage(app);
 
@@ -111,14 +111,10 @@ const EditUser = ({ user, userId }) => {
         <div className={style.Right}>
           <div className={style.Upload}>
             <div className={style.ImageContainer}>
-              {image || user.img ? (
-                <img src={image || user.img} alt="edit profile" />
-              ) : (
-                <Avatar
-                  variant="rounded"
-                  sx={{ width: 120, height: 120, marginRight: "10px" }}
-                />
-              )}
+              <img
+                src={image || user.img || AnonymousAvatar}
+                alt="edit profile"
+              />
               {Boolean(progress) && progress !== 100 ? (
                 <LinearProgressWithLabel value={progress} />
               ) : Boolean(progress) && progress === 100 ? (
