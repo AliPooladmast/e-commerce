@@ -1,7 +1,7 @@
 @use "src/styles";
 
 .UserComponent {
-  padding: 20px;
+  padding: 30px;
   background-color: #f7fafa;
   height: calc(100vh - 40px);
 
@@ -28,13 +28,14 @@
 }
 
 .UserInfo {
+  background-color: #fff;
   flex: 1;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
   -webkit-box-shadow: styles.$shadow;
   -moz-box-shadow: styles.$shadow;
   box-shadow: styles.$shadow;
-  margin-right: 20px;
+  margin-right: 30px;
   overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
@@ -49,8 +50,9 @@
 }
 
 .EditUser {
+  background-color: #fff;
   flex: 2;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
   -webkit-box-shadow: styles.$shadow;
   -moz-box-shadow: styles.$shadow;
