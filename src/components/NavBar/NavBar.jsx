@@ -87,11 +87,7 @@ const NavBar = () => {
               src={currentUser.img}
               alt={currentUser.username}
             >
-              {`${currentUser.username
-                .split(" ")[0][0]
-                .toUpperCase()}${currentUser.username
-                .split(" ")[1][0]
-                .toUpperCase()}`}
+              {currentUser.username.charAt(0).toUpperCase()}
             </Avatar>
           </div>
         )}
