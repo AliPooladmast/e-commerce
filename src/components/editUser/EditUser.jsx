@@ -12,8 +12,17 @@ import { LinearProgressWithLabel } from "../linearProgress/LinearProgress";
 import { Publish } from "@mui/icons-material";
 import style from "./editUser.module.scss";
 import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
-
+const Joi = require("joi");
 const storage = getStorage(app);
+
+const schema = Joi.object({
+  username: Joi.string().min(2).max(50).required(),
+  email: Joi.string()
+    .min(5)
+    .max(255)
+    .required()
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
+});
 
 const EditUser = ({ user }) => {
   const dispatch = useDispatch();
@@ -66,7 +75,15 @@ const EditUser = ({ user }) => {
   const handleEdit = (e) => {
     e.preventDefault();
     const editedUser = { ...draftUser, img: image };
-    editUser(dispatch, editedUser);
+
+    const { error: joiError } = schema.validate(editUser);
+    if (joiError) {
+      console.log(joiError);
+      // setErrorMessage(joiError.details?.[0]?.message);
+      // setShowSnackbar(true);
+    } else {
+      editUser(dispatch, editedUser);
+    }
   };
 
   return (
