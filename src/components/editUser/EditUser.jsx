@@ -12,6 +12,7 @@ import { LinearProgressWithLabel } from "../linearProgress/LinearProgress";
 import { Publish } from "@mui/icons-material";
 import style from "./editUser.module.scss";
 import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
+import { Alert, Snackbar } from "@mui/material";
 const Joi = require("joi");
 const storage = getStorage(app);
 
@@ -29,6 +30,8 @@ const EditUser = ({ user }) => {
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState("");
   const [progress, setProgress] = useState(0);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleInput = (e) => {
     setDraftUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -74,20 +77,38 @@ const EditUser = ({ user }) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    const editedUser = { ...draftUser, img: image };
+    const { username, email, ...others } = draftUser;
+    const { error: joiError } = schema.validate({ username, email });
 
-    const { error: joiError } = schema.validate(editUser);
     if (joiError) {
-      console.log(joiError);
-      // setErrorMessage(joiError.details?.[0]?.message);
-      // setShowSnackbar(true);
+      setErrorMessage(joiError.details?.[0]?.message);
+      setShowSnackbar(true);
     } else {
+      const editedUser = { username, email, ...others, img: image };
       editUser(dispatch, editedUser);
     }
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setShowSnackbar(false);
+  };
+
   return (
     <div className={style.EditUser}>
+      <Snackbar
+        open={showSnackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
+
       <span className={style.Title}>Edit</span>
       <form className={style.Form}>
         <div className={style.Left}>
