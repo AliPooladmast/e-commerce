@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { editUser } from "../../redux/apiCalls";
+import { editUser } from "../../redux/apiCalls";
 import {
   getStorage,
   ref,
@@ -15,7 +15,7 @@ import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
 
 const storage = getStorage(app);
 
-const EditUser = ({ user, userId }) => {
+const EditUser = ({ user }) => {
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState("");
@@ -66,7 +66,7 @@ const EditUser = ({ user, userId }) => {
   const handleEdit = (e) => {
     e.preventDefault();
     const editedUser = { ...draftUser, img: image };
-    // editUser(dispatch, userId, editedUser);
+    editUser(dispatch, editedUser);
   };
 
   return (
