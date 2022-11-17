@@ -23,3 +23,13 @@ export const register = async (dispatch, user) => {
     dispatch(userFailure(err?.response?.data));
   }
 };
+
+export const editUser = async (dispatch, user) => {
+  dispatch(userStart());
+  try {
+    const res = await userRequest.put("/users/" + user._id, user);
+    dispatch(loginSuccess(res?.data));
+  } catch (err) {
+    dispatch(userFailure(err?.response?.data));
+  }
+};
