@@ -1,5 +1,4 @@
 import Products from "../../components/Products/Products";
-import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import React, { useState } from "react";
@@ -66,7 +65,6 @@ function ProductList() {
         </div>
       </div>
       <Products category={category} filters={filters} sort={sort} />
-      <Newsletter />
       <Footer />
     </div>
   );
