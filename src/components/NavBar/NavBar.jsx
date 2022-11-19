@@ -1,12 +1,28 @@
-import { Badge } from "@mui/material";
-import { Search, ShoppingCartOutlined } from "@mui/icons-material";
+import { Avatar, Badge } from "@mui/material";
+import {
+  HowToReg,
+  Login,
+  Logout,
+  Person,
+  Search,
+  ShoppingCartOutlined,
+} from "@mui/icons-material";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./NavBar.module.scss";
+import { userRequest } from "../../requestMethods";
+import { logout } from "../../redux/userSlice";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const quantity = useSelector((state) => state.cart.quantity);
+  const { currentUser } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    userRequest.defaults.headers.token = "";
+  };
 
   return (
     <div className={style.Container}>
@@ -20,14 +36,8 @@ const NavBar = () => {
         </div>
       </div>
       <div className={style.Right}>
-        <Link to="/register" className={style.Link}>
-          <div>REGISTER</div>
-        </Link>
-        <Link to="login" className={style.Link}>
-          <div>SIGN IN</div>
-        </Link>
-        <Link to="/cart">
-          <div>
+        <Link to="/cart" className={style.Link}>
+          <div className={style.Item}>
             <Badge
               badgeContent={quantity}
               color="primary"
@@ -36,8 +46,51 @@ const NavBar = () => {
             >
               <ShoppingCartOutlined />
             </Badge>
+            <span>Cart</span>
           </div>
         </Link>
+
+        {currentUser ? (
+          <>
+            <div className={style.Item} onClick={handleLogout}>
+              <Logout />
+              <span>Logout</span>
+            </div>
+            <Link to="/user" className={style.Link}>
+              <div className={style.Item}>
+                <Person />
+                <span>{currentUser?.username}</span>
+              </div>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/register" className={style.Link}>
+              <div className={style.Item}>
+                <HowToReg />
+                <span>Register</span>
+              </div>
+            </Link>
+            <Link to="/login" className={style.Link}>
+              <div className={style.Item}>
+                <Login />
+                <span>Sign In</span>
+              </div>
+            </Link>
+          </>
+        )}
+
+        {currentUser && (
+          <div className={style.Item}>
+            <Avatar
+              sx={{ width: 40, height: 40 }}
+              src={currentUser.img}
+              alt={currentUser.username}
+            >
+              {currentUser.username.charAt(0).toUpperCase()}
+            </Avatar>
+          </div>
+        )}
       </div>
     </div>
   );

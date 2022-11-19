@@ -87,6 +87,7 @@
 .Product {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 
   @media only screen and (max-width: 600px) {
@@ -125,23 +126,26 @@
   border-radius: 50%;
 }
 
-.ProductAmount {
+.AmountContainer {
   display: flex;
   align-items: center;
+  font-weight: 700;
   margin-bottom: 20px;
 
-  @media only screen and (max-width: 600px) {
-    margin: 20px;
-  }
-
   span {
-    font-size: 24px;
-    margin: 5px;
-
-    @media only screen and (max-width: 600px) {
-      margin: 5px 15px;
-    }
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
   }
+}
+
+.ChangeValue {
+  cursor: pointer;
 }
 
 .ProductPrice {
@@ -163,4 +167,25 @@
     font-weight: 500;
     font-size: 24px;
   }
+}
+
+.IconContainer {
+  background-color: rgb(240, 240, 240);
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+.CloseIcon {
+  color: #000;
+  font-size: 16px !important;
 }

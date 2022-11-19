@@ -1,4 +1,5 @@
 .Container {
+  height: 40px;
   padding: 10px 20px;
   background-color: teal;
 
@@ -52,16 +53,12 @@
 }
 
 .Logo {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 30px;
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
   margin-right: 20px;
-
-  &:hover {
-    color: lightgrey;
-  }
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -74,33 +71,30 @@
   justify-content: flex-end;
   align-items: center;
 
-  div {
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 25px;
-    white-space: nowrap;
-    color: #fff;
-
-    &:hover {
-      color: lightgrey;
-    }
-
-    @media only screen and (max-width: 600px) {
-      font-size: 12px;
-      margin-left: 10px;
-    }
-  }
-
   @media only screen and (max-width: 600px) {
     margin-right: 15px;
   }
 }
 
-.Badge {
+.Item {
+  cursor: pointer;
+  margin-left: 25px;
+  white-space: nowrap;
   color: #fff;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 5px;
+  }
 
   &:hover {
     color: lightgrey;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    margin-left: 10px;
   }
 }
 
