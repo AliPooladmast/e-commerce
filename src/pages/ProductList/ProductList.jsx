@@ -106,8 +106,8 @@ function ProductList() {
             }}
           >
             <option value="newest">Newest</option>
-            <option value="asc">Price (Highest to Lowest)</option>
-            <option value="desc">Price (Lowest to Highest)</option>
+            <option value="asc">Price (Lowest to Highest)</option>
+            <option value="desc">Price (Highest to Lowest)</option>
           </select>
         </div>
       </div>
