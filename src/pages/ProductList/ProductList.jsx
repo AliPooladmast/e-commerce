@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import React, { useState } from "react";
 import style from "./ProductList.module.scss";
 import { useLocation } from "react-router-dom";
+import { Search } from "@mui/icons-material";
 
 function ProductList() {
   const location = useLocation();
@@ -22,9 +23,9 @@ function ProductList() {
   return (
     <div className={style.Container}>
       <NavBar />
-      <h1>{category}</h1>
+      {category && <h1 className={style.Title}>{category}</h1>}
       <div className={style.FilterContainer}>
-        <div>
+        <div className={style.FilterProduct}>
           <span>Filter Products</span>
           <select name="color" id="colors-select" onChange={handleFilters}>
             <option value="color" disabled>
@@ -37,6 +38,7 @@ function ProductList() {
             <option value="blue">Blue</option>
             <option value="green">Green</option>
           </select>
+
           <select name="size" id="size-select" onChange={handleFilters}>
             <option value="size" disabled>
               Size
@@ -48,7 +50,15 @@ function ProductList() {
             <option value="XL">XL</option>
           </select>
         </div>
-        <div>
+
+        <div className={style.SearchWrapper}>
+          <div className={style.SearchContainer}>
+            <input className={style.Input} placeholder="Search"></input>
+            <Search className={style.Search} />
+          </div>
+        </div>
+
+        <div className={style.SortProduct}>
           <span>Sort Product</span>
           <select
             name="sort"
@@ -64,7 +74,11 @@ function ProductList() {
           </select>
         </div>
       </div>
-      <Products category={category} filters={filters} sort={sort} />
+
+      <div className={style.Products}>
+        <Products category={category} filters={filters} sort={sort} />
+      </div>
+
       <Footer />
     </div>
   );
