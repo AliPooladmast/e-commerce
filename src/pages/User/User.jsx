@@ -5,6 +5,7 @@ import EditUser from "../../components/editUser/EditUser";
 import NavBar from "../../components/NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "../../components/Footer/Footer";
 
 const User = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -32,6 +33,7 @@ const User = () => {
               </div>
             </div>
           </div>
+          <Footer />
         </>
       )}
     </>

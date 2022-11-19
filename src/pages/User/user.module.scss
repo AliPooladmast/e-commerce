@@ -1,9 +1,8 @@
 @use "src/styles";
 
 .UserComponent {
-  padding: 30px;
+  padding: 30px 30px 50px 30px;
   background-color: #f7fafa;
-  height: calc(100vh - 40px);
 
   h1 {
     font-size: 24px;
