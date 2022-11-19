@@ -8,7 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useNavigate } from "react-router-dom";
-import { deleteProduct } from "../../redux/cartSlice";
+import {
+  decrementProduct,
+  deleteProduct,
+  incrementProduct,
+} from "../../redux/cartSlice";
 
 const KEY = process.env.REACT_APP_STRIPE_KEY;
 
@@ -39,6 +43,14 @@ const Cart = () => {
 
   const onDeleteProduct = (product) => {
     dispatch(deleteProduct(product));
+  };
+
+  const handleQuantity = (type, product) => {
+    if (type === "inc") {
+      dispatch(incrementProduct(product));
+    } else if (type === "dec") {
+      product.quantity > 1 && dispatch(decrementProduct(product));
+    }
   };
 
   return (
@@ -78,12 +90,20 @@ const Cart = () => {
                       </span>
                     </div>
                   </div>
+
                   <div className={style.PriceDetail}>
-                    <div className={style.ProductAmount}>
-                      <Add />
+                    <div className={style.AmountContainer}>
+                      <Remove
+                        className={style.ChangeValue}
+                        onClick={() => handleQuantity("dec", product)}
+                      />
                       <span>{product.quantity}</span>
-                      <Remove />
+                      <Add
+                        className={style.ChangeValue}
+                        onClick={() => handleQuantity("inc", product)}
+                      />
                     </div>
+
                     <div className={style.ProductPrice}>
                       $ {product.price * product.quantity}
                     </div>
