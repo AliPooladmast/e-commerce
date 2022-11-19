@@ -12,8 +12,8 @@ const Products = ({ category, filters, sort }) => {
       try {
         const res = await publicRequest(
           category
-            ? `http://localhost:5000/api/products?${category}`
-            : "http://localhost:5000/api/products"
+            ? `http://localhost:5000/api/products?category=${category}`
+            : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data);
       } catch (err) {
