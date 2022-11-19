@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import React, { useState } from "react";
 import style from "./ProductList.module.scss";
 import { useLocation } from "react-router-dom";
-import { Search } from "@mui/icons-material";
+import { Cancel, Search } from "@mui/icons-material";
 
 function ProductList() {
   const location = useLocation();
@@ -21,6 +21,11 @@ function ProductList() {
     });
   };
 
+  const handleReset = () => {
+    setFilters({});
+    setSearch("");
+  };
+
   return (
     <div className={style.Container}>
       <NavBar />
@@ -28,8 +33,13 @@ function ProductList() {
       <div className={style.FilterContainer}>
         <div className={style.FilterProduct}>
           <span>Filter Products</span>
-          <select name="color" id="colors-select" onChange={handleFilters}>
-            <option value="color" disabled>
+          <select
+            name="color"
+            id="colors-select"
+            onChange={handleFilters}
+            value={filters?.color || ""}
+          >
+            <option value="color" hidden>
               Color
             </option>
             <option value="white">White</option>
@@ -40,8 +50,13 @@ function ProductList() {
             <option value="green">Green</option>
           </select>
 
-          <select name="size" id="size-select" onChange={handleFilters}>
-            <option value="size" disabled>
+          <select
+            name="size"
+            id="size-select"
+            onChange={handleFilters}
+            value={filters.size || ""}
+          >
+            <option value="size" hidden>
               Size
             </option>
             <option value="XS">XS</option>
@@ -58,6 +73,7 @@ function ProductList() {
               className={style.Input}
               placeholder="Search"
               name="title"
+              value={search?.target?.value || ""}
               onChange={(e) => setSearch(e)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -70,6 +86,13 @@ function ProductList() {
               onClick={() => handleFilters(search)}
             />
           </div>
+
+          {(filters?.title || filters?.color || filters?.size) && (
+            <div className={style.Reset} onClick={handleReset}>
+              <Cancel className={style.Cancel} />
+              <span>reset filters</span>
+            </div>
+          )}
         </div>
 
         <div className={style.SortProduct}>
