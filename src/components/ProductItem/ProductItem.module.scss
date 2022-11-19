@@ -1,10 +1,16 @@
 @use "src/styles";
 
 .Title {
-  // font-size: 20px;
   margin-top: 10px;
-  text-align: center;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .Price {
+    margin-left: 10px;
+    color: darkblue;
+  }
 }
 
 .Container {
