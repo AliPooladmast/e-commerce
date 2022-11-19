@@ -23,8 +23,17 @@ const cartSlice = createSlice({
       );
       state.total -= action.payload.price * action.payload.quantity;
     },
+    incrementProduct: (state, action) => {
+      state.products.find((item) => item._id === action.payload._id).quantity++;
+      state.total += action.payload.price;
+    },
+    decrementProduct: (state, action) => {
+      state.products.find((item) => item._id === action.payload._id).quantity--;
+      state.total -= action.payload.price;
+    },
   },
 });
 
-export const { addProduct, deleteProduct } = cartSlice.actions;
+export const { addProduct, deleteProduct, incrementProduct, decrementProduct } =
+  cartSlice.actions;
 export default cartSlice.reducer;
