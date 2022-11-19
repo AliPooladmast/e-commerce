@@ -1,27 +1,23 @@
+@use "src/styles";
+
 .Container {
-  h1 {
-    margin: 20px;
-  }
+  background-color: #f7fafa;
+}
+
+.Title {
+  padding: 40px 30px 20px 30px;
 }
 
 .FilterContainer {
   display: flex;
   justify-content: space-between;
-
-  div {
-    margin: 20px;
-
-    @media only screen and (max-width: 600px) {
-      margin: 0 20px;
-      display: flex;
-      flex-direction: column;
-    }
-  }
+  align-items: center;
+  padding: 0 30px;
 
   span {
     font-size: 20px;
     font-weight: 600;
-    margin-right: 20px;
+    margin-right: 10px;
 
     @media only screen and (max-width: 600px) {
       margin-right: 0;
@@ -30,10 +26,77 @@
 
   select {
     padding: 5px;
-    margin-right: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: 0.1s;
+    cursor: pointer;
 
-    @media only screen and (max-width: 600px) {
-      margin: 10px 0;
+    &:focus {
+      box-shadow: styles.$shadow-light;
+    }
+
+    option {
+      font-size: 16px;
+      font-weight: 500;
     }
   }
+}
+
+.FilterProduct {
+  select {
+    margin-right: 10px;
+  }
+}
+
+.SearchWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.SearchContainer {
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #fff;
+  margin-left: 30px;
+  border-radius: 3px;
+  transition: 0.1s;
+
+  &:focus-within {
+    box-shadow: styles.$shadow-light;
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 10px;
+  }
+}
+
+.Input {
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 22vw;
+  }
+}
+
+.Search {
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.Products {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 0 30px;
 }
