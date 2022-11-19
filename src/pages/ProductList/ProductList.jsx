@@ -29,7 +29,11 @@ function ProductList() {
   return (
     <div className={style.Container}>
       <NavBar />
-      {category && <h1 className={style.Title}>{category}</h1>}
+      {category && (
+        <h1 className={style.Title}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
+        </h1>
+      )}
       <div className={style.FilterContainer}>
         <div className={style.FilterProduct}>
           <span>Filter Products</span>
