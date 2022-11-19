@@ -12,7 +12,7 @@ const User = () => {
 
   useEffect(() => {
     !currentUser && navigate("/");
-  }, [currentUser]);
+  }, [currentUser]); //eslint-disable-line
 
   return (
     <>
