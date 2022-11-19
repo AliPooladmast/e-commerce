@@ -12,7 +12,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px 0 30px;
+  padding: 20px 30px 15px 30px;
+  position: sticky;
+  top: 60px;
+  z-index: 40;
+  background-color: #f7fafa;
 
   span {
     font-size: 20px;
@@ -114,7 +118,7 @@
 }
 
 .Products {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 40px;
   padding: 0 30px;
 }
