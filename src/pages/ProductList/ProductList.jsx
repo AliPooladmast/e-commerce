@@ -12,6 +12,7 @@ function ProductList() {
 
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
+  const [search, setSearch] = useState("");
 
   const handleFilters = (e) => {
     setFilters({
@@ -53,8 +54,21 @@ function ProductList() {
 
         <div className={style.SearchWrapper}>
           <div className={style.SearchContainer}>
-            <input className={style.Input} placeholder="Search"></input>
-            <Search className={style.Search} />
+            <input
+              className={style.Input}
+              placeholder="Search"
+              name="title"
+              onChange={(e) => setSearch(e)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleFilters(search);
+                }
+              }}
+            />
+            <Search
+              className={style.Search}
+              onClick={() => handleFilters(search)}
+            />
           </div>
         </div>
 
