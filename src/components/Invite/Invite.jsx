@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Newsletter.module.scss";
+import style from "./Invite.module.scss";
 import { Link } from "react-router-dom";
 
 const Newsletter = () => {
