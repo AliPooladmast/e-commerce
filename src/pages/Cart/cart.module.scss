@@ -87,6 +87,7 @@
 .Product {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 
   @media only screen and (max-width: 600px) {
@@ -163,4 +164,25 @@
     font-weight: 500;
     font-size: 24px;
   }
+}
+
+.IconContainer {
+  background-color: rgb(240, 240, 240);
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+.CloseIcon {
+  color: #000;
+  font-size: 16px !important;
 }

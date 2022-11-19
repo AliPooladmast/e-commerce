@@ -3,15 +3,17 @@ import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
-import { Add, Remove } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { Add, Close, Remove } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useNavigate } from "react-router-dom";
+import { deleteProduct } from "../../redux/cartSlice";
 
 const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const [stripeToken, setStripeToken] = useState(null);
@@ -34,6 +36,10 @@ const Cart = () => {
     };
     stripeToken && cart.total >= 1 && checkoutRequest();
   }, [stripeToken, cart.total, navigate]);
+
+  const onDeleteProduct = (product) => {
+    dispatch(deleteProduct(product));
+  };
 
   return (
     <div className={style.Container}>
@@ -81,6 +87,12 @@ const Cart = () => {
                     <div className={style.ProductPrice}>
                       $ {product.price * product.quantity}
                     </div>
+                  </div>
+                  <div
+                    className={style.IconContainer}
+                    onClick={() => onDeleteProduct(product)}
+                  >
+                    <Close className={style.CloseIcon} />
                   </div>
                 </div>
                 <hr />
