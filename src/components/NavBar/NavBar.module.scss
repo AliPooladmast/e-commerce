@@ -22,36 +22,6 @@
   align-items: center;
 }
 
-.SearchContainer {
-  border: 1px solid lightgray;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  background-color: #fff;
-
-  @media only screen and (max-width: 600px) {
-    margin-left: 10px;
-  }
-}
-
-.Input {
-  border: none;
-
-  &:focus {
-    outline: none;
-  }
-
-  @media only screen and (max-width: 600px) {
-    width: 22vw;
-  }
-}
-
-.Search {
-  color: teal;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .Logo {
   font-weight: 600;
   font-size: 30px;

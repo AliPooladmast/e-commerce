@@ -4,7 +4,6 @@ import {
   Login,
   Logout,
   Person,
-  Search,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import React from "react";
@@ -30,10 +29,6 @@ const NavBar = () => {
         <Link to="/" className={style.Link}>
           <h1 className={style.Logo}>E-Shop Client</h1>
         </Link>
-        <div className={style.SearchContainer}>
-          <input className={style.Input} placeholder="Search"></input>
-          <Search className={style.Search} />
-        </div>
       </div>
       <div className={style.Right}>
         <Link to="/cart" className={style.Link}>

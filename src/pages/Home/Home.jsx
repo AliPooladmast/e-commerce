@@ -2,18 +2,24 @@ import React from "react";
 import Categories from "../../components/Categories/Categories";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import Newsletter from "../../components/Newsletter/Newsletter";
+import Invite from "../../components/Invite/Invite";
 import Products from "../../components/Products/Products";
 import Slider from "../../components/Slider/Slider";
+import { useSelector } from "react-redux";
+import style from "./Home.module.scss";
 
 const Home = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
-    <div style={{ backgroundColor: "#f7fafa" }}>
+    <div className={style.Container}>
       <NavBar />
       <Slider />
       <Categories />
-      <Products />
-      <Newsletter />
+      <div className={style.Products}>
+        <Products />
+      </div>
+      {!currentUser && <Invite />}
       <Footer />
     </div>
   );

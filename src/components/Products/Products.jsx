@@ -12,8 +12,8 @@ const Products = ({ category, filters, sort }) => {
       try {
         const res = await publicRequest(
           category
-            ? `http://localhost:5000/api/products?${category}`
-            : "http://localhost:5000/api/products"
+            ? `http://localhost:5000/api/products?category=${category}`
+            : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data);
       } catch (err) {
@@ -24,7 +24,8 @@ const Products = ({ category, filters, sort }) => {
   }, [category]);
 
   useEffect(() => {
-    category &&
+    products &&
+      filters &&
       setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
@@ -32,7 +33,7 @@ const Products = ({ category, filters, sort }) => {
           )
         )
       );
-  }, [filters, products, category]);
+  }, [filters, products]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -52,7 +53,7 @@ const Products = ({ category, filters, sort }) => {
 
   return (
     <div className={style.Container}>
-      {category
+      {filters
         ? filteredProducts.map((item) => (
             <ProductItem item={item} key={item._id} />
           ))

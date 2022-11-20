@@ -5,19 +5,25 @@ import style from "./ProductItem.module.scss";
 
 const ProductItem = ({ item }) => {
   return (
-    <div className={style.Container}>
-      <div className={style.ImgContainer}>
-        <img src={item.img} alt="" />
+    <div className={style.Wrapper}>
+      <div className={style.Container}>
+        <div className={style.ImgContainer}>
+          <img src={item.img} alt="" />
+        </div>
+        <div className={style.Info}>
+          <div>
+            <ShoppingCartOutlined />
+          </div>
+          <div>
+            <Link to={`/product/${item._id}`} className={style.Link}>
+              <SearchOutlined />
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className={style.Info}>
-        <div>
-          <ShoppingCartOutlined />
-        </div>
-        <div>
-          <Link to={`/product/${item._id}`} className={style.Link}>
-            <SearchOutlined />
-          </Link>
-        </div>
+      <div className={style.Title}>
+        <div>{item.title}</div>
+        <div className={style.Price}>${item.price}</div>
       </div>
     </div>
   );
