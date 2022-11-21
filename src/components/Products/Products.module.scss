@@ -5,3 +5,9 @@
   gap: 20px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
