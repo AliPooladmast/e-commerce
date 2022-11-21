@@ -8,6 +8,21 @@ const Products = ({ category, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [page, setPage] = useState(1);
+  const [pageCounts, setPageCounts] = useState(1);
+
+  useEffect(() => {
+    const getPages = async () => {
+      try {
+        const res = await publicRequest(
+          "http://localhost:5000/api/products/pages"
+        );
+        setPageCounts(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPages();
+  }, []);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -15,6 +30,8 @@ const Products = ({ category, filters, sort }) => {
         const res = await publicRequest(
           category
             ? `http://localhost:5000/api/products?category=${category}`
+            : page
+            ? `http://localhost:5000/api/products?page=${page}`
             : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data);
@@ -23,7 +40,7 @@ const Products = ({ category, filters, sort }) => {
       }
     };
     getProducts();
-  }, [category]);
+  }, [category, page]);
 
   useEffect(() => {
     products &&
@@ -70,7 +87,7 @@ const Products = ({ category, filters, sort }) => {
       </div>
       <div className={style.Pagination}>
         <Pagination
-          count={10}
+          count={pageCounts}
           color="secondary"
           showFirstButton
           showLastButton
