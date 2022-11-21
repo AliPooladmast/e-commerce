@@ -1,3 +1,4 @@
+import { Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
@@ -6,6 +7,7 @@ import style from "./Products.module.scss";
 const Products = ({ category, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -51,16 +53,32 @@ const Products = ({ category, filters, sort }) => {
     }
   }, [sort]);
 
+  const handlePage = (event, value) => {
+    setPage(value);
+  };
+
   return (
-    <div className={style.Container}>
-      {filters
-        ? filteredProducts.map((item) => (
-            <ProductItem item={item} key={item._id} />
-          ))
-        : products
-            .slice(0, 8)
-            .map((item) => <ProductItem item={item} key={item._id} />)}
-    </div>
+    <>
+      <div className={style.Container}>
+        {filters
+          ? filteredProducts.map((item) => (
+              <ProductItem item={item} key={item._id} />
+            ))
+          : products
+              .slice(0, 8)
+              .map((item) => <ProductItem item={item} key={item._id} />)}
+      </div>
+      <div className={style.Pagination}>
+        <Pagination
+          count={10}
+          color="secondary"
+          showFirstButton
+          showLastButton
+          page={page}
+          onChange={handlePage}
+        />
+      </div>
+    </>
   );
 };
 
