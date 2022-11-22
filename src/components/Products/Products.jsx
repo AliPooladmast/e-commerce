@@ -6,7 +6,6 @@ import style from "./Products.module.scss";
 
 const Products = ({ category, filters, sort }) => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [pageCounts, setPageCounts] = useState(1);
 
@@ -19,7 +18,8 @@ const Products = ({ category, filters, sort }) => {
                 `&category=${category || ""}` +
                 `&size=${filters?.size || ""}` +
                 `&color=${filters?.color || ""}` +
-                `&title=${filters?.title || ""}`
+                `&title=${filters?.title || ""}` +
+                `&sort=${sort || ""}`
             : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data.products);
@@ -29,23 +29,7 @@ const Products = ({ category, filters, sort }) => {
       }
     };
     getProducts();
-  }, [category, page, filters]);
-
-  useEffect(() => {
-    if (sort === "newest") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-      );
-    } else if (sort === "asc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.price - b.price)
-      );
-    } else {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
-    }
-  }, [sort]);
+  }, [category, page, filters, sort]);
 
   const handlePage = (event, value) => {
     setPage(value);
