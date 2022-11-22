@@ -15,7 +15,11 @@ const Products = ({ category, filters, sort }) => {
       try {
         const res = await publicRequest(
           page
-            ? `http://localhost:5000/api/products?page=${page}`
+            ? `http://localhost:5000/api/products?page=${page}` +
+                `&category=${category || ""}` +
+                `&size=${filters?.size || ""}` +
+                `&color=${filters?.color || ""}` +
+                `&title=${filters?.title || ""}`
             : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data.products);
@@ -25,19 +29,7 @@ const Products = ({ category, filters, sort }) => {
       }
     };
     getProducts();
-  }, [category, page]);
-
-  useEffect(() => {
-    products &&
-      filters &&
-      setFilteredProducts(
-        products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
-        )
-      );
-  }, [filters, products]);
+  }, [category, page, filters]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -62,13 +54,9 @@ const Products = ({ category, filters, sort }) => {
   return (
     <>
       <div className={style.Container}>
-        {filters
-          ? filteredProducts.map((item) => (
-              <ProductItem item={item} key={item._id} />
-            ))
-          : products
-              .slice(0, 8)
-              .map((item) => <ProductItem item={item} key={item._id} />)}
+        {products?.map((item) => (
+          <ProductItem item={item} key={item._id} />
+        ))}
       </div>
       <div className={style.Pagination}>
         <Pagination
