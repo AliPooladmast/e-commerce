@@ -11,30 +11,15 @@ const Products = ({ category, filters, sort }) => {
   const [pageCounts, setPageCounts] = useState(1);
 
   useEffect(() => {
-    const getPages = async () => {
-      try {
-        const res = await publicRequest(
-          "http://localhost:5000/api/products/pages"
-        );
-        setPageCounts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getPages();
-  }, []);
-
-  useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await publicRequest(
-          category
-            ? `http://localhost:5000/api/products?category=${category}`
-            : page
+          page
             ? `http://localhost:5000/api/products?page=${page}`
             : "http://localhost:5000/api/products?new=true"
         );
-        setProducts(res.data);
+        setProducts(res.data.products);
+        setPageCounts(res.data.pageCounts);
       } catch (err) {
         console.log(err);
       }
