@@ -79,12 +79,19 @@
     margin-right: 10px;
   }
 
-  div {
+  .ColorCircle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin: 0 5px;
+    margin-right: 5px;
     cursor: pointer;
+    border: 1px solid grey;
+    transition: 0.3s;
+
+    &--Selected {
+      @extend .ColorCircle;
+      box-shadow: styles.$shadow-compact;
+    }
   }
 
   select {
