@@ -1,11 +1,14 @@
+@use "src/styles";
+
 .Wrapper {
   padding: 20px;
+  background-color: #f7fafa;
 
   @media only screen and (max-width: 600px) {
     padding: 10px;
   }
 
-  h1 {
+  > h1 {
     font-weight: 300;
     text-align: center;
   }
@@ -23,24 +26,14 @@
   font-weight: 600;
   cursor: pointer;
   background-color: transparent;
+  border-radius: 2px;
+  box-shadow: styles.$shadow-light;
 
   &--filled {
     @extend .Button;
     border: none;
-    background-color: black;
+    background-color: #000;
     color: white;
-  }
-}
-
-.TopTexts {
-  span {
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0 10px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    display: none;
   }
 }
 
@@ -58,8 +51,8 @@
 
   hr {
     border: none;
-    background-color: #eee;
     height: 1px;
+    background-color: lightgrey;
   }
 }
 
