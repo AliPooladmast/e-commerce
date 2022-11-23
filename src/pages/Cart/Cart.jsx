@@ -56,10 +56,10 @@ const Cart = () => {
     <div className={style.Container}>
       <NavBar />
       <div className={style.Wrapper}>
-        <h1>Your Cart</h1>
+        <h1>My Cart</h1>
         <div className={style.Top}>
           <button className={style.Button}>CONTINUE SHOPPING</button>
-          <button className={style["Button--filled"]}>CHECK OUT NOW</button>
+          <button className={style["Button--filled"]}>BACK TO HOME</button>
         </div>
         <div className={style.Bottom}>
           <div className={style.Info}>
