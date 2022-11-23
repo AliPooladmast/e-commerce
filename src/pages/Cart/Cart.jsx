@@ -1,44 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
 import { Add, Close, Remove } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import StripeCheckout from "react-stripe-checkout";
-import { userRequest } from "../../requestMethods";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   decrementProduct,
   deleteProduct,
   incrementProduct,
 } from "../../redux/cartSlice";
 
-const KEY = process.env.REACT_APP_STRIPE_KEY;
-
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const navigate = useNavigate();
-  const [stripeToken, setStripeToken] = useState(null);
-
-  const onToken = (token) => {
-    setStripeToken(token);
-  };
-
-  useEffect(() => {
-    const checkoutRequest = async () => {
-      try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
-        });
-        navigate("/success", { data: res.data });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    stripeToken && cart.total >= 1 && checkoutRequest();
-  }, [stripeToken, cart.total, navigate]);
 
   const onDeleteProduct = (product) => {
     dispatch(deleteProduct(product));
@@ -132,19 +107,12 @@ const Cart = () => {
               <span className={style.SummatyItemText}>Total</span>
               <span className={style.SummatyItemPrice}>$ {cart.total}</span>
             </div>
-            <StripeCheckout
-              name="APQ shop"
-              billingAddress
-              shippingAddress
-              description={`Your total is ${cart.total}`}
-              amount={cart.total * 100}
-              stripeKey={KEY}
-              token={onToken}
-            >
-              <div className={style.CheckoutButton}>
+
+            <div className={style.CheckoutButton}>
+              <Link to="/order">
                 <button>CHECKOUT NOW</button>
-              </div>
-            </StripeCheckout>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
