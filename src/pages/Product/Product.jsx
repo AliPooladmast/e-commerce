@@ -24,6 +24,8 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        setColor(res.data?.color?.[0]);
+        setSize(res.data?.size?.[0]);
       } catch (err) {
         console.log(err);
       }
@@ -46,49 +48,56 @@ const Product = () => {
   return (
     <div className={style.Container}>
       <NavBar />
-      <div className={style.Wrapper}>
-        <div className={style.ImageContainer}>
-          <img src={product.img} alt="product" />
-        </div>
-        <div className={style.InfoContainer}>
-          <h1>{product.title}</h1>
-          <p>{product.desc}</p>
-          <span>{product.price}</span>
-          <div className={style.FilterContainer}>
-            <div className={style.Filter}>
-              <span>Color</span>
-              {product.color?.map((color) => (
-                <div
-                  style={{ backgroundColor: color }}
-                  key={color}
-                  onClick={() => setColor(color)}
-                ></div>
-              ))}
-            </div>
-            <div className={style.Filter}>
-              <span>Size</span>
-              <select name="" id="" onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map((size) => (
-                  <option value={size} key={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-            </div>
+      <div className={style.ProductContainer}>
+        <div className={style.Wrapper}>
+          <div className={style.ImageContainer}>
+            <img src={product.img} alt="product" />
           </div>
-          <div className={style.AddContainer}>
-            <div className={style.AmountContainer}>
-              <Remove
-                className={style.ChangeValue}
-                onClick={() => handleQuantity("dec")}
-              />
-              <span>{quantity}</span>
-              <Add
-                className={style.ChangeValue}
-                onClick={() => handleQuantity("inc")}
-              />
+          <div className={style.InfoContainer}>
+            <h1>{product.title}</h1>
+            <p>{product.desc}</p>
+            <span>${product.price}</span>
+            <div className={style.FilterContainer}>
+              <div className={style.Filter}>
+                <span>Color</span>
+                {product.color?.map((itemColor) => (
+                  <div
+                    style={{ backgroundColor: itemColor }}
+                    className={
+                      color === itemColor
+                        ? style["ColorCircle--Selected"]
+                        : style.ColorCircle
+                    }
+                    key={itemColor}
+                    onClick={() => setColor(itemColor)}
+                  ></div>
+                ))}
+              </div>
+              <div className={style.Filter}>
+                <span>Size</span>
+                <select name="" id="" onChange={(e) => setSize(e.target.value)}>
+                  {product.size?.map((size) => (
+                    <option value={size} key={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <button onClick={handleAddClick}>Add To Cart</button>
+            <div className={style.AddContainer}>
+              <div className={style.AmountContainer}>
+                <Remove
+                  className={style.ChangeValue}
+                  onClick={() => handleQuantity("dec")}
+                />
+                <span>{quantity}</span>
+                <Add
+                  className={style.ChangeValue}
+                  onClick={() => handleQuantity("inc")}
+                />
+              </div>
+              <button onClick={handleAddClick}>Add To Cart</button>
+            </div>
           </div>
         </div>
       </div>
