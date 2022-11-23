@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
@@ -56,15 +55,10 @@ const Cart = () => {
   return (
     <div className={style.Container}>
       <NavBar />
-      <Announcement />
       <div className={style.Wrapper}>
-        <h1>YOUR BAG</h1>
+        <h1>Your Cart</h1>
         <div className={style.Top}>
           <button className={style.Button}>CONTINUE SHOPPING</button>
-          <div className={style.TopTexts}>
-            <span>Shopping Bag(2)</span>
-            <span>Your Wishlist (0)</span>
-          </div>
           <button className={style["Button--filled"]}>CHECK OUT NOW</button>
         </div>
         <div className={style.Bottom}>
@@ -77,9 +71,6 @@ const Cart = () => {
                     <div className={style.Detail}>
                       <span>
                         <b>Product:</b> {product.title}
-                      </span>
-                      <span>
-                        <b>ID:</b> {product._id}
                       </span>
                       <div
                         className={style.ProductColor}
@@ -105,7 +96,7 @@ const Cart = () => {
                     </div>
 
                     <div className={style.ProductPrice}>
-                      $ {product.price * product.quantity}
+                      ${product.price * product.quantity}
                     </div>
                   </div>
                   <div
