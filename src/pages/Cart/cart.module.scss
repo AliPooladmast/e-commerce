@@ -93,8 +93,11 @@
   display: flex;
 
   img {
-    width: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
 }
 
