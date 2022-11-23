@@ -111,7 +111,7 @@ const Cart = () => {
             ))}
           </div>
           <div className={style.Summary}>
-            <h1>ORDER SUMMARY</h1>
+            <h1>Order Summary</h1>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>SubTotal</span>
               <span className={style.SummatyItemPrice}>$ {cart.total}</span>
@@ -137,7 +137,9 @@ const Cart = () => {
               stripeKey={KEY}
               token={onToken}
             >
-              <button>CHECKOUT NOW</button>
+              <div className={style.CheckoutButton}>
+                <button>CHECKOUT NOW</button>
+              </div>
             </StripeCheckout>
           </div>
         </div>
