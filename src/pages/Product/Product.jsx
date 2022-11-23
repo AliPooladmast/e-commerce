@@ -24,6 +24,8 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        setColor(res.data?.color?.[0]);
+        setSize(res.data?.size?.[0]);
       } catch (err) {
         console.log(err);
       }
