@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
@@ -7,7 +6,7 @@ import { Add, Close, Remove } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   decrementProduct,
   deleteProduct,
@@ -56,16 +55,15 @@ const Cart = () => {
   return (
     <div className={style.Container}>
       <NavBar />
-      <Announcement />
       <div className={style.Wrapper}>
-        <h1>YOUR BAG</h1>
+        <h1>My Cart</h1>
         <div className={style.Top}>
-          <button className={style.Button}>CONTINUE SHOPPING</button>
-          <div className={style.TopTexts}>
-            <span>Shopping Bag(2)</span>
-            <span>Your Wishlist (0)</span>
-          </div>
-          <button className={style["Button--filled"]}>CHECK OUT NOW</button>
+          <Link to="/products">
+            <button className={style.Button}>CONTINUE SHOPPING</button>
+          </Link>
+          <Link to="/">
+            <button className={style["Button--filled"]}>BACK TO HOME</button>
+          </Link>
         </div>
         <div className={style.Bottom}>
           <div className={style.Info}>
@@ -78,13 +76,10 @@ const Cart = () => {
                       <span>
                         <b>Product:</b> {product.title}
                       </span>
-                      <span>
-                        <b>ID:</b> {product._id}
+                      <span className={style.ProductColor}>
+                        <b>Color:</b>
+                        <div style={{ backgroundColor: product.color }}></div>
                       </span>
-                      <div
-                        className={style.ProductColor}
-                        style={{ backgroundColor: { color: product.color } }}
-                      ></div>
                       <span>
                         <b>Size:</b> {product.size}
                       </span>
@@ -120,7 +115,7 @@ const Cart = () => {
             ))}
           </div>
           <div className={style.Summary}>
-            <h1>ORDER SUMMARY</h1>
+            <h1>Order Summary</h1>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>SubTotal</span>
               <span className={style.SummatyItemPrice}>$ {cart.total}</span>
@@ -146,7 +141,9 @@ const Cart = () => {
               stripeKey={KEY}
               token={onToken}
             >
-              <button>CHECKOUT NOW</button>
+              <div className={style.CheckoutButton}>
+                <button>CHECKOUT NOW</button>
+              </div>
             </StripeCheckout>
           </div>
         </div>

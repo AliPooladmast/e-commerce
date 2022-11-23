@@ -1,11 +1,14 @@
+@use "src/styles";
+
 .Wrapper {
   padding: 20px;
+  background-color: #f7fafa;
 
   @media only screen and (max-width: 600px) {
     padding: 10px;
   }
 
-  h1 {
+  > h1 {
     font-weight: 300;
     text-align: center;
   }
@@ -15,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .Button {
@@ -23,24 +26,14 @@
   font-weight: 600;
   cursor: pointer;
   background-color: transparent;
+  border-radius: 2px;
+  box-shadow: styles.$shadow-light;
 
   &--filled {
     @extend .Button;
     border: none;
-    background-color: black;
+    background-color: #000;
     color: white;
-  }
-}
-
-.TopTexts {
-  span {
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0 10px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    display: none;
   }
 }
 
@@ -55,11 +48,12 @@
 
 .Info {
   flex: 3;
+  margin-right: 20px;
 
   hr {
     border: none;
-    background-color: #eee;
     height: 1px;
+    background-color: lightgrey;
   }
 }
 
@@ -67,20 +61,32 @@
   flex: 1;
   border: 0.5px solid lightgrey;
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px 20px;
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   h1 {
-    font-weight: 200;
+    font-weight: 500;
+    font-size: 26px;
   }
 
-  button {
+  .CheckoutButton {
     width: 100%;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    font-weight: 600;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 180px;
+      background-color: rgb(2, 2, 110);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 }
 
@@ -100,30 +106,45 @@
   display: flex;
 
   img {
-    width: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
 }
 
 .PriceDetail {
+  border: 1px solid lightgrey;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-right: 20px;
+  padding: 20px 0;
+  border-radius: 10px;
+  max-width: 120px;
 }
 
 .Detail {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .ProductColor {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+
+  > div {
+    border: 1px solid grey;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
 }
 
 .AmountContainer {
@@ -137,6 +158,7 @@
     height: 30px;
     border-radius: 10px;
     border: 1px solid teal;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +171,7 @@
 }
 
 .ProductPrice {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 300;
 
   @media only screen and (max-width: 600px) {
@@ -158,7 +180,6 @@
 }
 
 .SummaryItem {
-  margin: 30px 0;
   display: flex;
   justify-content: space-between;
 
