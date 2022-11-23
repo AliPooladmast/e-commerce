@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .Button {
@@ -48,6 +48,7 @@
 
 .Info {
   flex: 3;
+  margin-right: 20px;
 
   hr {
     border: none;
@@ -60,20 +61,24 @@
   flex: 1;
   border: 0.5px solid lightgrey;
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px 20px;
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   h1 {
-    font-weight: 200;
-  }
+    font-weight: 500;
+    font-size: 26px;
 
-  button {
-    width: 100%;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    font-weight: 600;
-    cursor: pointer;
+    button {
+      width: 100%;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 }
 
@@ -158,7 +163,7 @@
 }
 
 .ProductPrice {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 300;
 
   @media only screen and (max-width: 600px) {
@@ -167,7 +172,6 @@
 }
 
 .SummaryItem {
-  margin: 30px 0;
   display: flex;
   justify-content: space-between;
 
