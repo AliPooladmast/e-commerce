@@ -70,12 +70,20 @@
   h1 {
     font-weight: 500;
     font-size: 26px;
+  }
+
+  .CheckoutButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
     button {
-      width: 100%;
-      background-color: black;
+      width: 180px;
+      background-color: rgb(2, 2, 110);
       color: white;
-      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 5px;
       font-weight: 600;
       cursor: pointer;
     }
