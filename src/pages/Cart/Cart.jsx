@@ -72,10 +72,10 @@ const Cart = () => {
                       <span>
                         <b>Product:</b> {product.title}
                       </span>
-                      <div
-                        className={style.ProductColor}
-                        style={{ backgroundColor: { color: product.color } }}
-                      ></div>
+                      <span className={style.ProductColor}>
+                        <b>Color:</b>
+                        <div style={{ backgroundColor: product.color }}></div>
+                      </span>
                       <span>
                         <b>Size:</b> {product.size}
                       </span>
@@ -96,7 +96,7 @@ const Cart = () => {
                     </div>
 
                     <div className={style.ProductPrice}>
-                      ${product.price * product.quantity}
+                      $ {product.price * product.quantity}
                     </div>
                   </div>
                   <div
