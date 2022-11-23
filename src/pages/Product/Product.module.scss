@@ -1,6 +1,15 @@
-.Wrapper {
-  padding: 20px;
+@use "src/styles";
+
+.ProductContainer {
   display: flex;
+  justify-content: center;
+  background-color: #f7fafa;
+}
+
+.Wrapper {
+  padding: 40px;
+  display: flex;
+  width: 60%;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -15,6 +24,7 @@
     width: 100%;
     height: 70vh;
     object-fit: cover;
+    box-shadow: styles.$shadow;
 
     @media only screen and (max-width: 600px) {
       height: 40vh;
@@ -24,31 +34,35 @@
 
 .InfoContainer {
   flex: 1;
-  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  font-weight: 300;
 
   @media only screen and (max-width: 600px) {
     padding: 10px;
   }
 
   h1 {
-    font-weight: 200;
+    font-weight: 300;
+    margin-bottom: 20px;
   }
 
   p {
-    margin: 20px 0;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
   > span {
-    font-weight: 100;
-    font-size: 40px;
+    margin-bottom: 20px;
+    font-size: 24px;
   }
 }
 
 .FilterContainer {
-  width: 50%;
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -61,7 +75,8 @@
 
   span {
     font-size: 20px;
-    font-weight: 200;
+    font-weight: 300;
+    margin-right: 10px;
   }
 
   div {
@@ -73,7 +88,6 @@
   }
 
   select {
-    margin-left: 10px;
     padding: 5px;
   }
 }
