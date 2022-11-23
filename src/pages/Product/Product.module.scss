@@ -25,6 +25,7 @@
     height: 70vh;
     object-fit: cover;
     box-shadow: styles.$shadow;
+    border-radius: 5px;
 
     @media only screen and (max-width: 600px) {
       height: 40vh;
@@ -118,7 +119,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -126,10 +126,11 @@
 
   button {
     background-color: white;
-    padding: 15px;
+    padding: 10px 15px;
     border: 2px solid teal;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: styles.$shadow-compact;
 
     &:hover {
       background-color: #f8f4f4;
@@ -143,6 +144,7 @@
   font-weight: 700;
 
   span {
+    background-color: white;
     width: 30px;
     height: 30px;
     border-radius: 10px;
@@ -155,5 +157,6 @@
 }
 
 .ChangeValue {
+  font-size: 20px;
   cursor: pointer;
 }
