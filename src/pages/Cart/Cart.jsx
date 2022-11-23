@@ -6,7 +6,7 @@ import { Add, Close, Remove } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   decrementProduct,
   deleteProduct,
@@ -58,8 +58,12 @@ const Cart = () => {
       <div className={style.Wrapper}>
         <h1>My Cart</h1>
         <div className={style.Top}>
-          <button className={style.Button}>CONTINUE SHOPPING</button>
-          <button className={style["Button--filled"]}>BACK TO HOME</button>
+          <Link to="/products">
+            <button className={style.Button}>CONTINUE SHOPPING</button>
+          </Link>
+          <Link to="/">
+            <button className={style["Button--filled"]}>BACK TO HOME</button>
+          </Link>
         </div>
         <div className={style.Bottom}>
           <div className={style.Info}>
