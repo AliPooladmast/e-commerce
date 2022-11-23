@@ -102,11 +102,16 @@
 }
 
 .PriceDetail {
+  border: 1px solid lightgrey;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-right: 20px;
+  padding: 20px 0;
+  border-radius: 10px;
+  max-width: 120px;
 }
 
 .Detail {
