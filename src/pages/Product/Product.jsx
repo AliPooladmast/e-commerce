@@ -58,11 +58,16 @@ const Product = () => {
             <div className={style.FilterContainer}>
               <div className={style.Filter}>
                 <span>Color</span>
-                {product.color?.map((color) => (
+                {product.color?.map((itemColor) => (
                   <div
-                    style={{ backgroundColor: color }}
-                    key={color}
-                    onClick={() => setColor(color)}
+                    style={{ backgroundColor: itemColor }}
+                    className={
+                      color === itemColor
+                        ? style["ColorCircle--Selected"]
+                        : style.ColorCircle
+                    }
+                    key={itemColor}
+                    onClick={() => setColor(itemColor)}
                   ></div>
                 ))}
               </div>
