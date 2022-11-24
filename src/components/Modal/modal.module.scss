@@ -1,0 +1,85 @@
+@use "src/styles";
+$modal-width: 80%;
+
+.Modal {
+  background-color: #fff;
+  position: fixed;
+  z-index: 30;
+  border-radius: 10px;
+  -webkit-box-shadow: styles.$shadow;
+  -moz-box-shadow: styles.$shadow;
+  box-shadow: styles.$shadow;
+  padding: 30px;
+  animation: slide-down 300ms ease-out forwards;
+  display: flex;
+  flex-direction: column;
+
+  width: $modal-width;
+  left: calc((100% - $modal-width) / 2);
+
+  @media only screen and (min-width: 660px) {
+    width: 400px;
+    left: calc((100% - 400px) / 2);
+  }
+
+  @media only screen and (max-width: 660px) {
+    padding: 20px;
+  }
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24px;
+    white-space: nowrap;
+    margin-right: 5px;
+
+    @media only screen and (max-width: 660px) {
+      font-size: 20px;
+    }
+    @media only screen and (max-width: 380px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.IconContainer {
+  background-color: rgb(240, 240, 240);
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+.CloseIcon {
+  color: #000;
+  font-size: 16px !important;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Children {
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
