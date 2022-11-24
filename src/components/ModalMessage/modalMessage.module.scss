@@ -1,0 +1,55 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  span {
+    font-size: 20px;
+  }
+}
+
+.Confirm {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    background-color: red;
+
+    @media only screen and (max-width: 660px) {
+      width: 22vw;
+    }
+
+    &:hover {
+      background-color: rgb(255, 100, 100);
+    }
+  }
+
+  .Yes {
+    background-color: darkblue;
+
+    &:hover {
+      background-color: rgb(0, 0, 200);
+    }
+  }
+}
+
+.Message {
+  span {
+    @media only screen and (max-width: 660px) {
+      font-size: 18px;
+    }
+    @media only screen and (max-width: 380px) {
+      font-size: 16px;
+    }
+  }
+}
