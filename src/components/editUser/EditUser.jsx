@@ -18,6 +18,9 @@ const storage = getStorage(app);
 
 const schema = Joi.object({
   username: Joi.string().min(2).max(50).required(),
+  fullname: Joi.string().min(2).max(50),
+  phone: Joi.string().min(5).max(20),
+  address: Joi.string().min(5).max(511),
   email: Joi.string()
     .min(5)
     .max(255)
@@ -78,14 +81,28 @@ const EditUser = ({ user }) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    const { username, email, ...others } = draftUser;
-    const { error: joiError } = schema.validate({ username, email });
+    const { username, email, fullname, phone, address, ...others } = draftUser;
+    const { error: joiError } = schema.validate({
+      username,
+      email,
+      fullname,
+      phone,
+      address,
+    });
 
     if (joiError) {
       setErrorMessage(joiError.details?.[0]?.message);
       setShowSnackbar(true);
     } else {
-      const editedUser = { username, email, ...others, img: image };
+      const editedUser = {
+        username,
+        email,
+        fullname,
+        phone,
+        address,
+        img: image,
+        ...others,
+      };
       editUser(dispatch, editedUser);
     }
   };
@@ -131,13 +148,20 @@ const EditUser = ({ user }) => {
           </div>
           <div className={style.Item}>
             <label>Full Name</label>
-            <input type="text" placeholder={user.fullName || user.username} />
+            <input
+              name="fullname"
+              type="text"
+              placeholder={user.fullName || user.username}
+              onChange={handleInput}
+            />
           </div>
           <div className={style.Item}>
             <label>Phone Number</label>
             <input
+              name="phone"
               type="text"
               placeholder={user.phoneNumber || "enter phone number"}
+              onChange={handleInput}
             />
           </div>
           <div className={style.Item}>
@@ -151,7 +175,12 @@ const EditUser = ({ user }) => {
           </div>
           <div className={style.Item}>
             <label>Address</label>
-            <input type="text" placeholder={user.address || "enter address"} />
+            <input
+              name="address"
+              type="text"
+              placeholder={user.address || "enter address"}
+              onChange={handleInput}
+            />
           </div>
         </div>
         <div className={style.Right}>
