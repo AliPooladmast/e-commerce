@@ -13,6 +13,9 @@ import {
 import Modal from "../../components/Modal/Modal";
 import ModalMessage from "../../components/ModalMessage/ModalMessage";
 
+const estimatedShipping = 5.9;
+const shoppingDiscount = -3.4;
+
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -100,7 +103,7 @@ const Cart = () => {
                     </div>
 
                     <div className={style.ProductPrice}>
-                      $ {product.price * product.quantity}
+                      $ {(product.price * product.quantity).toFixed(1)}
                     </div>
                   </div>
                   <div
@@ -118,19 +121,27 @@ const Cart = () => {
             <h1>Order Summary</h1>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>SubTotal</span>
-              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
+              <span className={style.SummatyItemPrice}>
+                $ {cart.total.toFixed(1)}
+              </span>
             </div>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>Estimated Shipping</span>
-              <span className={style.SummatyItemPrice}>$ 5.9</span>
+              <span className={style.SummatyItemPrice}>
+                $ {estimatedShipping}
+              </span>
             </div>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>Shipping Discount</span>
-              <span className={style.SummatyItemPrice}>$ -5.9</span>
+              <span className={style.SummatyItemPrice}>
+                $ {shoppingDiscount}
+              </span>
             </div>
             <div className={style["SummaryItem--total"]}>
               <span className={style.SummatyItemText}>Total</span>
-              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
+              <span className={style.SummatyItemPrice}>
+                {(cart.total + estimatedShipping + shoppingDiscount).toFixed(1)}
+              </span>
             </div>
 
             <div className={style.CheckoutButton}>
