@@ -5,7 +5,7 @@ import style from "./order.module.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Order = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
@@ -43,7 +43,7 @@ const Cart = () => {
                   </div>
 
                   <div className={style.ProductPrice}>
-                    $ {product.price * product.quantity}
+                    $ {(product.price * product.quantity).toFixed(1)}
                   </div>
                 </div>
                 <hr />
@@ -51,7 +51,7 @@ const Cart = () => {
             ))}
           </div>
           <div className={style.Address}>
-            <label for="address">Address:</label>
+            <label htmlFor="address">Address:</label>
             <textarea
               id="address"
               name="address"
@@ -66,4 +66,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Order;

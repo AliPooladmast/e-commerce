@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
 import { Add, Close, Remove } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   decrementProduct,
   deleteProduct,
   incrementProduct,
 } from "../../redux/cartSlice";
+import Modal from "../../components/Modal/Modal";
+import ModalMessage from "../../components/ModalMessage/ModalMessage";
+
+const estimatedShipping = 5.9;
+const shoppingDiscount = -3.4;
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  const { currentUser } = useSelector((state) => state.user);
+  const [displayModal, setDisplayModal] = useState(false);
 
   const onDeleteProduct = (product) => {
     dispatch(deleteProduct(product));
@@ -27,8 +35,28 @@ const Cart = () => {
     }
   };
 
+  const handleCheckout = () => {
+    currentUser ? navigate("/order") : setDisplayModal(true);
+  };
+
   return (
     <div className={style.Container}>
+      {displayModal && (
+        <Modal
+          onClose={() => setDisplayModal(false)}
+          title="Sign In"
+          height="180px"
+        >
+          <ModalMessage
+            message="To complete your order request, you have to sign in first."
+            firstOption="Ok"
+            secondOption="Cancel"
+            onClose={() => setDisplayModal(false)}
+            onConfirm={() => navigate("/login")}
+          />
+        </Modal>
+      )}
+
       <NavBar />
       <div className={style.Wrapper}>
         <h1>My Cart</h1>
@@ -75,7 +103,7 @@ const Cart = () => {
                     </div>
 
                     <div className={style.ProductPrice}>
-                      $ {product.price * product.quantity}
+                      $ {(product.price * product.quantity).toFixed(1)}
                     </div>
                   </div>
                   <div
@@ -93,25 +121,31 @@ const Cart = () => {
             <h1>Order Summary</h1>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>SubTotal</span>
-              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
+              <span className={style.SummatyItemPrice}>
+                $ {cart.total.toFixed(1)}
+              </span>
             </div>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>Estimated Shipping</span>
-              <span className={style.SummatyItemPrice}>$ 5.9</span>
+              <span className={style.SummatyItemPrice}>
+                $ {estimatedShipping}
+              </span>
             </div>
             <div className={style.SummaryItem}>
               <span className={style.SummatyItemText}>Shipping Discount</span>
-              <span className={style.SummatyItemPrice}>$ -5.9</span>
+              <span className={style.SummatyItemPrice}>
+                $ {shoppingDiscount}
+              </span>
             </div>
             <div className={style["SummaryItem--total"]}>
               <span className={style.SummatyItemText}>Total</span>
-              <span className={style.SummatyItemPrice}>$ {cart.total}</span>
+              <span className={style.SummatyItemPrice}>
+                {(cart.total + estimatedShipping + shoppingDiscount).toFixed(1)}
+              </span>
             </div>
 
             <div className={style.CheckoutButton}>
-              <Link to="/order">
-                <button>CHECKOUT NOW</button>
-              </Link>
+              <button onClick={handleCheckout}>CHECKOUT NOW</button>
             </div>
           </div>
         </div>

@@ -8,6 +8,9 @@ const Joi = require("joi");
 
 const schema = Joi.object({
   username: Joi.string().min(2).max(50).required(),
+  fullname: Joi.string().min(2).max(50),
+  phone: Joi.string().min(5).max(20),
+  address: Joi.string().min(5).max(511),
   email: Joi.string()
     .min(5)
     .max(255)
@@ -82,6 +85,18 @@ const Register = () => {
           />
           <input
             type="text"
+            placeholder="fullname (optional)"
+            name="fullname"
+            onChange={handleInput}
+          />
+          <input
+            type="text"
+            placeholder="phone (optional)"
+            name="phone"
+            onChange={handleInput}
+          />
+          <input
+            type="text"
             placeholder="email"
             name="email"
             onChange={handleInput}
@@ -96,6 +111,12 @@ const Register = () => {
             type="password"
             placeholder="confirm password"
             name="confirmPassword"
+            onChange={handleInput}
+          />
+          <input
+            type="text"
+            placeholder="address (optional)"
+            name="address"
             onChange={handleInput}
           />
           <span>
