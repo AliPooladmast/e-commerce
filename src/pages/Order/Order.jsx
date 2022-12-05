@@ -43,7 +43,7 @@ const Order = () => {
                   </div>
 
                   <div className={style.ProductPrice}>
-                    $ {product.price * product.quantity}
+                    $ {(product.price * product.quantity).toFixed(1)}
                   </div>
                 </div>
                 <hr />
