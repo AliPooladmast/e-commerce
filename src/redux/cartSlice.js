@@ -11,8 +11,17 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      state.quantity += 1;
-      state.products.push(action.payload);
+      const product = state.products.find(
+        (item) => item._id === action.payload._id
+      );
+
+      if (product) {
+        product.quantity += action.payload.quantity;
+      } else {
+        state.quantity += 1;
+        state.products.push(action.payload);
+      }
+
       state.total += action.payload.price * action.payload.quantity;
     },
     deleteProduct: (state, action) => {
