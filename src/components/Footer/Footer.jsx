@@ -9,7 +9,7 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import style from "./Footer.module.scss";
-import paymentMethods from "../../assests/images/payment-methods.jpg";
+import paymentMethods from "../../assets/images/payment-methods.jpg";
 import { Link } from "react-router-dom";
 
 function Footer() {

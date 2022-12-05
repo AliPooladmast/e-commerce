@@ -11,7 +11,7 @@ import app from "../../firebase";
 import { LinearProgressWithLabel } from "../linearProgress/LinearProgress";
 import { Publish } from "@mui/icons-material";
 import style from "./editUser.module.scss";
-import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
+import AnonymousAvatar from "../../assets/icons/no-avatar.svg";
 import { Alert, Snackbar } from "@mui/material";
 const Joi = require("joi");
 const storage = getStorage(app);
