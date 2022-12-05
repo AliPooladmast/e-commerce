@@ -17,7 +17,7 @@ const Home = () => {
       <Slider />
       <Categories />
       <div className={style.Products}>
-        <Products />
+        <Products newItems={true} />
       </div>
       {!currentUser && <Invite />}
       <Footer />

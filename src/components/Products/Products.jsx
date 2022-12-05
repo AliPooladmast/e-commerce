@@ -4,7 +4,7 @@ import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
-const Products = ({ category, filters, sort }) => {
+const Products = ({ category, filters, sort, newItems = false }) => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [pageCounts, setPageCounts] = useState(1);
@@ -13,14 +13,14 @@ const Products = ({ category, filters, sort }) => {
     const getProducts = async () => {
       try {
         const res = await publicRequest(
-          page
-            ? `http://localhost:5000/api/products?page=${page}` +
+          newItems
+            ? "http://localhost:5000/api/products?new=true"
+            : `http://localhost:5000/api/products?page=${page}` +
                 `&category=${category || ""}` +
                 `&size=${filters?.size || ""}` +
                 `&color=${filters?.color || ""}` +
                 `&title=${filters?.title || ""}` +
                 `&sort=${sort || ""}`
-            : "http://localhost:5000/api/products?new=true"
         );
         setProducts(res.data.products);
         setPageCounts(res.data.pageCounts);
@@ -29,7 +29,7 @@ const Products = ({ category, filters, sort }) => {
       }
     };
     getProducts();
-  }, [category, page, filters, sort]);
+  }, [category, page, filters, sort, newItems]);
 
   const handlePage = (event, value) => {
     setPage(value);
@@ -42,16 +42,18 @@ const Products = ({ category, filters, sort }) => {
           <ProductItem item={item} key={item._id} />
         ))}
       </div>
-      <div className={style.Pagination}>
-        <Pagination
-          count={pageCounts}
-          color="secondary"
-          showFirstButton
-          showLastButton
-          page={page}
-          onChange={handlePage}
-        />
-      </div>
+      {!newItems && (
+        <div className={style.Pagination}>
+          <Pagination
+            count={pageCounts}
+            color="secondary"
+            showFirstButton
+            showLastButton
+            page={page}
+            onChange={handlePage}
+          />
+        </div>
+      )}
     </>
   );
 };
