@@ -8,32 +8,71 @@ import Register from "./pages/Register/Register";
 import Success from "./pages/Success/Success";
 import { Routes, Route } from "react-router-dom";
 import User from "./pages/User/User";
+import { forwardRef } from "react";
+import MuiAlert from "@mui/material/Alert";
+import { Snackbar } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { setMessage } from "./redux/uxSlice";
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.ux);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    dispatch(setMessage({ type: "info", text: null }));
+  };
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <>
+      {message?.text && (
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={Boolean(message)}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity={message?.type}
+            sx={{ width: "100%" }}
+          >
+            {message?.text}
+          </Alert>
+        </Snackbar>
+      )}
 
-      <Route path="/products" element={<ProductList />}>
-        <Route path=":category" element={<ProductList />} />
-      </Route>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Route path="/product" element={<Product />}>
-        <Route path=":id" element={<Product />} />
-      </Route>
+        <Route path="/products" element={<ProductList />}>
+          <Route path=":category" element={<ProductList />} />
+        </Route>
 
-      <Route path="/cart" element={<Cart />} />
+        <Route path="/product" element={<Product />}>
+          <Route path=":id" element={<Product />} />
+        </Route>
 
-      <Route path="/order" element={<Order />} />
+        <Route path="/cart" element={<Cart />} />
 
-      <Route path="/login" element={<Login />} />
+        <Route path="/order" element={<Order />} />
 
-      <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
-      <Route path="/success" element={<Success />} />
+        <Route path="/register" element={<Register />} />
 
-      <Route path="/user" element={<User />} />
-    </Routes>
+        <Route path="/success" element={<Success />} />
+
+        <Route path="/user" element={<User />} />
+      </Routes>
+    </>
   );
 };
 
