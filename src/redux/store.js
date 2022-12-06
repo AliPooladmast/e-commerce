@@ -12,14 +12,20 @@ import {
 import storage from "redux-persist/lib/storage";
 import cartSlice from "./cartSlice";
 import userSlice from "./userSlice";
+import uxSlice from "./uxSlice";
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ["ux"],
 };
 
-const rootReducer = combineReducers({ user: userSlice, cart: cartSlice });
+const rootReducer = combineReducers({
+  user: userSlice,
+  cart: cartSlice,
+  ux: uxSlice,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
