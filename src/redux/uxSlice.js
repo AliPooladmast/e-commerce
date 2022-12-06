@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   message: { type: "info", text: null },
+  loading: false,
 };
 
 const styleSlice = createSlice({
@@ -11,8 +12,11 @@ const styleSlice = createSlice({
     setMessage: (state, action) => {
       state.message = action.payload;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setMessage } = styleSlice.actions;
+export const { setMessage, setLoading } = styleSlice.actions;
 export default styleSlice.reducer;
