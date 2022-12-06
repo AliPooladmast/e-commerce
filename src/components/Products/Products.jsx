@@ -1,10 +1,13 @@
 import { Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setLoading } from "../../redux/uxSlice";
 import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
 const Products = ({ category, filters, sort, newItems = false }) => {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [pageCounts, setPageCounts] = useState(1);
@@ -12,6 +15,7 @@ const Products = ({ category, filters, sort, newItems = false }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
+        dispatch(setLoading(true));
         const res = await publicRequest(
           newItems
             ? "http://localhost:5000/api/products?new=true"
@@ -22,14 +26,17 @@ const Products = ({ category, filters, sort, newItems = false }) => {
                 `&title=${filters?.title || ""}` +
                 `&sort=${sort || ""}`
         );
-        setProducts(res.data.products);
-        setPageCounts(res.data.pageCounts);
+        if (res?.data) {
+          setProducts(res.data.products);
+          setPageCounts(res.data.pageCounts);
+          dispatch(setLoading(false));
+        }
       } catch (err) {
         console.log(err);
       }
     };
     getProducts();
-  }, [category, page, filters, sort, newItems]);
+  }, [category, page, filters, sort, newItems, dispatch]);
 
   const handlePage = (event, value) => {
     setPage(value);
