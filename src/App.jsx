@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import User from "./pages/User/User";
 import { forwardRef } from "react";
 import MuiAlert from "@mui/material/Alert";
-import { Snackbar } from "@mui/material";
+import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessage } from "./redux/uxSlice";
 
@@ -20,7 +20,8 @@ const Alert = forwardRef(function Alert(props, ref) {
 
 const App = () => {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.ux);
+  const { message, loading: uxLoading } = useSelector((state) => state.ux);
+  const { isFetching: userLoading } = useSelector((state) => state.user);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -48,6 +49,13 @@ const App = () => {
           </Alert>
         </Snackbar>
       )}
+
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={uxLoading || userLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
 
       <Routes>
         <Route path="/" element={<Home />} />
