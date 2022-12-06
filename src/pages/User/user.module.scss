@@ -31,10 +31,8 @@
   flex: 1;
   padding: 30px;
   border-radius: 5px;
-  -webkit-box-shadow: styles.$shadow;
-  -moz-box-shadow: styles.$shadow;
-  box-shadow: styles.$shadow;
-  margin-right: 30px;
+  border: 1px solid lightgrey;
+  margin-right: 20px;
   overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
@@ -53,9 +51,7 @@
   flex: 2;
   padding: 30px;
   border-radius: 5px;
-  -webkit-box-shadow: styles.$shadow;
-  -moz-box-shadow: styles.$shadow;
-  box-shadow: styles.$shadow;
+  border: 1px solid lightgrey;
   overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
