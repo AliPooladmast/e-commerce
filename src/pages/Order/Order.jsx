@@ -4,10 +4,24 @@ import NavBar from "../../components/NavBar/NavBar";
 import style from "./order.module.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Order = () => {
   const cart = useSelector((state) => state.cart);
   const { currentUser } = useSelector((state) => state.user);
+  const [select, setSelect] = useState({
+    phone: "defaultPhone",
+    address: "defaultAddress",
+  });
+  const [input, setInput] = useState({ phone: null, address: null });
+
+  const handleSelect = (e) => {
+    setSelect((prev) => ({ ...prev, [e.target.name]: e.target.id }));
+  };
+
+  const handleInput = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
     <div className={style.Container}>
@@ -59,6 +73,7 @@ const Order = () => {
                   name="phone"
                   type="radio"
                   id="defaultPhone"
+                  onChange={handleSelect}
                   defaultChecked
                 />
                 <label htmlFor="defaultPhone">Default phone:</label>
@@ -66,12 +81,18 @@ const Order = () => {
               </div>
 
               <div className={style.Option}>
-                <input name="phone" type="radio" id="newPhone" />
+                <input
+                  name="phone"
+                  type="radio"
+                  id="newPhone"
+                  onChange={handleSelect}
+                />
                 <label htmlFor="newPhone">New phone:</label>
                 <input
                   name="phone"
                   placeholder="new phone"
                   className={style.Phone}
+                  onChange={handleInput}
                 />
               </div>
             </div>
@@ -83,19 +104,26 @@ const Order = () => {
                   type="radio"
                   id="defaultAddress"
                   defaultChecked
+                  onChange={handleSelect}
                 />
                 <label htmlFor="defaultAddress">Default address:</label>
                 <span>{currentUser.address}</span>
               </div>
 
               <div className={style.Option}>
-                <input name="address" type="radio" id="newAddress" />
+                <input
+                  name="address"
+                  type="radio"
+                  id="newAddress"
+                  onChange={handleSelect}
+                />
                 <label htmlFor="newAddress">New address:</label>
                 <div>
                   <textarea
                     name="address"
                     placeholder="new address"
                     className={style.AddressText}
+                    onChange={handleInput}
                   />
                 </div>
               </div>
