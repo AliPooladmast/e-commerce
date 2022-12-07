@@ -120,32 +120,64 @@
   }
 }
 
-.Address {
+.UserInfo {
   flex: 1;
+}
+
+.InfoContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 10px;
-  margin-left: 50px;
+  margin: 10px 0 20px 30px;
+  border: 1px solid lightgrey;
+  width: fit-content;
+  padding: 20px 20px 10px 20px;
+  border-radius: 5px;
 
-  label {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 5px;
+  .Option {
+    margin-bottom: 10px;
+
+    > span {
+      color: darkblue;
+      font-size: 14px;
+    }
+
+    > input {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    > label {
+      margin-right: 5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .Phone {
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: auto;
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 
   .AddressText {
-    width: 500px;
+    width: 350px;
     resize: none;
-    height: 100px;
+    height: 60px;
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 14px;
+    margin-top: 5px;
 
     &:focus {
       outline: none;
-      box-shadow: styles.$shadow-light;
     }
   }
 }

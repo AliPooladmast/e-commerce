@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Order = () => {
   const cart = useSelector((state) => state.cart);
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <div className={style.Container}>
@@ -50,14 +51,55 @@ const Order = () => {
               </div>
             ))}
           </div>
-          <div className={style.Address}>
-            <label htmlFor="address">Address:</label>
-            <textarea
-              id="address"
-              name="address"
-              placeholder="input your address"
-              className={style.AddressText}
-            />
+
+          <div className={style.UserInfo}>
+            <div className={style.InfoContainer}>
+              <div className={style.Option}>
+                <input
+                  name="phone"
+                  type="radio"
+                  id="defaultPhone"
+                  defaultChecked
+                />
+                <label htmlFor="defaultPhone">Default phone:</label>
+                <span>{currentUser.phone}</span>
+              </div>
+
+              <div className={style.Option}>
+                <input name="phone" type="radio" id="newPhone" />
+                <label htmlFor="newPhone">New phone:</label>
+                <input
+                  name="phone"
+                  placeholder="new phone"
+                  className={style.Phone}
+                />
+              </div>
+            </div>
+
+            <div className={style.InfoContainer}>
+              <div className={style.Option}>
+                <input
+                  name="address"
+                  type="radio"
+                  id="defaultAddress"
+                  defaultChecked
+                />
+                <label htmlFor="defaultAddress">Default address:</label>
+                <span>{currentUser.address}</span>
+              </div>
+
+              <div className={style.Option}>
+                <input name="address" type="radio" id="newAddress" />
+                <label htmlFor="newAddress">New address:</label>
+                <div>
+                  <textarea
+                    name="address"
+                    placeholder="new address"
+                    className={style.AddressText}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
