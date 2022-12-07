@@ -93,6 +93,7 @@ const Order = () => {
                   placeholder="new phone"
                   className={style.Phone}
                   onChange={handleInput}
+                  disabled={select.phone === "defaultPhone"}
                 />
               </div>
             </div>
@@ -124,6 +125,7 @@ const Order = () => {
                     placeholder="new address"
                     className={style.AddressText}
                     onChange={handleInput}
+                    disabled={select.address === "defaultAddress"}
                   />
                 </div>
               </div>
