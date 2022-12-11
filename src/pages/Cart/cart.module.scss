@@ -53,6 +53,13 @@
   flex: 3;
   margin-right: 20px;
 
+  &--Empty {
+    @extend .Info;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 0 10px;
+  }
+
   hr {
     border: none;
     height: 1px;
@@ -213,4 +220,15 @@
 .CloseIcon {
   color: #000;
   font-size: 16px !important;
+}
+
+.EmptyCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  span {
+    margin-left: 5px;
+  }
 }
