@@ -2,11 +2,16 @@ import React from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./order.module.scss";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { userRequest } from "../../requestMethods";
+import { setMessage } from "../../redux/uxSlice";
+import { resetCart } from "../../redux/cartSlice";
 
 const Order = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { currentUser } = useSelector((state) => state.user);
   const [select, setSelect] = useState({
@@ -23,6 +28,48 @@ const Order = () => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handlePay = async () => {
+    const products = cart.products.map((item) => ({
+      productId: item._id,
+      quantity: item.quantity,
+    }));
+
+    try {
+      const res = await userRequest.post(
+        "checkout/create-session/" + currentUser._id,
+        {
+          products,
+          address:
+            select.address === "defaultAddress"
+              ? currentUser.address
+              : input.address,
+          phone:
+            select.phone === "defaultPhone" ? currentUser.phone : input.phone,
+        }
+      );
+
+      if (res.data === "paid") {
+        dispatch(
+          setMessage({
+            type: "success",
+            text: "order has been paid successfully",
+          })
+        );
+      } else {
+        dispatch(
+          setMessage({ type: "error", text: "order could have not been paid" })
+        );
+      }
+
+      dispatch(resetCart());
+      navigate("/");
+    } catch (err) {
+      dispatch(
+        setMessage({ type: "error", text: err?.response?.data?.toString() })
+      );
+    }
+  };
+
   return (
     <div className={style.Container}>
       <NavBar />
@@ -32,9 +79,10 @@ const Order = () => {
           <Link to="/cart">
             <button className={style.Button}>Back To Cart</button>
           </Link>
-          <Link to="/">
-            <button className={style["Button--filled"]}>Pay Now</button>
-          </Link>
+
+          <button className={style["Button--filled"]} onClick={handlePay}>
+            Pay Now
+          </button>
         </div>
         <div className={style.Bottom}>
           <div className={style.Info}>
