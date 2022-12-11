@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./order.module.scss";
@@ -36,15 +36,15 @@ const Order = () => {
 
     try {
       const res = await userRequest.post(
-        "checkout/create-session/" + currentUser._id,
+        "checkout/create-session/" + currentUser?._id,
         {
           products,
           address:
             select.address === "defaultAddress"
-              ? currentUser.address
+              ? currentUser?.address
               : input.address,
           phone:
-            select.phone === "defaultPhone" ? currentUser.phone : input.phone,
+            select.phone === "defaultPhone" ? currentUser?.phone : input.phone,
         }
       );
 
@@ -69,6 +69,12 @@ const Order = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/");
+    }
+  }, [currentUser]); //eslint-disable-line
 
   return (
     <div className={style.Container}>
@@ -125,7 +131,7 @@ const Order = () => {
                   defaultChecked
                 />
                 <label htmlFor="defaultPhone">Default phone:</label>
-                <span>{currentUser.phone}</span>
+                <span>{currentUser?.phone}</span>
               </div>
 
               <div className={style.Option}>
@@ -156,7 +162,7 @@ const Order = () => {
                   onChange={handleSelect}
                 />
                 <label htmlFor="defaultAddress">Default address:</label>
-                <span>{currentUser.address}</span>
+                <span>{currentUser?.address}</span>
               </div>
 
               <div className={style.Option}>
