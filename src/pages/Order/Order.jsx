@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { userRequest } from "../../requestMethods";
-import { setMessage } from "../../redux/uxSlice";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 import { resetCart } from "../../redux/cartSlice";
 
 const Order = () => {
@@ -35,6 +35,7 @@ const Order = () => {
     }));
 
     try {
+      dispatch(setLoading(true));
       const res = await userRequest.post(
         "checkout/create-session/" + currentUser?._id,
         {
@@ -48,21 +49,21 @@ const Order = () => {
         }
       );
 
-      if (res.data === "paid") {
+      if (res.data) {
         dispatch(
           setMessage({
-            type: "success",
-            text: "order has been paid successfully",
+            type: res.data === "paid" ? "success" : "error",
+            text:
+              res.data === "paid"
+                ? "order has been paid successfully"
+                : "order could have not been paid",
           })
         );
-      } else {
-        dispatch(
-          setMessage({ type: "error", text: "order could have not been paid" })
-        );
-      }
 
-      dispatch(resetCart());
-      navigate("/");
+        dispatch(resetCart());
+        navigate("/");
+        dispatch(setLoading(false));
+      }
     } catch (err) {
       dispatch(
         setMessage({ type: "error", text: err?.response?.data?.toString() })
