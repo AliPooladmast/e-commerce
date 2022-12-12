@@ -14,6 +14,7 @@ import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessage } from "./redux/uxSlice";
 import OrderList from "./pages/OrderList/OrderList";
+import Repay from "./pages/Repay/Repay";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -83,6 +84,11 @@ const App = () => {
               <Navigate to="/" replace />
             )
           }
+        />
+
+        <Route
+          path="/repay"
+          element={currentUser ? <Repay /> : <Navigate to="/" replace />}
         />
 
         <Route path="/orders" element={<OrderList />} />
