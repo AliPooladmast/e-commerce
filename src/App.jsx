@@ -6,7 +6,7 @@ import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
 import Success from "./pages/Success/Success";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import User from "./pages/User/User";
 import { forwardRef } from "react";
 import MuiAlert from "@mui/material/Alert";
@@ -22,7 +22,10 @@ const Alert = forwardRef(function Alert(props, ref) {
 const App = () => {
   const dispatch = useDispatch();
   const { message, loading: uxLoading } = useSelector((state) => state.ux);
-  const { isFetching: userLoading } = useSelector((state) => state.user);
+  const { currentUser, isFetching: userLoading } = useSelector(
+    (state) => state.user
+  );
+  const { products } = useSelector((state) => state.cart);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -71,7 +74,16 @@ const App = () => {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/order" element={<Order />} />
+        <Route
+          path="/order"
+          element={
+            currentUser && products.length > 0 ? (
+              <Order />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          }
+        />
 
         <Route path="/orders" element={<OrderList />} />
 

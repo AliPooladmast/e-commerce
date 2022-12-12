@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./order.module.scss";
@@ -64,12 +63,6 @@ const Order = () => {
       );
     }
   };
-
-  useEffect(() => {
-    if (!currentUser) {
-      navigate("/");
-    }
-  }, [currentUser]); //eslint-disable-line
 
   return (
     <div className={style.Container}>
