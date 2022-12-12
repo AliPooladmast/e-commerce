@@ -93,13 +93,15 @@ export const getOrders = async (dispatch, userId) => {
   }
 };
 
-export const deleteOrder = async (dispatch, id) => {
+export const deleteOrder = async (dispatch, userId, orderId) => {
   dispatch(orderStart());
   try {
-    const res = await userRequest.delete(`/orders/${id}`);
+    const res = await userRequest.delete(
+      `/orders/${userId}?orderId=${orderId}`
+    );
 
     if (res) {
-      dispatch(deleteOrderSuccess(id));
+      dispatch(deleteOrderSuccess(orderId));
       dispatch(
         setMessage({
           type: "success",

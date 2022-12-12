@@ -26,7 +26,7 @@ const Orders = () => {
 
   const handleConfirmDelete = () => {
     setShowModal(false);
-    deleteOrder(dispatch, selectedOrder?._id);
+    deleteOrder(dispatch, currentUser?._id, selectedOrder?._id);
   };
 
   const columns = [
