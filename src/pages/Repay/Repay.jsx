@@ -3,24 +3,26 @@ import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./repay.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { userRequest } from "../../requestMethods";
 import { setLoading, setMessage } from "../../redux/uxSlice";
-import { resetCart } from "../../redux/cartSlice";
 import OrderProductList from "../../components/OrderProductList/OrderProductList";
 import ContactConfirm from "../../components/ContactConfirm/ContactConfirm";
+import { deleteOrder } from "../../redux/apiCalls";
 
 const Repay = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.cart);
+  const location = useLocation();
+  const orderId = location.pathname.split("/")[2];
   const { currentUser } = useSelector((state) => state.user);
   const [select, setSelect] = useState({
     phone: "defaultPhone",
     address: "defaultAddress",
   });
   const [input, setInput] = useState({ phone: null, address: null });
+  const [products, setProducts] = useState([]);
 
   const handlePay = async () => {
     const secureProducts = products.map((item) => ({
@@ -54,7 +56,7 @@ const Repay = () => {
           })
         );
 
-        dispatch(resetCart());
+        deleteOrder(dispatch, currentUser?._id, orderId);
         navigate("/");
         dispatch(setLoading(false));
       }
@@ -66,10 +68,18 @@ const Repay = () => {
   };
 
   useEffect(() => {
-    if (!currentUser) {
-      navigate("/");
-    }
-  }, [currentUser]); //eslint-disable-line
+    const getOrderProducts = async () => {
+      try {
+        const res = await userRequest.get("/orders/products/" + orderId);
+        setProducts(res?.data);
+      } catch (err) {
+        dispatch(
+          setMessage({ type: "error", text: err?.response?.data?.toString() })
+        );
+      }
+    };
+    getOrderProducts();
+  }, []); //eslint-disable-line
 
   return (
     <div className={style.Container}>
