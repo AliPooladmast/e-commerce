@@ -87,7 +87,7 @@ const App = () => {
         />
 
         <Route
-          path="/repay"
+          path="/repay/:id"
           element={currentUser ? <Repay /> : <Navigate to="/" replace />}
         />
 
