@@ -1,0 +1,65 @@
+.Wrapper {
+  height: 90vh;
+}
+
+.Container {
+  box-sizing: border-box;
+  height: calc(90vh - 100px);
+  width: 100%;
+  padding: 20px;
+}
+
+.Title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  button {
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+    @media only screen and (max-width: 380px) {
+      font-size: 14px;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    @media only screen and (max-width: 380px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.Order {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.Edit {
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.Delete {
+  color: red;
+  cursor: pointer;
+}
