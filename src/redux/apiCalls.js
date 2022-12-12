@@ -80,10 +80,10 @@ export const editUser = async (dispatch, userId, user) => {
 };
 
 //Order API Calls
-export const getOrders = async (dispatch) => {
+export const getOrders = async (dispatch, userId) => {
   dispatch(orderStart());
   try {
-    const res = await userRequest.get("/orders");
+    const res = await userRequest.get("orders/find/" + userId);
     dispatch(getOrderSuccess(res?.data));
   } catch (err) {
     dispatch(orderFailure());
