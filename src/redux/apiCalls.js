@@ -1,4 +1,5 @@
 import { publicRequest, userRequest } from "../requestMethods";
+import { resetCart } from "./cartSlice";
 import {
   orderStart,
   addOrderSuccess,
@@ -117,18 +118,24 @@ export const deleteOrder = async (dispatch, userId, orderId) => {
   }
 };
 
-export const addOrder = async (dispatch, order) => {
+export const addStripeOrder = async (dispatch, userId, data) => {
   dispatch(orderStart());
   try {
-    const res = await userRequest.post("/orders", order);
+    const res = await userRequest.post(
+      "checkout/create-session/" + userId,
+      data
+    );
 
     if (res?.data) {
       dispatch(addOrderSuccess(res.data));
+      dispatch(resetCart());
       dispatch(
         setMessage({
-          type: "success",
+          type: res.data.status === "paid" ? "success" : "error",
           text:
-            res.data.title?.toString() + " order has been created successfully",
+            res.data.status === "paid"
+              ? "order has been paid successfully"
+              : "order could not been paid",
         })
       );
     }
