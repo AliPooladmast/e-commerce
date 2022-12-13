@@ -13,15 +13,15 @@ import {
 import Modal from "../../components/Modal/Modal";
 import ModalMessage from "../../components/ModalMessage/ModalMessage";
 
-const estimatedShipping = 5.9;
-const shoppingDiscount = -3.4;
-
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { currentUser } = useSelector((state) => state.user);
   const [displayModal, setDisplayModal] = useState(false);
+
+  const estimatedShipping = cart.products.length > 0 ? 5.9 : 0;
+  const shoppingDiscount = cart.products.length > 0 ? -3.4 : 0;
 
   const onDeleteProduct = (product) => {
     dispatch(deleteProduct(product));
