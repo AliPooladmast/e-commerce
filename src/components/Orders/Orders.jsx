@@ -64,7 +64,12 @@ const Orders = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/repay/" + params.row._id}>
+            <Link
+              to={
+                (params.row.status !== "paid" ? "/repay/" : "/editaddress/") +
+                params.row._id
+              }
+            >
               <button
                 className={style.Edit}
                 style={{
