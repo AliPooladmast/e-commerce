@@ -16,13 +16,13 @@ export const login = async (dispatch, user) => {
   dispatch(userStart());
   try {
     const res = await publicRequest.post("/auth/login", user);
-    if (res?.data) {
+    if (res) {
+      userRequest.defaults.headers.token = "Bearer " + res.data?.token;
       dispatch(loginSuccess(res.data));
-      userRequest.defaults.headers.token = "Bearer " + res.data.token;
       dispatch(
         setMessage({
           type: "success",
-          text: "welcome! " + res.data.username?.toString(),
+          text: "welcome! " + res.data?.username?.toString(),
         })
       );
     }
@@ -38,13 +38,13 @@ export const register = async (dispatch, user) => {
   dispatch(userStart());
   try {
     const res = await publicRequest.post("/auth/register", user);
-    if (res?.data) {
+    if (res) {
       dispatch(loginSuccess(res.data));
       dispatch(
         setMessage({
           type: "success",
           text:
-            res.data.username?.toString() +
+            res.data?.username?.toString() +
             " account has been created successfully",
         })
       );
@@ -61,13 +61,13 @@ export const editUser = async (dispatch, userId, user) => {
   dispatch(userStart());
   try {
     const res = await userRequest.put("/users/" + userId, user);
-    if (res?.data) {
+    if (res) {
       dispatch(loginSuccess(res.data));
       dispatch(
         setMessage({
           type: "success",
           text:
-            res.data.username?.toString() +
+            res.data?.username?.toString() +
             " account has been edited successfully",
         })
       );
@@ -126,14 +126,14 @@ export const addStripeOrder = async (dispatch, userId, data) => {
       data
     );
 
-    if (res?.data) {
-      dispatch(addOrderSuccess(res.data));
+    if (res) {
       dispatch(resetCart());
+      dispatch(addOrderSuccess(res.data));
       dispatch(
         setMessage({
-          type: res.data.status === "paid" ? "success" : "error",
+          type: res.data?.status === "paid" ? "success" : "error",
           text:
-            res.data.status === "paid"
+            res.data?.status === "paid"
               ? "order has been paid successfully"
               : "order could not been paid",
         })
@@ -155,7 +155,7 @@ export const editOrder = async (dispatch, userId, orderId, order) => {
       order
     );
 
-    if (res?.data) {
+    if (res) {
       dispatch(editOrderSuccess(res.data));
       dispatch(
         setMessage({
