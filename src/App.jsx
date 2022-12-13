@@ -5,7 +5,6 @@ import Login from "./pages/Login/Login";
 import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
-import Success from "./pages/Success/Success";
 import { Routes, Route, Navigate } from "react-router-dom";
 import User from "./pages/User/User";
 import { forwardRef } from "react";
@@ -102,8 +101,6 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
-
-        <Route path="/success" element={<Success />} />
 
         <Route path="/user" element={<User />} />
       </Routes>
