@@ -5,35 +5,107 @@ import Login from "./pages/Login/Login";
 import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
-import Success from "./pages/Success/Success";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import User from "./pages/User/User";
+import { forwardRef } from "react";
+import MuiAlert from "@mui/material/Alert";
+import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { setMessage } from "./redux/uxSlice";
+import OrderList from "./pages/OrderList/OrderList";
+import Repay from "./pages/Repay/Repay";
+import EditAddress from "./pages/EditAddress/EditAddress";
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { message, loading: uxLoading } = useSelector((state) => state.ux);
+  const { isFetching: orderLoading } = useSelector((state) => state.order);
+  const { currentUser, isFetching: userLoading } = useSelector(
+    (state) => state.user
+  );
+  const { products } = useSelector((state) => state.cart);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    dispatch(setMessage({ type: "info", text: null }));
+  };
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <>
+      {message?.text && (
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={Boolean(message)}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity={message?.type}
+            sx={{ width: "100%" }}
+          >
+            {message?.text}
+          </Alert>
+        </Snackbar>
+      )}
 
-      <Route path="/products" element={<ProductList />}>
-        <Route path=":category" element={<ProductList />} />
-      </Route>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={uxLoading || userLoading || orderLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
 
-      <Route path="/product" element={<Product />}>
-        <Route path=":id" element={<Product />} />
-      </Route>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Route path="/cart" element={<Cart />} />
+        <Route path="/products" element={<ProductList />}>
+          <Route path=":category" element={<ProductList />} />
+        </Route>
 
-      <Route path="/order" element={<Order />} />
+        <Route path="/product" element={<Product />}>
+          <Route path=":id" element={<Product />} />
+        </Route>
 
-      <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
 
-      <Route path="/register" element={<Register />} />
+        <Route
+          path="/order"
+          element={
+            currentUser && products.length > 0 ? (
+              <Order />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          }
+        />
 
-      <Route path="/success" element={<Success />} />
+        <Route
+          path="/repay/:id"
+          element={currentUser ? <Repay /> : <Navigate to="/" replace />}
+        />
 
-      <Route path="/user" element={<User />} />
-    </Routes>
+        <Route
+          path="/editaddress/:id"
+          element={currentUser ? <EditAddress /> : <Navigate to="/" replace />}
+        />
+
+        <Route path="/orders" element={<OrderList />} />
+
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/user" element={<User />} />
+      </Routes>
+    </>
   );
 };
 

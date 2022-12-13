@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import { addProduct } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 
 const Product = () => {
   const location = useLocation();
@@ -21,17 +22,24 @@ const Product = () => {
 
   useEffect(() => {
     const getProduct = async () => {
+      dispatch(setLoading(true));
       try {
         const res = await publicRequest.get("/products/find/" + id);
-        setProduct(res.data);
-        setColor(res.data?.color?.[0]);
-        setSize(res.data?.size?.[0]);
+        if (res) {
+          setProduct(res.data);
+          setColor(res.data?.color?.[0]);
+          setSize(res.data?.size?.[0]);
+          dispatch(setLoading(false));
+        }
       } catch (err) {
-        console.log(err);
+        dispatch(setLoading(false));
+        dispatch(
+          setMessage({ type: "error", text: err?.response?.data?.toString() })
+        );
       }
     };
     getProduct();
-  }, [id]);
+  }, [id, dispatch]);
 
   const handleQuantity = (type) => {
     if (type === "inc") {

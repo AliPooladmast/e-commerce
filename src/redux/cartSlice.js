@@ -40,9 +40,19 @@ const cartSlice = createSlice({
       state.products.find((item) => item._id === action.payload._id).quantity--;
       state.total -= action.payload.price;
     },
+    resetCart: (state) => {
+      state.products = [];
+      state.quantity = 0;
+      state.total = 0;
+    },
   },
 });
 
-export const { addProduct, deleteProduct, incrementProduct, decrementProduct } =
-  cartSlice.actions;
+export const {
+  addProduct,
+  deleteProduct,
+  incrementProduct,
+  decrementProduct,
+  resetCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

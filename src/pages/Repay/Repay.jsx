@@ -1,22 +1,27 @@
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import style from "./order.module.scss";
+import style from "./repay.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { userRequest } from "../../requestMethods";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 import OrderProductList from "../../components/OrderProductList/OrderProductList";
 import ContactConfirm from "../../components/ContactConfirm/ContactConfirm";
 import { addStripeOrder } from "../../redux/apiCalls";
 
-const Order = () => {
+const Repay = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.cart);
+  const location = useLocation();
+  const orderId = location.pathname.split("/")[2];
   const { currentUser } = useSelector((state) => state.user);
   const [select, setSelect] = useState({
     phone: "defaultPhone",
     address: "defaultAddress",
   });
   const [input, setInput] = useState({ phone: null, address: null });
+  const [products, setProducts] = useState([]);
 
   const handlePay = () => {
     const secureProducts = products.map((item) => ({
@@ -36,18 +41,37 @@ const Order = () => {
     addStripeOrder(dispatch, currentUser?._id, data);
   };
 
+  useEffect(() => {
+    const getOrderProducts = async () => {
+      dispatch(setLoading(true));
+      try {
+        const res = await userRequest.get("/orders/products/" + orderId);
+        if (res) {
+          setProducts(res.data);
+          dispatch(setLoading(false));
+        }
+      } catch (err) {
+        dispatch(setLoading(false));
+        dispatch(
+          setMessage({ type: "error", text: err?.response?.data?.toString() })
+        );
+      }
+    };
+    getOrderProducts();
+  }, []); //eslint-disable-line
+
   return (
     <div className={style.Container}>
       <NavBar />
       <div className={style.Wrapper}>
-        <h1>Order Confirmation</h1>
+        <h1>Repay Confirmation</h1>
         <div className={style.Top}>
-          <Link to="/cart">
-            <button className={style.Button}>Back To Cart</button>
+          <Link to="/orders">
+            <button className={style.Button}>Back To Orders</button>
           </Link>
 
           <button className={style["Button--filled"]} onClick={handlePay}>
-            Pay Now
+            Pay Again
           </button>
         </div>
         <div className={style.Bottom}>
@@ -65,4 +89,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default Repay;

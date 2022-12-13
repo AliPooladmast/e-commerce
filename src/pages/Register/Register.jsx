@@ -1,14 +1,14 @@
-import { Alert, Snackbar } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../redux/apiCalls";
 import style from "./register.module.scss";
+import { setMessage } from "../../redux/uxSlice";
 const Joi = require("joi");
 
 const schema = Joi.object({
   username: Joi.string().min(2).max(50).required(),
-  fullname: Joi.string().min(2).max(50),
+  fullname: Joi.string().min(5).max(50),
   phone: Joi.string().min(5).max(20),
   address: Joi.string().min(5).max(511),
   email: Joi.string()
@@ -18,62 +18,49 @@ const schema = Joi.object({
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
   password: Joi.string().min(5).max(1024).required(),
   confirmPassword: Joi.ref("password"),
-});
+}).with("password", "confirmPassword");
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentUser, error: serverError } = useSelector(
-    (state) => state.user
-  );
-  const [errorMessage, setErrorMessage] = useState(null);
+  const { currentUser } = useSelector((state) => state.user);
   const [input, setInput] = useState({});
-  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleInput = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setInput((prev) => {
+      if (e.target.value) {
+        return { ...prev, [e.target.name]: e.target.value };
+      } else {
+        delete prev[e.target.name];
+        return prev;
+      }
+    });
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     const { error: joiError } = schema.validate(input);
     if (joiError) {
-      setErrorMessage(joiError.details?.[0]?.message);
-      setShowSnackbar(true);
+      dispatch(
+        setMessage({
+          type: "error",
+          text: joiError.details?.[0]?.message?.toString(),
+        })
+      );
     } else {
       const { confirmPassword, ...others } = input;
       register(dispatch, others);
     }
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setShowSnackbar(false);
-  };
-
   useEffect(() => {
-    if (serverError) {
-      setErrorMessage(serverError);
-      setShowSnackbar(true);
-    } else if (currentUser) {
+    if (currentUser) {
       navigate("/");
     }
-  }, [currentUser, serverError]); //eslint-disable-line
+  }, [currentUser]); //eslint-disable-line
 
   return (
     <div className={style.Container}>
-      <Snackbar
-        open={showSnackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          {errorMessage}
-        </Alert>
-      </Snackbar>
       <div className={style.Wrapper}>
         <h1>CREATE AN ACCOUNT</h1>
         <form action="">

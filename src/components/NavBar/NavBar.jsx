@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import style from "./NavBar.module.scss";
 import { userRequest } from "../../requestMethods";
 import { logout } from "../../redux/userSlice";
+import { resetCart } from "../../redux/cartSlice";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(resetCart());
     userRequest.defaults.headers.token = "";
   };
 

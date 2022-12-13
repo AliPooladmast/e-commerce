@@ -31,6 +31,11 @@
   background-color: transparent;
   border-radius: 2px;
   box-shadow: styles.$shadow-light;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   &--filled {
     @extend .Button;
@@ -52,6 +57,13 @@
 .Info {
   flex: 3;
   margin-right: 20px;
+
+  &--Empty {
+    @extend .Info;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 0 10px;
+  }
 
   hr {
     border: none;
@@ -90,6 +102,11 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgb(0, 0, 150);
+      }
     }
   }
 }
@@ -213,4 +230,15 @@
 .CloseIcon {
   color: #000;
   font-size: 16px !important;
+}
+
+.EmptyCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  span {
+    margin-left: 5px;
+  }
 }

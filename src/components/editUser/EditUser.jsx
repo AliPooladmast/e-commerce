@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { editUser } from "../../redux/apiCalls";
 import {
   getStorage,
@@ -9,33 +9,30 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import { LinearProgressWithLabel } from "../linearProgress/LinearProgress";
+import noAvatar from "../../assets/icons/no-avatar.svg";
 import { Publish } from "@mui/icons-material";
 import style from "./editUser.module.scss";
-import AnonymousAvatar from "../../assests/icons/no-avatar.svg";
-import { Alert, Snackbar } from "@mui/material";
+import { setMessage } from "../../redux/uxSlice";
 const Joi = require("joi");
-const storage = getStorage(app);
 
 const schema = Joi.object({
-  username: Joi.string().min(2).max(50).required(),
-  fullname: Joi.string().min(2).max(50),
-  phone: Joi.string().min(5).max(20),
-  address: Joi.string().min(5).max(511),
+  username: Joi.string().min(2).max(50),
+  fullname: Joi.string().min(0).max(50),
+  phone: Joi.string().min(0).max(20),
+  address: Joi.string().min(0).max(511),
   email: Joi.string()
     .min(5)
     .max(255)
-    .required()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
 });
 
+const storage = getStorage(app);
+
 const EditUser = ({ user }) => {
-  const { error: serverError } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(user?.img);
   const [progress, setProgress] = useState(0);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleInput = (e) => {
     setDraftUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -81,7 +78,15 @@ const EditUser = ({ user }) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    const { username, email, fullname, phone, address, ...others } = draftUser;
+    const {
+      username,
+      email,
+      fullname,
+      phone,
+      address,
+      _id: userId,
+    } = draftUser;
+
     const { error: joiError } = schema.validate({
       username,
       email,
@@ -91,8 +96,12 @@ const EditUser = ({ user }) => {
     });
 
     if (joiError) {
-      setErrorMessage(joiError.details?.[0]?.message);
-      setShowSnackbar(true);
+      dispatch(
+        setMessage({
+          type: "error",
+          text: joiError.details?.[0]?.message?.toString(),
+        })
+      );
     } else {
       const editedUser = {
         username,
@@ -101,39 +110,14 @@ const EditUser = ({ user }) => {
         phone,
         address,
         img: image,
-        ...others,
       };
-      editUser(dispatch, editedUser);
+
+      editUser(dispatch, userId, editedUser);
     }
   };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setShowSnackbar(false);
-  };
-
-  useEffect(() => {
-    if (serverError) {
-      setErrorMessage(serverError);
-      setShowSnackbar(true);
-    }
-  }, [serverError]); //eslint-disable-line
 
   return (
     <div className={style.EditUser}>
-      <Snackbar
-        open={showSnackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          {errorMessage}
-        </Alert>
-      </Snackbar>
-
       <span className={style.Title}>Edit</span>
       <form className={style.Form}>
         <div className={style.Left}>
@@ -142,54 +126,56 @@ const EditUser = ({ user }) => {
             <input
               name="username"
               type="text"
-              placeholder={user.username}
+              value={draftUser?.username || ""}
               onChange={handleInput}
+              placeholder="username"
             />
           </div>
           <div className={style.Item}>
             <label>Full Name</label>
             <input
-              name="fullname"
               type="text"
-              placeholder={user.fullName || user.username}
+              value={draftUser?.fullname || ""}
+              name="fullname"
               onChange={handleInput}
+              placeholder="fullname"
             />
           </div>
           <div className={style.Item}>
             <label>Phone Number</label>
             <input
+              type="tel"
+              value={draftUser?.phone || ""}
               name="phone"
-              type="text"
-              placeholder={user.phoneNumber || "enter phone number"}
               onChange={handleInput}
+              placeholder="phone"
             />
           </div>
           <div className={style.Item}>
             <label>Email</label>
             <input
               name="email"
-              type="text"
-              placeholder={user.email}
+              type="email"
+              value={draftUser?.email || ""}
               onChange={handleInput}
+              placeholder="email"
             />
           </div>
           <div className={style.Item}>
             <label>Address</label>
             <input
-              name="address"
               type="text"
-              placeholder={user.address || "enter address"}
+              value={draftUser?.address || ""}
+              name="address"
               onChange={handleInput}
+              placeholder="address"
             />
           </div>
         </div>
         <div className={style.Right}>
           <div className={style.Upload}>
             <div className={style.ImageContainer}>
-              <img
-                src={image || user.img || AnonymousAvatar}
-                alt="edit profile"
-              />
+              <img src={image || noAvatar} alt="edit profile" />
               {Boolean(progress) && progress !== 100 ? (
                 <LinearProgressWithLabel value={progress} />
               ) : Boolean(progress) && progress === 100 ? (

@@ -1,20 +1,10 @@
-import fashionSet from "./assests/images/fashion-set.jpg";
-import girlSunDress from "./assests/images/girl-sundress.jpg";
-import menCoat from "./assests/images/men-coat.jpg";
-import girlSunGlasses from "./assests/images/girl-sunglass.jpg";
-import casualDress from "./assests/images/casual-dress.jpg";
-import fashionMen from "./assests/images/fashion-men.jpg";
-import formalDress from "./assests/images/formal-dress.jpg";
-// import menAccessories from "./assests/images/men-accessories.jpg";
-// import weddingDress from "./assests/images/wedding-dress.jpg";
-import allStar from "./assests/images/all-star.jpg";
-import bootShoe from "./assests/images/boot-shoe.jpg";
-import cap from "./assests/images/cap.jpg";
-import coats from "./assests/images/coats.jpg";
-import dress from "./assests/images/dress.jpg";
-import pants from "./assests/images/pants.jpg";
-import purse from "./assests/images/purse.jpg";
-import shirts from "./assests/images/shirts.jpg";
+import fashionSet from "./assets/images/fashion-set.jpg";
+import girlSunDress from "./assets/images/girl-sundress.jpg";
+import menCoat from "./assets/images/men-coat.jpg";
+import girlSunGlasses from "./assets/images/girl-sunglass.jpg";
+import casualDress from "./assets/images/casual-dress.jpg";
+import fashionMen from "./assets/images/fashion-men.jpg";
+import formalDress from "./assets/images/formal-dress.jpg";
 
 export const sliderItems = [
   {
@@ -61,40 +51,5 @@ export const categories = [
     img: formalDress,
     title: "Formal Dress",
     category: "formal",
-  },
-];
-
-export const popularProducts = [
-  {
-    id: 1,
-    img: allStar,
-  },
-  {
-    id: 2,
-    img: bootShoe,
-  },
-  {
-    id: 3,
-    img: cap,
-  },
-  {
-    id: 4,
-    img: coats,
-  },
-  {
-    id: 5,
-    img: dress,
-  },
-  {
-    id: 6,
-    img: pants,
-  },
-  {
-    id: 7,
-    img: purse,
-  },
-  {
-    id: 8,
-    img: shirts,
   },
 ];

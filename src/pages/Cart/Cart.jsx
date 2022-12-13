@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./cart.module.scss";
-import { Add, Close, Remove } from "@mui/icons-material";
+import { Add, Close, Remove, ShoppingCart } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -69,53 +69,68 @@ const Cart = () => {
           </Link>
         </div>
         <div className={style.Bottom}>
-          <div className={style.Info}>
-            {cart.products.map((product) => (
-              <div className={style.ProductContainer} key={product._id}>
-                <div className={style.Product}>
-                  <div className={style.ProductDetail}>
-                    <img src={product.img} alt="" />
-                    <div className={style.Detail}>
-                      <span>
-                        <b>Product:</b> {product.title}
-                      </span>
-                      <span className={style.ProductColor}>
-                        <b>Color:</b>
-                        <div style={{ backgroundColor: product.color }}></div>
-                      </span>
-                      <span>
-                        <b>Size:</b> {product.size}
-                      </span>
-                    </div>
-                  </div>
+          <div
+            className={
+              cart.products.length > 0 ? style.Info : style["Info--Empty"]
+            }
+          >
+            {cart.products.length > 0 ? (
+              <>
+                {cart.products.map((product) => (
+                  <div className={style.ProductContainer} key={product._id}>
+                    <div className={style.Product}>
+                      <div className={style.ProductDetail}>
+                        <img src={product.img} alt="" />
+                        <div className={style.Detail}>
+                          <span>
+                            <b>Product:</b> {product.title}
+                          </span>
+                          <span className={style.ProductColor}>
+                            <b>Color:</b>
+                            <div
+                              style={{ backgroundColor: product.color }}
+                            ></div>
+                          </span>
+                          <span>
+                            <b>Size:</b> {product.size}
+                          </span>
+                        </div>
+                      </div>
 
-                  <div className={style.PriceDetail}>
-                    <div className={style.AmountContainer}>
-                      <Remove
-                        className={style.ChangeValue}
-                        onClick={() => handleQuantity("dec", product)}
-                      />
-                      <span>{product.quantity}</span>
-                      <Add
-                        className={style.ChangeValue}
-                        onClick={() => handleQuantity("inc", product)}
-                      />
-                    </div>
+                      <div className={style.PriceDetail}>
+                        <div className={style.AmountContainer}>
+                          <Remove
+                            className={style.ChangeValue}
+                            onClick={() => handleQuantity("dec", product)}
+                          />
+                          <span>{product.quantity}</span>
+                          <Add
+                            className={style.ChangeValue}
+                            onClick={() => handleQuantity("inc", product)}
+                          />
+                        </div>
 
-                    <div className={style.ProductPrice}>
-                      $ {(product.price * product.quantity).toFixed(1)}
+                        <div className={style.ProductPrice}>
+                          $ {(product.price * product.quantity).toFixed(1)}
+                        </div>
+                      </div>
+                      <div
+                        className={style.IconContainer}
+                        onClick={() => onDeleteProduct(product)}
+                      >
+                        <Close className={style.CloseIcon} />
+                      </div>
                     </div>
+                    <hr />
                   </div>
-                  <div
-                    className={style.IconContainer}
-                    onClick={() => onDeleteProduct(product)}
-                  >
-                    <Close className={style.CloseIcon} />
-                  </div>
-                </div>
-                <hr />
+                ))}
+              </>
+            ) : (
+              <div className={style.EmptyCart}>
+                <ShoppingCart />
+                <span>Your cart is empty!</span>
               </div>
-            ))}
+            )}
           </div>
           <div className={style.Summary}>
             <h1>Order Summary</h1>
