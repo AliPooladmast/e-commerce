@@ -5,9 +5,9 @@ import Login from "./pages/Login/Login";
 import Product from "./pages/Product/Product";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import User from "./pages/User/User";
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import MuiAlert from "@mui/material/Alert";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +22,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 
 const App = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const { message, loading: uxLoading } = useSelector((state) => state.ux);
   const { isFetching: orderLoading } = useSelector((state) => state.order);
   const { currentUser, isFetching: userLoading } = useSelector(
@@ -36,6 +37,10 @@ const App = () => {
 
     dispatch(setMessage({ type: "info", text: null }));
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
