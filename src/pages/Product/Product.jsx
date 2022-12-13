@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import { addProduct } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
-import { setLoading } from "../../redux/uxSlice";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 
 const Product = () => {
   const location = useLocation();
@@ -32,8 +32,10 @@ const Product = () => {
           dispatch(setLoading(false));
         }
       } catch (err) {
-        console.log(err);
         dispatch(setLoading(false));
+        dispatch(
+          setMessage({ type: "error", text: err?.response?.data?.toString() })
+        );
       }
     };
     getProduct();

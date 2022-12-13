@@ -51,10 +51,10 @@ const Repay = () => {
           dispatch(setLoading(false));
         }
       } catch (err) {
+        dispatch(setLoading(false));
         dispatch(
           setMessage({ type: "error", text: err?.response?.data?.toString() })
         );
-        dispatch(setLoading(false));
       }
     };
     getOrderProducts();

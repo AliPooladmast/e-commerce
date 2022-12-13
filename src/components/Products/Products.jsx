@@ -1,7 +1,7 @@
 import { Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoading } from "../../redux/uxSlice";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
@@ -32,8 +32,10 @@ const Products = ({ category, filters, sort, newItems = false }) => {
           dispatch(setLoading(false));
         }
       } catch (err) {
-        console.log(err);
         dispatch(setLoading(false));
+        dispatch(
+          setMessage({ type: "error", text: err?.response?.data?.toString() })
+        );
       }
     };
     getProducts();
