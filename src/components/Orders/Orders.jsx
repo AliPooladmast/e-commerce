@@ -123,7 +123,6 @@ const Orders = () => {
           checkboxSelection
           disableSelectionOnClick
           getRowId={(row) => row._id}
-          loading={isFetching}
         />
       </div>
     </div>
