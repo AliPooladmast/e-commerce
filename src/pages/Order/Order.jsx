@@ -2,16 +2,13 @@ import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./order.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { userRequest } from "../../requestMethods";
-import { setLoading, setMessage } from "../../redux/uxSlice";
-import { resetCart } from "../../redux/cartSlice";
 import OrderProductList from "../../components/OrderProductList/OrderProductList";
 import ContactConfirm from "../../components/ContactConfirm/ContactConfirm";
+import { addStripeOrder } from "../../redux/apiCalls";
 
 const Order = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart);
   const { currentUser } = useSelector((state) => state.user);
@@ -27,41 +24,16 @@ const Order = () => {
       quantity: item.quantity,
     }));
 
-    try {
-      dispatch(setLoading(true));
-      const res = await userRequest.post(
-        "checkout/create-session/" + currentUser?._id,
-        {
-          products: secureProducts,
-          address:
-            select.address === "defaultAddress"
-              ? currentUser?.address
-              : input.address,
-          phone:
-            select.phone === "defaultPhone" ? currentUser?.phone : input.phone,
-        }
-      );
+    const data = {
+      products: secureProducts,
+      address:
+        select.address === "defaultAddress"
+          ? currentUser?.address
+          : input.address,
+      phone: select.phone === "defaultPhone" ? currentUser?.phone : input.phone,
+    };
 
-      if (res.data) {
-        dispatch(
-          setMessage({
-            type: res.data === "paid" ? "success" : "error",
-            text:
-              res.data === "paid"
-                ? "order has been paid successfully"
-                : "order could have not been paid",
-          })
-        );
-
-        dispatch(resetCart());
-        navigate("/");
-        dispatch(setLoading(false));
-      }
-    } catch (err) {
-      dispatch(
-        setMessage({ type: "error", text: err?.response?.data?.toString() })
-      );
-    }
+    addStripeOrder(dispatch, currentUser?._id, data);
   };
 
   return (
