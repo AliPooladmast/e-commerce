@@ -140,18 +140,20 @@ export const addOrder = async (dispatch, order) => {
   }
 };
 
-export const editOrder = async (dispatch, orderId, order) => {
+export const editOrder = async (dispatch, userId, orderId, order) => {
   dispatch(orderStart());
   try {
-    const res = await userRequest.put("/orders/" + orderId, order);
+    const res = await userRequest.put(
+      `/orders/${userId}?orderId=${orderId}`,
+      order
+    );
 
     if (res?.data) {
       dispatch(editOrderSuccess(res.data));
       dispatch(
         setMessage({
           type: "success",
-          text:
-            res.data.title?.toString() + " order has been edited successfully",
+          text: "order address has been edited successfully",
         })
       );
     }
