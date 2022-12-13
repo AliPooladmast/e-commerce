@@ -160,7 +160,9 @@ const Cart = () => {
             </div>
 
             <div className={style.CheckoutButton}>
-              <button onClick={handleCheckout}>CHECKOUT NOW</button>
+              {cart.products.length > 0 && (
+                <button onClick={handleCheckout}>CHECKOUT NOW</button>
+              )}
             </div>
           </div>
         </div>
