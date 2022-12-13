@@ -14,8 +14,8 @@ const Products = ({ category, filters, sort, newItems = false }) => {
 
   useEffect(() => {
     const getProducts = async () => {
+      dispatch(setLoading(true));
       try {
-        dispatch(setLoading(true));
         const res = await publicRequest(
           newItems
             ? "http://localhost:5000/api/products?new=true"
@@ -26,13 +26,14 @@ const Products = ({ category, filters, sort, newItems = false }) => {
                 `&title=${filters?.title || ""}` +
                 `&sort=${sort || ""}`
         );
-        if (res?.data) {
-          setProducts(res.data.products);
-          setPageCounts(res.data.pageCounts);
+        if (res) {
+          setProducts(res.data?.products);
+          setPageCounts(res.data?.pageCounts);
           dispatch(setLoading(false));
         }
       } catch (err) {
         console.log(err);
+        dispatch(setLoading(false));
       }
     };
     getProducts();

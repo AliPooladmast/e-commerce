@@ -18,7 +18,7 @@ const Order = () => {
   });
   const [input, setInput] = useState({ phone: null, address: null });
 
-  const handlePay = async () => {
+  const handlePay = () => {
     const secureProducts = products.map((item) => ({
       productId: item._id,
       quantity: item.quantity,

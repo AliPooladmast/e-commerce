@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { userRequest } from "../../requestMethods";
-import { setMessage } from "../../redux/uxSlice";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 import OrderProductList from "../../components/OrderProductList/OrderProductList";
 import ContactConfirm from "../../components/ContactConfirm/ContactConfirm";
 import { addStripeOrder } from "../../redux/apiCalls";
@@ -23,7 +23,7 @@ const Repay = () => {
   const [input, setInput] = useState({ phone: null, address: null });
   const [products, setProducts] = useState([]);
 
-  const handlePay = async () => {
+  const handlePay = () => {
     const secureProducts = products.map((item) => ({
       productId: item._id,
       quantity: item.quantity,
@@ -43,13 +43,18 @@ const Repay = () => {
 
   useEffect(() => {
     const getOrderProducts = async () => {
+      dispatch(setLoading(true));
       try {
         const res = await userRequest.get("/orders/products/" + orderId);
-        setProducts(res?.data);
+        if (res) {
+          setProducts(res.data);
+          dispatch(setLoading(false));
+        }
       } catch (err) {
         dispatch(
           setMessage({ type: "error", text: err?.response?.data?.toString() })
         );
+        dispatch(setLoading(false));
       }
     };
     getOrderProducts();

@@ -22,10 +22,10 @@ const Product = () => {
 
   useEffect(() => {
     const getProduct = async () => {
+      dispatch(setLoading(true));
       try {
-        dispatch(setLoading(true));
         const res = await publicRequest.get("/products/find/" + id);
-        if (res?.data) {
+        if (res) {
           setProduct(res.data);
           setColor(res.data?.color?.[0]);
           setSize(res.data?.size?.[0]);
@@ -33,6 +33,7 @@ const Product = () => {
         }
       } catch (err) {
         console.log(err);
+        dispatch(setLoading(false));
       }
     };
     getProduct();

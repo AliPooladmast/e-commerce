@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { userRequest } from "../../requestMethods";
-import { setMessage } from "../../redux/uxSlice";
+import { setLoading, setMessage } from "../../redux/uxSlice";
 import OrderProductList from "../../components/OrderProductList/OrderProductList";
 import ContactConfirm from "../../components/ContactConfirm/ContactConfirm";
 import { editOrder } from "../../redux/apiCalls";
@@ -37,13 +37,18 @@ const EditAddress = () => {
 
   useEffect(() => {
     const getOrderProducts = async () => {
+      dispatch(setLoading(true));
       try {
         const res = await userRequest.get("/orders/products/" + orderId);
-        setProducts(res?.data);
+        if (res) {
+          setProducts(res.data);
+          dispatch(setLoading(false));
+        }
       } catch (err) {
         dispatch(
           setMessage({ type: "error", text: err?.response?.data?.toString() })
         );
+        dispatch(setLoading(false));
       }
     };
     getOrderProducts();
