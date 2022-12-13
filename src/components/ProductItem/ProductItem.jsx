@@ -1,9 +1,24 @@
 import { ShoppingCartOutlined, SearchOutlined } from "@mui/icons-material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addProduct } from "../../redux/cartSlice";
 import style from "./ProductItem.module.scss";
 
 const ProductItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddClick = () => {
+    dispatch(
+      addProduct({
+        ...item,
+        quantity: 1,
+        size: item.size[0],
+        color: item.color[0],
+      })
+    );
+  };
+
   return (
     <div className={style.Wrapper}>
       <div className={style.Container}>
@@ -11,7 +26,7 @@ const ProductItem = ({ item }) => {
           <img src={item.img} alt="" />
         </div>
         <div className={style.Info}>
-          <div>
+          <div onClick={handleAddClick}>
             <ShoppingCartOutlined />
           </div>
           <div>
