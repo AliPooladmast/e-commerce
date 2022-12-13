@@ -23,6 +23,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 const App = () => {
   const dispatch = useDispatch();
   const { message, loading: uxLoading } = useSelector((state) => state.ux);
+  const { isFetching: orderLoading } = useSelector((state) => state.order);
   const { currentUser, isFetching: userLoading } = useSelector(
     (state) => state.user
   );
@@ -57,7 +58,7 @@ const App = () => {
 
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={uxLoading || userLoading}
+        open={uxLoading || userLoading || orderLoading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
