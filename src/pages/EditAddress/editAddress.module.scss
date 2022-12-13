@@ -1,0 +1,56 @@
+@use "src/styles";
+
+.Wrapper {
+  padding: 20px;
+  background-color: #f7fafa;
+  min-height: 70vh;
+  padding-bottom: 50px;
+
+  @media only screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  > h1 {
+    font-weight: 300;
+    text-align: center;
+  }
+}
+
+.Top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.Button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 2px;
+  box-shadow: styles.$shadow-light;
+  width: 150px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &--filled {
+    @extend .Button;
+    border: none;
+    background-color: darkblue;
+    color: white;
+  }
+}
+
+.Bottom {
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
