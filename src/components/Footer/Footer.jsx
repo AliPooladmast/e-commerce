@@ -11,6 +11,7 @@ import React from "react";
 import style from "./Footer.module.scss";
 import paymentMethods from "../../assets/images/payment-methods.jpg";
 import { Link } from "react-router-dom";
+import { categories } from "../../data";
 
 function Footer() {
   return (
@@ -72,10 +73,20 @@ function Footer() {
               Cart
             </Link>
           </li>
-          <li>Men Fashion</li>
-          <li>Women Fashion</li>
-          <li>Accessories</li>
-          <li>My Account</li>
+
+          {categories.map((item) => (
+            <li key={item.id}>
+              <Link to={`products/${item.category}`} className={style.Link}>
+                {item.title}
+              </Link>
+            </li>
+          ))}
+
+          <li>
+            <Link to="/user" className={style.Link}>
+              My Account
+            </Link>
+          </li>
         </ul>
       </div>
       <div className={style.Right}>
