@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMessage } from "./redux/uxSlice";
 import OrderList from "./pages/OrderList/OrderList";
 import Repay from "./pages/Repay/Repay";
+import EditAddress from "./pages/EditAddress/EditAddress";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -89,6 +90,11 @@ const App = () => {
         <Route
           path="/repay/:id"
           element={currentUser ? <Repay /> : <Navigate to="/" replace />}
+        />
+
+        <Route
+          path="/editaddress/:id"
+          element={currentUser ? <EditAddress /> : <Navigate to="/" replace />}
         />
 
         <Route path="/orders" element={<OrderList />} />
