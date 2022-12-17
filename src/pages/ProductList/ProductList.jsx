@@ -46,12 +46,12 @@ function ProductList() {
             <option value="color" hidden>
               Color
             </option>
-            <option value="white">White</option>
-            <option value="black">Black</option>
-            <option value="red">Red</option>
-            <option value="yellow">Yellow</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Red">Red</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
           </select>
 
           <select

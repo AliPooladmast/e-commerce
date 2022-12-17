@@ -1,9 +1,12 @@
 import { Avatar, Badge } from "@mui/material";
 import {
+  Home,
   HowToReg,
+  LocalMall,
   Login,
   Logout,
   Person,
+  PlaylistAddCheck,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import React from "react";
@@ -47,8 +50,28 @@ const NavBar = () => {
           </div>
         </Link>
 
+        <Link to="/" className={style.Link}>
+          <div className={style.Item}>
+            <Home />
+            <span>Home</span>
+          </div>
+        </Link>
+
+        <Link to="/products" className={style.Link}>
+          <div className={style.Item}>
+            <LocalMall />
+            <span>Products</span>
+          </div>
+        </Link>
+
         {currentUser ? (
           <>
+            <Link to="/orders" className={style.Link}>
+              <div className={style.Item}>
+                <PlaylistAddCheck />
+                <span>Orders</span>
+              </div>
+            </Link>
             <div className={style.Item} onClick={handleLogout}>
               <Logout />
               <span>Logout</span>
