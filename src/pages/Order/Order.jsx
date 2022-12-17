@@ -21,6 +21,8 @@ const Order = () => {
   const handlePay = () => {
     const secureProducts = products.map((item) => ({
       productId: item._id,
+      size: item.size,
+      color: item.color,
       quantity: item.quantity,
     }));
 
