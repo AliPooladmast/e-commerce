@@ -23,16 +23,18 @@ const NavBar = () => {
           currentUser={currentUser}
         />
 
-        <div className={style.Item}>
-          <span className={style.Title}>{currentUser.username}</span>
-          <Avatar
-            sx={{ width: 40, height: 40 }}
-            src={currentUser.img}
-            alt={currentUser.username}
-          >
-            {currentUser.username.charAt(0).toUpperCase()}
-          </Avatar>
-        </div>
+        {currentUser && (
+          <div className={style.Item}>
+            <span className={style.Title}>{currentUser.username}</span>
+            <Avatar
+              sx={{ width: 40, height: 40 }}
+              src={currentUser.img}
+              alt={currentUser.username}
+            >
+              {currentUser.username.charAt(0).toUpperCase()}
+            </Avatar>
+          </div>
+        )}
       </div>
 
       <Menu
