@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   message: { type: "info", text: null },
   loading: false,
+  displaySideMenu: false,
 };
 
 const styleSlice = createSlice({
@@ -15,8 +16,11 @@ const styleSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    sideMenuToggle: (state) => {
+      state.displaySideMenu = !state.displaySideMenu;
+    },
   },
 });
 
-export const { setMessage, setLoading } = styleSlice.actions;
+export const { setMessage, setLoading, sideMenuToggle } = styleSlice.actions;
 export default styleSlice.reducer;
