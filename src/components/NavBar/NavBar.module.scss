@@ -11,9 +11,8 @@
   justify-content: space-between;
   align-items: center;
 
-  @media only screen and (max-width: 600px) {
-    height: 50px;
-    padding: 10px 0;
+  @media only screen and (max-width: 380px) {
+    padding: 10px;
   }
 }
 
@@ -28,7 +27,6 @@
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
-  margin-right: 20px;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -40,10 +38,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
-  @media only screen and (max-width: 600px) {
-    margin-right: 15px;
-  }
 }
 
 .MenuContainer {
@@ -64,15 +58,15 @@
 
   .Title {
     margin-right: 5px;
+    display: inline-block;
+
+    @media only screen and (max-width: 380px) {
+      display: none;
+    }
   }
 
   &:hover {
     color: lightgrey;
-  }
-
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-    margin-left: 10px;
   }
 }
 
@@ -85,5 +79,9 @@
 
   @media only screen and (max-width: 800px) {
     display: block !important;
+  }
+
+  @media only screen and (max-width: 380px) {
+    margin-left: 10px;
   }
 }
