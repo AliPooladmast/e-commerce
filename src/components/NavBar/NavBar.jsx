@@ -4,9 +4,10 @@ import style from "./NavBar.module.scss";
 import { sideMenuToggle } from "../../redux/uxSlice";
 import PageMenu from "../PageMenu/PageMenu";
 import { Avatar } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { displaySideMenu } = useSelector((state) => state.ux);
@@ -25,12 +26,18 @@ const NavBar = () => {
           <PageMenu
             ItemClassName={style.Item}
             TitlesClassName={style.Title}
+            SelectedClassName={style.Selected}
             currentUser={currentUser}
           />
         </div>
 
         {currentUser && (
-          <div className={style.Item} onClick={() => navigate("/user")}>
+          <div
+            className={`${style.Item} ${
+              location.pathname === "/user" ? style.Selected : ""
+            }`}
+            onClick={() => navigate("/user")}
+          >
             <span className={style.Title}>{currentUser.username}</span>
             <Avatar
               sx={{ width: 40, height: 40 }}
