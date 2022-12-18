@@ -46,6 +46,14 @@
   }
 }
 
+.MenuContainer {
+  display: flex;
+
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
 .Item {
   cursor: pointer;
   margin-left: 15px;
@@ -75,7 +83,7 @@
   font-size: 26px;
   cursor: pointer;
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 800px) {
     display: block !important;
   }
 }

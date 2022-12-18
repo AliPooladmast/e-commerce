@@ -17,11 +17,13 @@ const NavBar = () => {
       </div>
 
       <div className={style.Right}>
-        <PageMenu
-          ItemClassName={style.Item}
-          TitlesClassName={style.Title}
-          currentUser={currentUser}
-        />
+        <div className={style.MenuContainer}>
+          <PageMenu
+            ItemClassName={style.Item}
+            TitlesClassName={style.Title}
+            currentUser={currentUser}
+          />
+        </div>
 
         {currentUser && (
           <div className={style.Item}>
