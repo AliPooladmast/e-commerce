@@ -5,11 +5,9 @@ import {
   LocalMall,
   Login,
   Logout,
-  Person,
   PlaylistAddCheck,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./NavBar.module.scss";
@@ -35,9 +33,11 @@ const NavBar = () => {
           <h1 className={style.Logo}>E-Shop Client</h1>
         </Link>
       </div>
+
       <div className={style.Right}>
         <Link to="/cart" className={style.Link}>
           <div className={style.Item}>
+            <span className={style.Title}>Cart</span>
             <Badge
               badgeContent={quantity}
               color="primary"
@@ -46,21 +46,20 @@ const NavBar = () => {
             >
               <ShoppingCartOutlined />
             </Badge>
-            <span>Cart</span>
           </div>
         </Link>
 
         <Link to="/" className={style.Link}>
           <div className={style.Item}>
+            <span className={style.Title}>Home</span>
             <Home />
-            <span>Home</span>
           </div>
         </Link>
 
         <Link to="/products" className={style.Link}>
           <div className={style.Item}>
+            <span className={style.Title}>Products</span>
             <LocalMall />
-            <span>Products</span>
           </div>
         </Link>
 
@@ -68,18 +67,26 @@ const NavBar = () => {
           <>
             <Link to="/orders" className={style.Link}>
               <div className={style.Item}>
+                <span className={style.Title}>Orders</span>
                 <PlaylistAddCheck />
-                <span>Orders</span>
               </div>
             </Link>
+
             <div className={style.Item} onClick={handleLogout}>
+              <span className={style.Title}>Logout</span>
               <Logout />
-              <span>Logout</span>
             </div>
+
             <Link to="/user" className={style.Link}>
               <div className={style.Item}>
-                <Person />
-                <span>{currentUser?.username}</span>
+                <span className={style.Title}>{currentUser.username}</span>
+                <Avatar
+                  sx={{ width: 40, height: 40 }}
+                  src={currentUser.img}
+                  alt={currentUser.username}
+                >
+                  {currentUser.username.charAt(0).toUpperCase()}
+                </Avatar>
               </div>
             </Link>
           </>
@@ -87,29 +94,18 @@ const NavBar = () => {
           <>
             <Link to="/register" className={style.Link}>
               <div className={style.Item}>
+                <span className={style.Title}>Register</span>
                 <HowToReg />
-                <span>Register</span>
               </div>
             </Link>
+
             <Link to="/login" className={style.Link}>
               <div className={style.Item}>
+                <span className={style.Title}>Sign In</span>
                 <Login />
-                <span>Sign In</span>
               </div>
             </Link>
           </>
-        )}
-
-        {currentUser && (
-          <div className={style.Item}>
-            <Avatar
-              sx={{ width: 40, height: 40 }}
-              src={currentUser.img}
-              alt={currentUser.username}
-            >
-              {currentUser.username.charAt(0).toUpperCase()}
-            </Avatar>
-          </div>
         )}
       </div>
     </div>
