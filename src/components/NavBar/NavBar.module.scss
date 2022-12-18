@@ -68,7 +68,14 @@
   }
 }
 
-.Link {
-  text-decoration: none;
-  color: inherit;
+.Menu {
+  display: none !important;
+  color: #fff;
+  margin-left: 15px;
+  font-size: 26px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 850px) {
+    display: block !important;
+  }
 }

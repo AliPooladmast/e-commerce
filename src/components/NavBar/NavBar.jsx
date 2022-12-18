@@ -1,113 +1,48 @@
-import { Avatar, Badge } from "@mui/material";
-import {
-  Home,
-  HowToReg,
-  LocalMall,
-  Login,
-  Logout,
-  PlaylistAddCheck,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import style from "./NavBar.module.scss";
-import { userRequest } from "../../requestMethods";
-import { logout } from "../../redux/userSlice";
-import { resetCart } from "../../redux/cartSlice";
+import { sideMenuToggle } from "../../redux/uxSlice";
+import PageMenu from "../PageMenu/PageMenu";
+import { Avatar } from "@mui/material";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const quantity = useSelector((state) => state.cart.quantity);
+  const { displaySideMenu } = useSelector((state) => state.ux);
   const { currentUser } = useSelector((state) => state.user);
-
-  const handleLogout = () => {
-    dispatch(logout());
-    dispatch(resetCart());
-    userRequest.defaults.headers.token = "";
-  };
 
   return (
     <div className={style.Container}>
       <div className={style.Left}>
-        <Link to="/" className={style.Link}>
-          <h1 className={style.Logo}>E-Shop Client</h1>
-        </Link>
+        <h1 className={style.Logo}>E-Shop Client</h1>
       </div>
 
       <div className={style.Right}>
-        <Link to="/cart" className={style.Link}>
-          <div className={style.Item}>
-            <span className={style.Title}>Cart</span>
-            <Badge
-              badgeContent={quantity}
-              color="primary"
-              overlap="rectangular"
-              className={style.Badge}
-            >
-              <ShoppingCartOutlined />
-            </Badge>
-          </div>
-        </Link>
+        <PageMenu
+          ItemClassName={style.Item}
+          TitlesClassName={style.Title}
+          currentUser={currentUser}
+        />
 
-        <Link to="/" className={style.Link}>
-          <div className={style.Item}>
-            <span className={style.Title}>Home</span>
-            <Home />
-          </div>
-        </Link>
-
-        <Link to="/products" className={style.Link}>
-          <div className={style.Item}>
-            <span className={style.Title}>Products</span>
-            <LocalMall />
-          </div>
-        </Link>
-
-        {currentUser ? (
-          <>
-            <Link to="/orders" className={style.Link}>
-              <div className={style.Item}>
-                <span className={style.Title}>Orders</span>
-                <PlaylistAddCheck />
-              </div>
-            </Link>
-
-            <div className={style.Item} onClick={handleLogout}>
-              <span className={style.Title}>Logout</span>
-              <Logout />
-            </div>
-
-            <Link to="/user" className={style.Link}>
-              <div className={style.Item}>
-                <span className={style.Title}>{currentUser.username}</span>
-                <Avatar
-                  sx={{ width: 40, height: 40 }}
-                  src={currentUser.img}
-                  alt={currentUser.username}
-                >
-                  {currentUser.username.charAt(0).toUpperCase()}
-                </Avatar>
-              </div>
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/register" className={style.Link}>
-              <div className={style.Item}>
-                <span className={style.Title}>Register</span>
-                <HowToReg />
-              </div>
-            </Link>
-
-            <Link to="/login" className={style.Link}>
-              <div className={style.Item}>
-                <span className={style.Title}>Sign In</span>
-                <Login />
-              </div>
-            </Link>
-          </>
-        )}
+        <div className={style.Item}>
+          <span className={style.Title}>{currentUser.username}</span>
+          <Avatar
+            sx={{ width: 40, height: 40 }}
+            src={currentUser.img}
+            alt={currentUser.username}
+          >
+            {currentUser.username.charAt(0).toUpperCase()}
+          </Avatar>
+        </div>
       </div>
+
+      <Menu
+        className={style.Menu}
+        style={{
+          transform: displaySideMenu ? "rotate(90deg)" : "",
+          transition: "transform 0.3s",
+        }}
+        onClick={() => dispatch(sideMenuToggle())}
+      />
     </div>
   );
 };
