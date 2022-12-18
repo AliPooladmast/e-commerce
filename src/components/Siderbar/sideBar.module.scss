@@ -11,11 +11,11 @@
   overflow: hidden;
   box-shadow: styles.$shadow;
   transition: 0.3s;
+  max-width: 300px;
 
   &--Open {
     @extend .SideBar;
-    width: 30vw;
-    min-width: 180px;
+    width: 60vw;
   }
 }
 
