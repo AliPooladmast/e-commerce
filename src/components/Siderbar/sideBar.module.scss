@@ -14,7 +14,8 @@
 
   &--Open {
     @extend .SideBar;
-    width: 50vw;
+    width: 30vw;
+    min-width: 180px;
   }
 }
 
