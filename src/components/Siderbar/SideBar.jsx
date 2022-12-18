@@ -29,6 +29,7 @@ const SideBar = () => {
             <PageMenu
               ItemClassName={style.Item}
               TitlesClassName={style.Title}
+              SelectedClassName={style.Selected}
               currentUser={currentUser}
             />
           </div>
