@@ -1,0 +1,48 @@
+@use "src/styles";
+
+.SideBar {
+  background-color: rgb(245, 245, 245);
+  position: fixed;
+  top: 60px;
+  right: 0;
+  z-index: 40;
+  width: 0;
+  height: 100vh;
+  overflow: hidden;
+  box-shadow: styles.$shadow;
+  transition: 0.3s;
+
+  &--Open {
+    @extend .SideBar;
+    width: 50vw;
+  }
+}
+
+.Wrapper {
+  padding: 20px;
+  color: teal;
+}
+
+.Menu {
+  .Item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(230, 230, 230);
+    }
+
+    .Selected {
+      background-color: rgb(210, 210, 210);
+    }
+  }
+
+  .Title {
+    margin-right: 10px;
+  }
+}
