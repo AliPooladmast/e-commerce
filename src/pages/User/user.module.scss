@@ -1,5 +1,9 @@
 @use "src/styles";
 
+.UserComponent * {
+  box-sizing: border-box;
+}
+
 .UserComponent {
   padding: 30px 30px 50px 30px;
   background-color: #f7fafa;
