@@ -6,11 +6,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 10px 0 20px 30px;
+  margin: 20px;
   border: 1px solid lightgrey;
-  width: fit-content;
   padding: 20px 20px 10px 20px;
   border-radius: 5px;
+  max-width: 400px;
 
   .Option {
     margin-bottom: 10px;
@@ -23,6 +23,10 @@
     > input {
       margin-right: 5px;
       cursor: pointer;
+
+      @media only screen and (max-width: 450px) {
+        margin-top: 5px;
+      }
     }
 
     > label {
@@ -38,6 +42,10 @@
       font-size: 14px;
       cursor: auto;
 
+      @media only screen and (max-width: 450px) {
+        width: 45vw;
+      }
+
       &:focus {
         outline: none;
       }
@@ -45,7 +53,7 @@
   }
 
   .AddressText {
-    width: 350px;
+    width: 250px;
     resize: none;
     height: 60px;
     border: 1px solid lightgrey;
@@ -53,6 +61,10 @@
     padding: 10px;
     font-size: 14px;
     margin-top: 5px;
+
+    @media only screen and (max-width: 450px) {
+      width: 45vw;
+    }
 
     &:focus {
       outline: none;
