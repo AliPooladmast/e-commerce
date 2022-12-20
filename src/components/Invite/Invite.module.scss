@@ -12,6 +12,10 @@
   h1 {
     font-size: 40px;
     margin-bottom: 20px;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 30px;
+    }
   }
 
   button {
@@ -24,6 +28,10 @@
     font-size: 20px;
     box-shadow: styles.$shadow;
 
+    @media only screen and (max-width: 600px) {
+      font-size: 16px;
+    }
+
     &:hover {
       background-color: rgb(0, 156, 156);
     }
@@ -34,8 +42,10 @@
   font-size: 24px;
   margin-bottom: 30px;
   font-weight: 300;
+  padding: 0 20px;
 
   @media only screen and (max-width: 600px) {
     text-align: center;
+    font-size: 20px;
   }
 }
