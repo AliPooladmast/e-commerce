@@ -61,6 +61,11 @@
     cursor: pointer;
     margin-bottom: 5px;
 
+    @media only screen and (max-width: 380px) {
+      width: 70px;
+      padding: 10px;
+    }
+
     &:disabled {
       background-color: rgb(56, 192, 192);
       cursor: not-allowed;
