@@ -26,7 +26,13 @@ const Slider = () => {
         {sliderItems.map((item) => (
           <div className={style.Slide} key={item.id}>
             <div className={style.ImgContainer}>
-              <img className={style.Image} src={item.img} alt="a fashion set" />
+              <img
+                className={style.Image}
+                src={item.img}
+                srcset={`${item.imgMobile} 300w, ${item.img} 700w`}
+                sizes="(max-width: 850px) 300px, 700px"
+                alt="slider photo"
+              />
             </div>
 
             <div className={style.InfoContainer}>
