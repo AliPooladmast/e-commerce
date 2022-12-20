@@ -11,9 +11,8 @@
   justify-content: space-between;
   align-items: center;
 
-  @media only screen and (max-width: 600px) {
-    height: 50px;
-    padding: 10px 0;
+  @media only screen and (max-width: 380px) {
+    padding: 10px;
   }
 }
 
@@ -28,7 +27,6 @@
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
-  margin-right: 20px;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -40,9 +38,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
 
-  @media only screen and (max-width: 600px) {
-    margin-right: 15px;
+.MenuContainer {
+  display: flex;
+
+  @media only screen and (max-width: 800px) {
+    display: none;
   }
 }
 
@@ -54,21 +56,36 @@
   display: flex;
   align-items: center;
 
-  span {
-    margin-left: 5px;
+  .Title {
+    margin-right: 5px;
+    display: inline-block;
+
+    @media only screen and (max-width: 380px) {
+      display: none;
+    }
   }
 
   &:hover {
     color: lightgrey;
   }
+}
 
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
+.Menu {
+  display: none !important;
+  color: #fff;
+  margin-left: 15px;
+  font-size: 26px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 800px) {
+    display: block !important;
+  }
+
+  @media only screen and (max-width: 380px) {
     margin-left: 10px;
   }
 }
 
-.Link {
-  text-decoration: none;
-  color: inherit;
+.Selected {
+  color: gold;
 }

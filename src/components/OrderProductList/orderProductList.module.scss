@@ -1,6 +1,10 @@
 .Info {
   flex: 1;
 
+  @media only screen and (max-width: 850px) {
+    margin-bottom: 20px;
+  }
+
   hr {
     border: none;
     height: 1px;
@@ -13,10 +17,6 @@
   justify-content: space-between;
   align-items: center;
   margin: 10px 0;
-
-  @media only screen and (max-width: 600px) {
-    flex-direction: column;
-  }
 }
 
 .ProductDetail {
@@ -43,8 +43,9 @@
   font-size: 16px;
   font-weight: 300;
 
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 20px;
+  @media only screen and (max-width: 380px) {
+    padding: 5px;
+    font-size: 14px;
   }
 }
 
@@ -53,6 +54,11 @@
   flex-direction: column;
   justify-content: space-around;
   margin-left: 20px;
+
+  @media only screen and (max-width: 380px) {
+    font-size: 14px;
+    margin-left: 10px;
+  }
 }
 
 .ProductColor {
@@ -65,5 +71,10 @@
     height: 15px;
     border-radius: 50%;
     margin-left: 5px;
+
+    @media only screen and (max-width: 380px) {
+      width: 10px;
+      height: 10px;
+    }
   }
 }

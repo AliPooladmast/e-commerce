@@ -29,49 +29,51 @@ function ProductList() {
   return (
     <div className={style.Container}>
       <NavBar />
-      {category && (
-        <h1 className={style.Title}>
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </h1>
-      )}
       <div className={style.FilterContainer}>
-        <div className={style.FilterProduct}>
-          <span>Filter Products</span>
-          <select
-            name="color"
-            id="colors-select"
-            onChange={handleFilters}
-            value={filters?.color || ""}
-          >
-            <option value="color" hidden>
-              Color
-            </option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-            <option value="Red">Red</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Blue">Blue</option>
-            <option value="Green">Green</option>
-          </select>
+        <div className={style.FilterItem}>
+          <span className={style.FilterTitle}>Filter Products</span>
 
-          <select
-            name="size"
-            id="size-select"
-            onChange={handleFilters}
-            value={filters.size || ""}
-          >
-            <option value="size" hidden>
-              Size
-            </option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
+          <div className={style.SizeColorContainer}>
+            <select
+              name="color"
+              id="colors-select"
+              onChange={handleFilters}
+              value={filters?.color || ""}
+              className={style.FilterSelect}
+            >
+              <option value="color" hidden>
+                Color
+              </option>
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Red">Red</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+            </select>
+
+            <select
+              name="size"
+              id="size-select"
+              onChange={handleFilters}
+              value={filters.size || ""}
+              className={style["FilterSelect--Size"]}
+            >
+              <option value="size" hidden>
+                Size
+              </option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
         </div>
 
-        <div className={style.SearchWrapper}>
+        <div className={style.FilterItem}>
+          <span className={style.FilterTitle}>Search Products</span>
+
           <div className={style.SearchContainer}>
             <input
               className={style.Input}
@@ -90,17 +92,10 @@ function ProductList() {
               onClick={() => handleFilters(search)}
             />
           </div>
-
-          {(filters?.title || filters?.color || filters?.size) && (
-            <div className={style.Reset} onClick={handleReset}>
-              <Cancel className={style.Cancel} />
-              <span>reset filters</span>
-            </div>
-          )}
         </div>
 
-        <div className={style.SortProduct}>
-          <span>Sort Product</span>
+        <div className={style.FilterItem}>
+          <span className={style.FilterTitle}>Sort Product</span>
           <select
             name="sort"
             id="sort-select"
@@ -108,13 +103,29 @@ function ProductList() {
             onChange={(e) => {
               setSort(e.target.value);
             }}
+            className={style.FilterSelect}
           >
             <option value="newest">Newest</option>
             <option value="asc">Price (Lowest to Highest)</option>
             <option value="desc">Price (Highest to Lowest)</option>
           </select>
         </div>
+
+        <div className={style.FilterItem}>
+          {(filters?.title || filters?.color || filters?.size) && (
+            <div className={style.Reset} onClick={handleReset}>
+              <Cancel className={style.Cancel} />
+              <span>reset filters</span>
+            </div>
+          )}
+        </div>
       </div>
+
+      {category && (
+        <h1 className={style.Title}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}:
+        </h1>
+      )}
 
       <div className={style.Products}>
         <Products category={category} filters={filters} sort={sort} />

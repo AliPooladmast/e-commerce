@@ -33,15 +33,15 @@ const Orders = () => {
     {
       field: "amount",
       headerName: "Amount($)",
-      minWidth: 50,
+      minWidth: 80,
       flex: 1,
     },
-    { field: "phone", headerName: "Phone", minWidth: 100, flex: 2 },
-    { field: "address", headerName: "Address", minWidth: 150, flex: 3 },
+    { field: "phone", headerName: "Phone", minWidth: 110, flex: 2 },
+    { field: "address", headerName: "Address", minWidth: 110, flex: 2 },
     {
       field: "date",
       headerName: "Order Date",
-      minWidth: 100,
+      minWidth: 90,
       flex: 2,
       renderCell: (params) => {
         const date = params.row.createdAt.split("T")?.[0];
@@ -55,11 +55,11 @@ const Orders = () => {
         );
       },
     },
-    { field: "status", headerName: "Status", minWidth: 50, flex: 1 },
+    { field: "status", headerName: "Status", minWidth: 70, flex: 1 },
     {
       field: "action",
       headerName: "Action",
-      minWidth: 50,
+      minWidth: 110,
       flex: 1,
       renderCell: (params) => {
         return (

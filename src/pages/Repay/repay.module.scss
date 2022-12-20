@@ -13,6 +13,10 @@
   > h1 {
     font-weight: 300;
     text-align: center;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -34,6 +38,13 @@
   width: 150px;
   transition: all 0.3s ease;
 
+  @media only screen and (max-width: 380px) {
+    width: 110px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   &:hover {
     transform: scale(1.03);
   }
@@ -50,7 +61,7 @@
   display: flex;
   justify-content: space-between;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 850px) {
     flex-direction: column;
   }
 }

@@ -6,7 +6,7 @@
   box-shadow: styles.$shadow;
   color: #fff;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 800px) {
     flex-direction: column;
   }
 }
@@ -22,6 +22,10 @@
     font-size: 20px;
     margin-bottom: 20px;
   }
+
+  p {
+    margin-bottom: 20px;
+  }
 }
 
 .SocialContainer {
@@ -29,14 +33,14 @@
 }
 
 .SocialIcon {
-  height: 40px;
-  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
   color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 10px;
 
   &--facebook {
     @extend .SocialIcon;
@@ -63,7 +67,7 @@
   flex: 1;
   padding: 20px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 800px) {
     display: none;
   }
 
@@ -95,10 +99,6 @@
   flex: 1;
   padding: 20px;
 
-  @media only screen and (max-width: 600px) {
-    background-color: rgb(247, 243, 252);
-  }
-
   h1 {
     font-size: 20px;
     margin-bottom: 20px;
@@ -111,7 +111,7 @@
   }
 
   img {
-    width: 70%;
+    width: 200px;
     object-fit: cover;
     border-radius: 5px;
   }

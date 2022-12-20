@@ -15,6 +15,7 @@ import { setMessage } from "./redux/uxSlice";
 import OrderList from "./pages/OrderList/OrderList";
 import Repay from "./pages/Repay/Repay";
 import EditAddress from "./pages/EditAddress/EditAddress";
+import SideBar from "./components/Siderbar/SideBar";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -67,6 +68,8 @@ const App = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
+
+      <SideBar />
 
       <Routes>
         <Route path="/" element={<Home />} />
