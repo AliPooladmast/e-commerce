@@ -9,7 +9,6 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import style from "./Footer.module.scss";
-import paymentMethods from "../../assets/images/payment-methods.jpg";
 import { Link } from "react-router-dom";
 import { categories } from "../../data";
 
@@ -103,7 +102,7 @@ function Footer() {
           <MailOutline style={{ marginRight: "10px" }} />
           bexoli2205@anlubi.com
         </div>
-        <img src={paymentMethods} alt="payment methods" />
+        <img src="assets/images/payment-methods.jpg" alt="payment methods" />
       </div>
     </div>
   );
