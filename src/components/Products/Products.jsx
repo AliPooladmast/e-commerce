@@ -16,10 +16,10 @@ const Products = ({ category, filters, sort, newItems = false }) => {
     const getProducts = async () => {
       dispatch(setLoading(true));
       try {
-        const res = await publicRequest(
+        const res = await publicRequest.get(
           newItems
-            ? "http://localhost:5000/api/products?new=true"
-            : `http://localhost:5000/api/products?page=${page}` +
+            ? "products?new=true"
+            : `products?page=${page}` +
                 `&category=${category || ""}` +
                 `&size=${filters?.size || ""}` +
                 `&color=${filters?.color || ""}` +
