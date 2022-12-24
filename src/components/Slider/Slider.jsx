@@ -29,7 +29,7 @@ const Slider = () => {
               <img
                 className={style.Image}
                 src={item.img}
-                srcset={`${item.imgMobile} 300w, ${item.img} 700w`}
+                srcSet={`${item.imgMobile} 300w, ${item.img} 700w`}
                 sizes="(max-width: 850px) 300px, 700px"
                 alt="slider"
               />
