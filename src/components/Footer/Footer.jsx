@@ -75,7 +75,7 @@ function Footer() {
 
           {categories.map((item) => (
             <li key={item.id}>
-              <Link to={`products/${item.category}`} className={style.Link}>
+              <Link to={`/products/${item.category}`} className={style.Link}>
                 {item.title}
               </Link>
             </li>

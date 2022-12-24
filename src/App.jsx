@@ -63,7 +63,7 @@ const App = () => {
       )}
 
       <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: 10 }}
         open={uxLoading || userLoading || orderLoading}
       >
         <CircularProgress color="inherit" />
