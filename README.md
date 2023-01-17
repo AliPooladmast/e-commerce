@@ -1,4 +1,4 @@
-# Shopinity
+# ForgeShopex
 
 ## Technologies
 
