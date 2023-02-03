@@ -3,7 +3,15 @@ import { createRoot } from "react-dom/client";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/extend-expect";
+import renderer from "react-test-renderer";
 import CategoryItem from "../CategoryItem";
+
+const item = {
+  img: "./assets/images/casual-dress.jpg",
+  imgMobile: "./assets/images/casual-dress-mobile.jpg",
+  title: "Casual Outfit",
+  category: "casual",
+};
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
@@ -12,13 +20,6 @@ it("renders without crashing", () => {
 });
 
 it("renders categoryItem correctly", () => {
-  const item = {
-    img: "./assets/images/casual-dress.jpg",
-    imgMobile: "./assets/images/casual-dress-mobile.jpg",
-    title: "Casual Outfit",
-    category: "casual",
-  };
-
   const { getByTestId } = render(
     <MemoryRouter>
       <CategoryItem item={item} />
@@ -26,4 +27,16 @@ it("renders categoryItem correctly", () => {
   );
 
   expect(getByTestId("itemTitle")).toHaveTextContent("Casual Outfit");
+});
+
+it("snapshot", () => {
+  const tree = renderer
+    .create(
+      <MemoryRouter>
+        <CategoryItem item={item} />
+      </MemoryRouter>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
 });
