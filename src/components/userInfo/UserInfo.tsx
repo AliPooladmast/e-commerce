@@ -8,7 +8,21 @@ import {
   PhoneAndroid,
 } from "@mui/icons-material";
 
-const UserInfo = ({ user }: { user: any }) => {
+interface IUser {
+  username: string;
+  _id: string;
+  isAdmin: boolean;
+  token: string;
+  createdAt: string;
+  fullname?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  img?: string;
+  title?: string;
+}
+
+const UserInfo = ({ user }: { user: IUser }) => {
   return (
     <div className={style.UserInfo}>
       <div className={style.Top}>
