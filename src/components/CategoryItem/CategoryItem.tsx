@@ -2,21 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./CategoryItem.module.scss";
 
-enum categoryType {
+enum categoryEnum {
   casual,
   fashion,
   formal,
 }
 
-interface itemType {
+interface IItem {
   id: number;
   img: string;
   imgMobile: string;
   title: string;
-  category: categoryType;
+  category: categoryEnum;
 }
 
-const CategoryItem = ({ item }: { item: itemType }) => {
+const CategoryItem = ({ item }: { item: IItem }) => {
   return (
     <div className={style.Container}>
       <img
