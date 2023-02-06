@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./CategoryItem.module.scss";
 
-const CategoryItem = ({ item }) => {
+const CategoryItem = ({ item }: { item: any }) => {
   return (
     <div className={style.Container}>
       <img
