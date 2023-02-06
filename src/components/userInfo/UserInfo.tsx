@@ -8,7 +8,7 @@ import {
   PhoneAndroid,
 } from "@mui/icons-material";
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ user }: { user: any }) => {
   return (
     <div className={style.UserInfo}>
       <div className={style.Top}>
