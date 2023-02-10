@@ -11,6 +11,18 @@ const item = {
   category: "category",
 };
 
+it("match the snapshot", () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <CategoryRounded />
+      </BrowserRouter>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
 it("check if the element contain the category path", () => {
   render(
     <BrowserRouter>
