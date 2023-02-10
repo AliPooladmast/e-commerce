@@ -26,8 +26,12 @@ const CategoryItem = ({ item }: { item: IItem }) => {
         alt={item.title}
       />
       <div className={style.Info}>
-        <Link to={`products/${item.category}`} className={style.Link}>
-          <h1 data-testid="itemTitle">{item.title}</h1>
+        <Link
+          data-testid="categorty-link"
+          to={`products/${item.category}`}
+          className={style.Link}
+        >
+          <h1>{item.title}</h1>
         </Link>
       </div>
     </div>
