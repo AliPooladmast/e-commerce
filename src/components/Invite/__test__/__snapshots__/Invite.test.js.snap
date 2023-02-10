@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot of component 1`] = `
+<div
+  className="Container"
+>
+  <h1>
+    Join Now!
+  </h1>
+  <div
+    className="Desc"
+  >
+    by registering here you can start buying products today!
+  </div>
+  <a
+    data-testid="register-link"
+    href="/register"
+    onClick={[Function]}
+  >
+    <button>
+      Register
+    </button>
+  </a>
+</div>
+`;
