@@ -11,6 +11,18 @@ const item = {
   category: "category",
 };
 
+it("check if the element contain the category path", () => {
+  render(
+    <BrowserRouter>
+      <CategoryItem item={item} />
+    </BrowserRouter>
+  );
+
+  expect(
+    screen.getByTestId("categorty-link").href.includes("/products/category")
+  ).toBeTruthy();
+});
+
 it("check if the title is correct", () => {
   render(
     <BrowserRouter>
