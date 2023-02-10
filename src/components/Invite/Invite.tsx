@@ -2,18 +2,18 @@ import React from "react";
 import style from "./Invite.module.scss";
 import { Link } from "react-router-dom";
 
-const Newsletter = () => {
+const Invite = () => {
   return (
     <div className={style.Container}>
       <h1>Join Now!</h1>
       <div className={style.Desc}>
         by registering here you can start buying products today!
       </div>
-      <Link to="/register">
+      <Link data-testid="register-link" to="/register">
         <button>Register</button>
       </Link>
     </div>
   );
 };
 
-export default Newsletter;
+export default Invite;
