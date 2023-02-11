@@ -1,42 +1,48 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
-import "@testing-library/jest-dom/extend-expect";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import CategoryItem from "../CategoryItem";
+import renderer from "react-test-renderer";
+import { CategoryRounded } from "@mui/icons-material";
 
 const item = {
-  img: "./assets/images/casual-dress.jpg",
-  imgMobile: "./assets/images/casual-dress-mobile.jpg",
-  title: "Casual Outfit",
-  category: "casual",
+  img: "img",
+  imgMobile: "imgMobile",
+  title: "title",
+  category: "category",
 };
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  const root = createRoot(div);
-  root.render(<CategoryItem />);
-});
-
-it("renders categoryItem correctly", () => {
-  const { getByTestId } = render(
-    <MemoryRouter>
-      <CategoryItem item={item} />
-    </MemoryRouter>
-  );
-
-  expect(getByTestId("itemTitle")).toHaveTextContent("Casual Outfit");
-});
-
-it("snapshot", () => {
+it("match the snapshot", () => {
   const tree = renderer
     .create(
-      <MemoryRouter>
-        <CategoryItem item={item} />
-      </MemoryRouter>
+      <BrowserRouter>
+        <CategoryRounded />
+      </BrowserRouter>
     )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
+});
+
+it("check if the element contain the category path", () => {
+  render(
+    <BrowserRouter>
+      <CategoryItem item={item} />
+    </BrowserRouter>
+  );
+
+  expect(
+    screen.getByTestId("categorty-link").href.includes("/products/category")
+  ).toBeTruthy();
+});
+
+it("check if the title is correct", () => {
+  render(
+    <BrowserRouter>
+      <CategoryItem item={item} />
+    </BrowserRouter>
+  );
+
+  expect(
+    screen.getByTestId("categorty-link").querySelector("h1").textContent
+  ).toMatch("title");
 });
