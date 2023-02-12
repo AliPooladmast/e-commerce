@@ -1,4 +1,12 @@
-export const sliderItems = [
+interface ISlide {
+  id: number;
+  img: string;
+  imgMobile: string;
+  title: string;
+  desc: string;
+}
+
+export const sliderItems: ISlide[] = [
   {
     id: 1,
     img: "./assets/images/fashion-set.jpg",
@@ -29,7 +37,15 @@ export const sliderItems = [
   },
 ];
 
-export const categories = [
+interface ICategory {
+  id: number;
+  img: string;
+  imgMobile: string;
+  title: string;
+  category: string;
+}
+
+export const categories: ICategory[] = [
   {
     id: 1,
     img: "./assets/images/casual-dress.jpg",
