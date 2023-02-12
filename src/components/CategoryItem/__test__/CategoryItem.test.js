@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import CategoryItem from "../CategoryItem";
 import renderer from "react-test-renderer";
-import { CategoryRounded } from "@mui/icons-material";
 
 const item = {
   img: "img",
@@ -15,7 +14,7 @@ it("match the snapshot", () => {
   const tree = renderer
     .create(
       <BrowserRouter>
-        <CategoryRounded />
+        <CategoryItem item={item} />
       </BrowserRouter>
     )
     .toJSON();
