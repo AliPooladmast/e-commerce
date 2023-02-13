@@ -12,6 +12,14 @@ import style from "./Footer.module.scss";
 import { Link } from "react-router-dom";
 import { categories } from "../../data";
 
+interface ICategory {
+  id: number;
+  img: string;
+  imgMobile: string;
+  title: string;
+  category: string;
+}
+
 function Footer() {
   return (
     <div className={style.Container}>
@@ -73,7 +81,7 @@ function Footer() {
             </Link>
           </li>
 
-          {categories.map((item) => (
+          {categories.map((item: ICategory) => (
             <li key={item.id}>
               <Link to={`/products/${item.category}`} className={style.Link}>
                 {item.title}
