@@ -43,3 +43,15 @@ describe("links validity", () => {
     ).toBeTruthy();
   });
 });
+
+it("match snapshot", () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
