@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<div
+  className="Container"
+>
+  <div
+    className="Arrow--Left"
+    onClick={[Function]}
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="ArrowLeftOutlinedIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m14 7-5 5 5 5V7z"
+      />
+    </svg>
+  </div>
+  <div
+    className="Wrapper"
+    data-testid="slider-wrapper"
+    style={
+      Object {
+        "transform": "translateX(0vw)",
+      }
+    }
+  >
+    <div
+      className="Slide"
+    >
+      <div
+        className="ImgContainer"
+      >
+        <img
+          alt="slider"
+          className="Image"
+          sizes="(max-width: 850px) 300px, 700px"
+          src="./assets/images/fashion-set.jpg"
+          srcSet="./assets/images/fashion-set-mobile.jpg 300w, ./assets/images/fashion-set.jpg 700w"
+        />
+      </div>
+      <div
+        className="InfoContainer"
+      >
+        <h1
+          className="Title"
+        >
+          SEASONAL SALE
+        </h1>
+        <p
+          className="Desc"
+        >
+          NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+        </p>
+        <a
+          data-testid="shop-link"
+          href="/products"
+          onClick={[Function]}
+        >
+          <button
+            className="Button"
+          >
+            SHOP NOW
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      className="Slide"
+    >
+      <div
+        className="ImgContainer"
+      >
+        <img
+          alt="slider"
+          className="Image"
+          sizes="(max-width: 850px) 300px, 700px"
+          src="./assets/images/girl-sundress.jpg"
+          srcSet="./assets/images/girl-sundress-mobile.jpg 300w, ./assets/images/girl-sundress.jpg 700w"
+        />
+      </div>
+      <div
+        className="InfoContainer"
+      >
+        <h1
+          className="Title"
+        >
+          SPECTIAL COLLECTION
+        </h1>
+        <p
+          className="Desc"
+        >
+          NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+        </p>
+        <a
+          data-testid="shop-link"
+          href="/products"
+          onClick={[Function]}
+        >
+          <button
+            className="Button"
+          >
+            SHOP NOW
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      className="Slide"
+    >
+      <div
+        className="ImgContainer"
+      >
+        <img
+          alt="slider"
+          className="Image"
+          sizes="(max-width: 850px) 300px, 700px"
+          src="./assets/images/men-coat.jpg"
+          srcSet="./assets/images/men-coat-mobile.jpg 300w, ./assets/images/men-coat.jpg 700w"
+        />
+      </div>
+      <div
+        className="InfoContainer"
+      >
+        <h1
+          className="Title"
+        >
+          GIFT FOR FANS
+        </h1>
+        <p
+          className="Desc"
+        >
+          NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+        </p>
+        <a
+          data-testid="shop-link"
+          href="/products"
+          onClick={[Function]}
+        >
+          <button
+            className="Button"
+          >
+            SHOP NOW
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      className="Slide"
+    >
+      <div
+        className="ImgContainer"
+      >
+        <img
+          alt="slider"
+          className="Image"
+          sizes="(max-width: 850px) 300px, 700px"
+          src="./assets/images/girl-sunglass.jpg"
+          srcSet="./assets/images/girl-sunglass-mobile.jpg 300w, ./assets/images/girl-sunglass.jpg 700w"
+        />
+      </div>
+      <div
+        className="InfoContainer"
+      >
+        <h1
+          className="Title"
+        >
+          FASHION PORDUCTS
+        </h1>
+        <p
+          className="Desc"
+        >
+          NEW PRODUCTS WOULD BE DISCOUNTED UP TO 30%
+        </p>
+        <a
+          data-testid="shop-link"
+          href="/products"
+          onClick={[Function]}
+        >
+          <button
+            className="Button"
+          >
+            SHOP NOW
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Arrow--Right"
+    data-testid="arrow-right"
+    onClick={[Function]}
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="ArrowRightOutlinedIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m10 17 5-5-5-5v10z"
+      />
+    </svg>
+  </div>
+</div>
+`;
