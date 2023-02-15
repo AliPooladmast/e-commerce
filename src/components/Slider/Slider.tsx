@@ -5,7 +5,7 @@ import { sliderItems } from "../../data";
 import { Link } from "react-router-dom";
 
 const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const handleClick = (direction: string) => {
     if (direction === "left")
