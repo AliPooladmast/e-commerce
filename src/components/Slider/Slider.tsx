@@ -4,10 +4,18 @@ import style from "./Slider.module.scss";
 import { sliderItems } from "../../data";
 import { Link } from "react-router-dom";
 
-const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
+interface ISlide {
+  id: number;
+  img: string;
+  imgMobile: string;
+  title: string;
+  desc: string;
+}
 
-  const handleClick = (direction) => {
+const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState<number>(0);
+
+  const handleClick = (direction: string) => {
     if (direction === "left")
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
     else setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
@@ -23,7 +31,7 @@ const Slider = () => {
         className={style.Wrapper}
         style={{ transform: `translateX(${slideIndex * -100}vw)` }}
       >
-        {sliderItems.map((item) => (
+        {sliderItems.map((item: ISlide) => (
           <div className={style.Slide} key={item.id}>
             <div className={style.ImgContainer}>
               <img
