@@ -20,3 +20,17 @@ it("check if sliding works", async () => {
     );
   });
 });
+
+it("check if shop link is correct", () => {
+  render(
+    <BrowserRouter>
+      <Slider />
+    </BrowserRouter>
+  );
+
+  expect(
+    screen
+      .getAllByTestId("shop-link")
+      .every((item) => item.href.includes("products"))
+  ).toBeTruthy();
+});

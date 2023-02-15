@@ -47,7 +47,7 @@ const Slider = () => {
             <div className={style.InfoContainer}>
               <h1 className={style.Title}>{item.title}</h1>
               <p className={style.Desc}>{item.desc}</p>
-              <Link to="products">
+              <Link to="products" data-testid="shop-link">
                 <button className={style.Button}>SHOP NOW</button>
               </Link>
             </div>
