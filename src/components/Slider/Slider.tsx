@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const handleClick = (direction) => {
+  const handleClick = (direction: any) => {
     if (direction === "left")
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
     else setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
