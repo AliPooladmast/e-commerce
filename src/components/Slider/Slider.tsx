@@ -4,6 +4,14 @@ import style from "./Slider.module.scss";
 import { sliderItems } from "../../data";
 import { Link } from "react-router-dom";
 
+interface ISlide {
+  id: number;
+  img: string;
+  imgMobile: string;
+  title: string;
+  desc: string;
+}
+
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
@@ -23,7 +31,7 @@ const Slider = () => {
         className={style.Wrapper}
         style={{ transform: `translateX(${slideIndex * -100}vw)` }}
       >
-        {sliderItems.map((item) => (
+        {sliderItems.map((item: ISlide) => (
           <div className={style.Slide} key={item.id}>
             <div className={style.ImgContainer}>
               <img
