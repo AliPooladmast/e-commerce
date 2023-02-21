@@ -1,12 +1,32 @@
 import style from "./contactConfirm.module.scss";
 
-const ContactConfirm = ({ select, setSelect, setInput, currentUser }) => {
-  const handleSelect = (e) => {
-    setSelect((prev) => ({ ...prev, [e.target.name]: e.target.id }));
+interface IContact {
+  phone: string;
+  address: string;
+}
+interface ITarget {
+  name: string;
+  id?: string;
+  value?: string;
+}
+
+const ContactConfirm = ({
+  select,
+  setSelect,
+  setInput,
+  currentUser,
+}: {
+  select: IContact;
+  setSelect: (prev: object) => void;
+  setInput: (prev: object) => void;
+  currentUser: IContact;
+}) => {
+  const handleSelect = (e: { target: ITarget }) => {
+    setSelect((prev: object) => ({ ...prev, [e.target.name]: e.target.id }));
   };
 
-  const handleInput = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInput = (e: { target: ITarget }) => {
+    setInput((prev: object) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
