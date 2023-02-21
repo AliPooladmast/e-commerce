@@ -4,6 +4,11 @@ interface IContact {
   phone: string;
   address: string;
 }
+interface ITarget {
+  name: string;
+  id?: string;
+  value?: string;
+}
 
 const ContactConfirm = ({
   select,
@@ -16,12 +21,12 @@ const ContactConfirm = ({
   setInput: (prev: object) => void;
   currentUser: IContact;
 }) => {
-  const handleSelect = (e: any) => {
-    setSelect((prev: any) => ({ ...prev, [e.target.name]: e.target.id }));
+  const handleSelect = (e: { target: ITarget }) => {
+    setSelect((prev: object) => ({ ...prev, [e.target.name]: e.target.id }));
   };
 
-  const handleInput = (e: any) => {
-    setInput((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInput = (e: { target: ITarget }) => {
+    setInput((prev: object) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
