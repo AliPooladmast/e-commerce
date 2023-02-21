@@ -2,15 +2,15 @@ const { render, screen } = require("@testing-library/react");
 const { BrowserRouter } = require("react-router-dom");
 import ContactConfirm from "../ContactConfirm";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
+import renderer from "react-test-renderer";
+
+const currentUser = { phone: "123", address: "aaa" };
+const select = {
+  phone: "defaultPhone",
+  address: "defaultAddress",
+};
 
 describe("check the inputs", () => {
-  const currentUser = { phone: "123", address: "aaa" };
-  const select = {
-    phone: "defaultPhone",
-    address: "defaultAddress",
-  };
-
   beforeEach(() => {
     render(
       <BrowserRouter>
@@ -39,5 +39,19 @@ describe("check the inputs", () => {
     expect(screen.getByTestId("user-address").textContent).toBe(
       currentUser.address
     );
+  });
+});
+
+describe("snapshot", () => {
+  it("match the snapshot", () => {
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+          <ContactConfirm currentUser={currentUser} select={select} />
+        </BrowserRouter>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 });
