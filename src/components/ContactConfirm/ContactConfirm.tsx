@@ -37,11 +37,12 @@ const ContactConfirm = ({
             name="phone"
             type="radio"
             id="defaultPhone"
+            data-testid="defaultPhone"
             onChange={handleSelect}
             defaultChecked
           />
           <label htmlFor="defaultPhone">Default phone:</label>
-          <span>{currentUser?.phone}</span>
+          <span data-testid="user-phone">{currentUser?.phone}</span>
         </div>
 
         <div className={style.Option}>
@@ -49,6 +50,7 @@ const ContactConfirm = ({
             name="phone"
             type="radio"
             id="newPhone"
+            data-testid="newPhone"
             onChange={handleSelect}
           />
           <label htmlFor="newPhone">New phone:</label>
@@ -68,11 +70,12 @@ const ContactConfirm = ({
             name="address"
             type="radio"
             id="defaultAddress"
+            data-testid="defaultAddress"
             defaultChecked
             onChange={handleSelect}
           />
           <label htmlFor="defaultAddress">Default address:</label>
-          <span>{currentUser?.address}</span>
+          <span data-testid="user-address">{currentUser?.address}</span>
         </div>
 
         <div className={style.Option}>
@@ -80,6 +83,7 @@ const ContactConfirm = ({
             name="address"
             type="radio"
             id="newAddress"
+            data-testid="newAddress"
             onChange={handleSelect}
           />
           <label htmlFor="newAddress">New address:</label>
