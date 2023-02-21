@@ -1,12 +1,22 @@
 import style from "./contactConfirm.module.scss";
 
-const ContactConfirm = ({ select, setSelect, setInput, currentUser }) => {
-  const handleSelect = (e) => {
-    setSelect((prev) => ({ ...prev, [e.target.name]: e.target.id }));
+const ContactConfirm = ({
+  select,
+  setSelect,
+  setInput,
+  currentUser,
+}: {
+  select: any;
+  setSelect: any;
+  setInput: any;
+  currentUser: any;
+}) => {
+  const handleSelect = (e: any) => {
+    setSelect((prev: any) => ({ ...prev, [e.target.name]: e.target.id }));
   };
 
-  const handleInput = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInput = (e: any) => {
+    setInput((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
