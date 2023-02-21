@@ -28,4 +28,16 @@ describe("check the inputs", () => {
     expect(screen.getByTestId("newPhone")).not.toBeChecked();
     expect(screen.getByTestId("newAddress")).not.toBeChecked();
   });
+
+  it("check if phone of current user is shown correctly", () => {
+    expect(screen.getByTestId("user-phone").textContent).toBe(
+      currentUser.phone
+    );
+  });
+
+  it("check if address of current user is shown correctly", () => {
+    expect(screen.getByTestId("user-address").textContent).toBe(
+      currentUser.address
+    );
+  });
 });
