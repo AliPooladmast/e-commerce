@@ -28,6 +28,7 @@ const Slider = () => {
       </div>
 
       <div
+        data-testid="slider-wrapper"
         className={style.Wrapper}
         style={{ transform: `translateX(${slideIndex * -100}vw)` }}
       >
@@ -46,7 +47,7 @@ const Slider = () => {
             <div className={style.InfoContainer}>
               <h1 className={style.Title}>{item.title}</h1>
               <p className={style.Desc}>{item.desc}</p>
-              <Link to="products">
+              <Link to="products" data-testid="shop-link">
                 <button className={style.Button}>SHOP NOW</button>
               </Link>
             </div>
@@ -55,6 +56,7 @@ const Slider = () => {
       </div>
 
       <div
+        data-testid="arrow-right"
         className={style["Arrow--Right"]}
         onClick={() => handleClick("right")}
       >
