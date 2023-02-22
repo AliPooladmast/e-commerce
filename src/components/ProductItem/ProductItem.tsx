@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { addProduct } from "../../redux/cartSlice";
 import style from "./ProductItem.module.scss";
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item }: { item: any }) => {
   const dispatch = useDispatch();
 
   const handleAddClick = () => {
