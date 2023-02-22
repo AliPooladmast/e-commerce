@@ -5,7 +5,17 @@ import { Link } from "react-router-dom";
 import { addProduct } from "../../redux/cartSlice";
 import style from "./ProductItem.module.scss";
 
-const ProductItem = ({ item }) => {
+interface IItem {
+  _id: string;
+  quantity: number;
+  price: number;
+  size: string;
+  color: string;
+  title: string;
+  img?: string;
+}
+
+const ProductItem = ({ item }: { item: IItem }) => {
   const dispatch = useDispatch();
 
   const handleAddClick = () => {
