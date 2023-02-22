@@ -5,6 +5,8 @@ interface IProduct {
   _id: string;
   quantity: number;
   price: number;
+  size: string;
+  color: string;
 }
 
 export interface CartState {
