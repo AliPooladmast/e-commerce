@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+interface IProduct {
+  _id: string;
+  quantity: number;
+  price: number;
+}
+
 export interface CartState {
-  products: any[];
+  products: IProduct[];
   quantity: number;
   total: number;
 }
@@ -17,7 +23,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<any>) => {
+    addProduct: (state, action: PayloadAction<IProduct>) => {
       const product = state.products.find(
         (item) => item._id === action.payload._id
       );
@@ -31,7 +37,7 @@ const cartSlice = createSlice({
 
       state.total += action.payload.price * action.payload.quantity;
     },
-    deleteProduct: (state, action: PayloadAction<any>) => {
+    deleteProduct: (state, action: PayloadAction<IProduct>) => {
       state.quantity -= 1;
       state.products.splice(
         state.products.findIndex((item) => item._id === action.payload._id),
@@ -39,12 +45,18 @@ const cartSlice = createSlice({
       );
       state.total -= action.payload.price * action.payload.quantity;
     },
-    incrementProduct: (state, action: PayloadAction<any>) => {
-      state.products.find((item) => item._id === action.payload._id).quantity++;
+    incrementProduct: (state, action: PayloadAction<IProduct>) => {
+      const product = state.products.find(
+        (item) => item._id === action.payload._id
+      );
+      product && product.quantity++;
       state.total += action.payload.price;
     },
-    decrementProduct: (state, action: PayloadAction<any>) => {
-      state.products.find((item) => item._id === action.payload._id).quantity--;
+    decrementProduct: (state, action: PayloadAction<IProduct>) => {
+      const product = state.products.find(
+        (item) => item._id === action.payload._id
+      );
+      product && product.quantity--;
       state.total -= action.payload.price;
     },
     resetCart: (state) => {
