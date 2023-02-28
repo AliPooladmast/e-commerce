@@ -46,9 +46,9 @@ const ProductItem = ({ item }: { item: IItem }) => {
           </div>
         </div>
       </div>
-      <div className={style.Title}>
-        <div>{item.title}</div>
-        <div className={style.Price}>${item.price}</div>
+      <div className={style.Title} >
+        <div data-testid='item-title'>{item.title}</div>
+        <div data-testid='item-price' className={style.Price}>${item.price}</div>
       </div>
     </div>
   );
