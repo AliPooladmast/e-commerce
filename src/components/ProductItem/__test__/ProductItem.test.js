@@ -4,6 +4,7 @@ import ProductItem from "../ProductItem";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import "@testing-library/jest-dom";
+import renderer from "react-test-renderer";
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
@@ -19,6 +20,20 @@ const item = {
   _id: "123",
   img: "image",
 };
+
+it("match snapshot", () => {
+  const tree = renderer
+    .create(
+      <Provider store={store}>
+        <BrowserRouter>
+          <ProductItem item={item} />
+        </BrowserRouter>
+      </Provider>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
 
 describe("test item title and price", () => {
   beforeEach(() => {
