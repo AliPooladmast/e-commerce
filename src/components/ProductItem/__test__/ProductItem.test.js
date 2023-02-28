@@ -3,6 +3,7 @@ const { BrowserRouter } = require("react-router-dom");
 import ProductItem from "../ProductItem";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
+import "@testing-library/jest-dom";
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
@@ -36,5 +37,11 @@ describe("test item title and price", () => {
 
   it("check the price", () => {
     expect(screen.getByTestId("item-price").textContent).toBe("$" + item.price);
+  });
+
+  it("check the product page redirect", () => {
+    expect(
+      screen.getByTestId("item-page-link").href.includes(`/product/${item._id}`)
+    ).toBeTruthy();
   });
 });

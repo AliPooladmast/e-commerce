@@ -40,15 +40,21 @@ const ProductItem = ({ item }: { item: IItem }) => {
             <ShoppingCartOutlined />
           </div>
           <div>
-            <Link to={`/product/${item._id}`} className={style.Link}>
+            <Link
+              data-testid="item-page-link"
+              to={`/product/${item._id}`}
+              className={style.Link}
+            >
               <SearchOutlined />
             </Link>
           </div>
         </div>
       </div>
-      <div className={style.Title} >
-        <div data-testid='item-title'>{item.title}</div>
-        <div data-testid='item-price' className={style.Price}>${item.price}</div>
+      <div className={style.Title}>
+        <div data-testid="item-title">{item.title}</div>
+        <div data-testid="item-price" className={style.Price}>
+          ${item.price}
+        </div>
       </div>
     </div>
   );
