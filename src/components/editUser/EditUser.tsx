@@ -27,7 +27,17 @@ const schema = Joi.object({
 
 const storage = getStorage(app);
 
-const EditUser = ({ user }: { user: any }) => {
+interface IUser {
+  _id: string;
+  username: string;
+  email: string;
+  fullname?: string;
+  phone?: string;
+  address?: string;
+  img?: string;
+}
+
+const EditUser = ({ user }: { user: IUser }) => {
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState(user?.img);
