@@ -27,17 +27,17 @@ const schema = Joi.object({
 
 const storage = getStorage(app);
 
-const EditUser = ({ user }) => {
+const EditUser = ({ user }: { user: any }) => {
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState(user?.img);
   const [progress, setProgress] = useState(0);
 
-  const handleInput = (e) => {
-    setDraftUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInput = (e: any) => {
+    setDraftUser((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleImage = (e) => {
+  const handleImage = (e: any) => {
     const file = e.target.files?.[0];
     const fileName = new Date().getTime() + file?.name;
     const storageRef = ref(storage, fileName);
@@ -75,7 +75,7 @@ const EditUser = ({ user }) => {
     );
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = (e: any) => {
     e.preventDefault();
     const {
       username,
