@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editUser } from "../../redux/apiCalls";
 import {
@@ -85,7 +85,7 @@ const EditUser = ({ user }: { user: IUser }) => {
     );
   };
 
-  const handleEdit = (e: any) => {
+  const handleEdit = (e: MouseEvent) => {
     e.preventDefault();
     const {
       username,
