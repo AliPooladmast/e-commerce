@@ -49,9 +49,9 @@ const EditUser = ({ user }: { user: IUser }) => {
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    const fileName = new Date().getTime() + (file?.name as any);
+    const fileName = new Date().getTime() + (file?.name as string);
     const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file as any);
+    const uploadTask = uploadBytesResumable(storageRef, file as Blob);
 
     uploadTask.on(
       "state_changed",
