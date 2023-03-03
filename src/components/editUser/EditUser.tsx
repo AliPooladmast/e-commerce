@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editUser } from "../../redux/apiCalls";
 import {
@@ -43,15 +43,15 @@ const EditUser = ({ user }: { user: IUser }) => {
   const [image, setImage] = useState(user?.img);
   const [progress, setProgress] = useState(0);
 
-  const handleInput = (e: any) => {
-    setDraftUser((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setDraftUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleImage = (e: any) => {
+  const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    const fileName = new Date().getTime() + file?.name;
+    const fileName = new Date().getTime() + (file?.name as any);
     const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask = uploadBytesResumable(storageRef, file as any);
 
     uploadTask.on(
       "state_changed",
