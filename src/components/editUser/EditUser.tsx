@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editUser } from "../../redux/apiCalls";
 import {
@@ -27,21 +27,31 @@ const schema = Joi.object({
 
 const storage = getStorage(app);
 
-const EditUser = ({ user }) => {
+interface IUser {
+  _id: string;
+  username: string;
+  email: string;
+  fullname?: string;
+  phone?: string;
+  address?: string;
+  img?: string;
+}
+
+const EditUser = ({ user }: { user: IUser }) => {
   const dispatch = useDispatch();
   const [draftUser, setDraftUser] = useState(user);
   const [image, setImage] = useState(user?.img);
   const [progress, setProgress] = useState(0);
 
-  const handleInput = (e) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setDraftUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleImage = (e) => {
+  const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    const fileName = new Date().getTime() + file?.name;
+    const fileName = new Date().getTime() + (file?.name as string);
     const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask = uploadBytesResumable(storageRef, file as Blob);
 
     uploadTask.on(
       "state_changed",
@@ -75,7 +85,7 @@ const EditUser = ({ user }) => {
     );
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = (e: MouseEvent) => {
     e.preventDefault();
     const {
       username,
