@@ -6,7 +6,33 @@ import { publicRequest } from "../../requestMethods";
 import ProductItem from "../ProductItem/ProductItem";
 import style from "./Products.module.scss";
 
-const Products = ({ category, filters, sort, newItems = false }) => {
+interface IFilters {
+  color: string;
+  size: string;
+  title: string;
+}
+
+interface IItem {
+  _id: string;
+  quantity: number;
+  price: number;
+  size: string;
+  color: string;
+  title: string;
+  img?: string;
+}
+
+const Products = ({
+  category,
+  filters,
+  sort,
+  newItems = false,
+}: {
+  category: string;
+  filters: IFilters;
+  sort: string;
+  newItems: boolean;
+}) => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -31,7 +57,7 @@ const Products = ({ category, filters, sort, newItems = false }) => {
           setPageCounts(res.data?.pageCounts);
           dispatch(setLoading(false));
         }
-      } catch (err) {
+      } catch (err: any) {
         dispatch(setLoading(false));
         dispatch(
           setMessage({ type: "error", text: err?.response?.data?.toString() })
@@ -41,14 +67,14 @@ const Products = ({ category, filters, sort, newItems = false }) => {
     getProducts();
   }, [category, page, filters, sort, newItems, dispatch]);
 
-  const handlePage = (event, value) => {
+  const handlePage = (event: any, value: number) => {
     setPage(value);
   };
 
   return (
     <>
       <div className={style.Container}>
-        {products?.map((item) => (
+        {products?.map((item: IItem) => (
           <ProductItem item={item} key={item._id} />
         ))}
       </div>
